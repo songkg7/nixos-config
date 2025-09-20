@@ -12,7 +12,6 @@
 
     home.packages = with pkgs; [
       # Development
-      gemini-cli
       # google-cloud-sdk
       # jetbrains.datagrip
       # jetbrains.idea-ultimate
@@ -33,9 +32,9 @@
 
       # ../shared/programs/1password
       # ../shared/programs/act
-      # ../shared/programs/ai
+      ../shared/programs/ai
       # ../shared/programs/aws
-      # ../shared/programs/bat
+      ../shared/programs/bat
       # ../darwin/programs/homerow
     ];
 
