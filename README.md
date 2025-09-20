@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD014 -->
-
 # NixOS Config
 
 Personal nix files, installs some dotfiles and softwares.
@@ -8,7 +6,7 @@ Personal nix files, installs some dotfiles and softwares.
 
 ```sh
 # Linux
-$ nixos-rebuild switch --flake '.#linux' --use-remote-sudo
+$ nixos-rebuild switch --flake '.#linux' --sudo
 
 # Darwin
 $ nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.darwin.system'
@@ -20,17 +18,14 @@ $ sudo ./result/sw/bin/darwin-rebuild switch --flake '.#darwin'
 ```sh
 $ nix flake update --flake .
 fetching ...
-
-$ ./scripts/auto-update-modules.py
-fetching ...
 ```
 
 ## Additional steps
 
 - SSH keys `~/.ssh/id_ed25519`, `~/.ssh/id_ed25519.pub`
-
 - GPG private keys
 
 ## License
 
 NixOS Config is [MIT Licensed](./LICENSE).
+
