@@ -37,6 +37,7 @@
       ../shared/programs/ai
       ../shared/programs/bat
       ../shared/programs/git
+      ../shared/programs/ranger
       # ../shared/programs/gpg
       # ../shared/programs/jq
       #
