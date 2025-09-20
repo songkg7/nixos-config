@@ -1,5 +1,5 @@
 {
-  description = "sudosubin/nixos-config";
+  description = "haril/nixos-config";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils?rev=13faa43c34c0c943585532dacbb457007416d50b";

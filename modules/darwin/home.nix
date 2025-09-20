@@ -6,6 +6,7 @@
 }: {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  home-manager.backupFileExtension = "backup";
   home-manager.users.haril = {config, ...}: {
     home.username = "haril";
     home.homeDirectory = "/Users/haril";
@@ -33,6 +34,7 @@
       # ../shared/programs/1password
       # ../shared/programs/act
       ../shared/programs/ai
+      ../shared/programs/git
       # ../shared/programs/aws
       ../shared/programs/bat
       ../shared/programs/ranger
