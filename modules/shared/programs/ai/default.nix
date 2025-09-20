@@ -27,16 +27,6 @@
   programs.gemini-cli = {
     enable = true;
 
-    mcpServers = {
-      github = {
-        httpUrl = "https://api.githubcopilot.com/mcp/";
-        headers = {
-          Authorization = "Bearer ${lib.getEnv "GITHUB_COPILOT_TOKEN"}";
-        };
-        timeout = 5000;
-      };
-    };
-
     # https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/configuration.md
     settings = {
       general = {
