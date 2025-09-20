@@ -12,11 +12,10 @@
 
     home.packages = with pkgs; [
       # Development
-      # gemini-cli
+      gemini-cli
       # google-cloud-sdk
       # jetbrains.datagrip
       # jetbrains.idea-ultimate
-      # ngrok
       neohtop
 
       # Utility
@@ -37,7 +36,6 @@
       # ../shared/programs/ai
       # ../shared/programs/aws
       # ../shared/programs/bat
-      #
       # ../darwin/programs/homerow
     ];
 
