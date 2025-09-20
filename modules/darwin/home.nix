@@ -40,6 +40,7 @@
       ../shared/programs/bat
       ../shared/programs/ranger
       # ../darwin/programs/homerow
+      ../shared/programs/shell
     ];
 
     home.stateVersion = "25.05";
