@@ -33,6 +33,7 @@
 
   outputs = {
     self,
+    flake-utils,
     home-manager,
     nix-darwin,
     nixpkgs,
@@ -41,11 +42,12 @@
     dev-shell = import ./libraries/dev-shell {inherit inputs;};
     home-manager-shared = ./libraries/home-manager;
     nixpkgs-shared = ./libraries/nixpkgs;
-  in
-    dev-shell
-    // {
-      darwinConfigurations.darwin = nix-darwin.lib.darwinSystem {
-        system = "x86_64-darwin";
+
+    darwinSystems = ["x86_64-darwin" "aarch64-darwin"];
+
+    mkDarwinSystem = system:
+      nix-darwin.lib.darwinSystem {
+        inherit system;
         modules = [
           home-manager-shared
           nixpkgs-shared
@@ -56,6 +58,14 @@
         ];
         specialArgs = {inherit inputs;};
       };
+  in
+    dev-shell
+    // {
+      darwinConfigurations =
+        (nixpkgs.lib.genAttrs darwinSystems mkDarwinSystem)
+        // {
+          darwin = mkDarwinSystem (builtins.currentSystem or "x86_64-darwin");
+        };
 
       nixosConfigurations.linux = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
