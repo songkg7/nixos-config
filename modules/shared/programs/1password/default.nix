@@ -4,8 +4,9 @@
   pkgs,
   ...
 }: {
-  programs._1password-cli = {
+  programs.onepassword-cli = {
     enable = true;
+    enableZshIntegration = true;
     enableFHSEnvironment = true;
   };
 
