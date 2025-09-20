@@ -4,14 +4,20 @@
   lib,
   ...
 }: {
-  # imports = [
-  #   ./atuin.nix
-  #   ./fzf.nix
-  # ];
+  imports = [
+    ./atuin.nix
+    ./fzf.nix
+  ];
 
   # home.file = {
   #   ".hushlogin".text = "";
   # };
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    AUTHOR = "haril";
+  };
 
   # home.shellAliases = {
   #   l = "lsd -l";
