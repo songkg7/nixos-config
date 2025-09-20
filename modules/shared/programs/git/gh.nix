@@ -1,20 +1,21 @@
-{ config, pkgs, ... }:
-
-let
-  yamlFormat = pkgs.formats.yaml { };
-
-in
 {
-  home.packages = with pkgs; [ gh ];
+  config,
+  pkgs,
+  ...
+}: let
+  yamlFormat = pkgs.formats.yaml {};
+in {
+  home.packages = with pkgs; [gh];
 
   programs.gh = {
     enable = true;
     settings = {
-      aliases = { };
+      aliases = {};
       editor = "";
-      git_protocol = "https";
+      git_protocol = "ssh";
       prompt = "enabled";
+      spinner = "enabled";
     };
-    gitCredentialHelper.enable = false;
+    # gitCredentialHelper.enable = false;
   };
 }

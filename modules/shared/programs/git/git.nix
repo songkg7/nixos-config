@@ -1,31 +1,100 @@
-{ config, pkgs, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   programs.git = {
     enable = true;
-    userName = "sudosubin";
-    userEmail = "sudosubin@gmail.com";
+    userName = "haril song";
+    userEmail = "songkg7@gmail.com";
     signing = {
-      key = "68971E6A5D6DE3D6";
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHfugxfdZ+OHTxqc3RQB+4Y0J18Vea3UNt/9nH6fXL8";
       signByDefault = true;
     };
-    ignores = [
-      ".DS_Store"
-      ".direnv"
-      ".envrc"
-      ".spr.yml"
-      "*.pem"
-    ];
-    extraConfig = {
-      branch.sort = "-committerdate";
-      credential.helper = "";
-      credential."https://github.com".helper = "!gh auth git-credential";
-      init.defaultBranch = "main";
-      fetch.all = true;
-      fetch.prune = true;
-      fetch.pruneTags = true;
-      push.autoSetupRemote = true;
-      tag.sort = "version:refname";
+
+    aliases = {
+      st = "status";
+      a = "!git add $(git status -s | fzf -m | awk '{print $2}')";
+      unstage = "reset HEAD --";
+      bs = "!git switch $(git branch | fzf)";
+      poi = "!git branch --merged | grep -v '\\*\\|main\\|master\\|int\\|dev' | xargs -n 1 git branch -d";
     };
+
+    lfs.enable = true;
+
+    extraConfig = {
+      column.ui = "auto";
+      branch.sort = "-committerdate";
+      core = {
+        autocrlf = "input";
+        editor = "nvim";
+        fsmonitor = true;
+        untrackedCache = true;
+      };
+      init.defaultBranch = "main";
+      commit = {
+        gpgsign = true;
+        verbose = true;
+      };
+      rerere = {
+        enabled = true;
+        autoUpdate = true;
+      };
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+        updateRefs = true;
+      };
+      pull.rebase = true;
+      tag = {
+        gpgSign = true;
+        sort = "version:refname";
+      };
+      push = {
+        default = "simple";
+        autoSetupRemote = true;
+        followTags = true;
+      };
+      fetch = {
+        prune = true;
+        pruneTags = true;
+        all = true;
+      };
+      help.autocorrect = "prompt";
+      gpg.format = "ssh";
+      "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      "gpg \"ssh\"".allowedSignersFile = "/Users/haril/.config/git/allowed_signers";
+      filter.lfs = {
+        clean = "git-lfs clean -- %f";
+        smudge = "git-lfs smudge -- %f";
+        process = "git-lfs filter-process";
+        required = true;
+      };
+      pager = {
+        diff = "delta";
+        log = "delta";
+        reflog = "delta";
+        show = "delta";
+      };
+      delta = {
+        "plus-style" = "syntax #012800";
+        "minus-style" = "syntax #340001";
+        "syntax-theme" = "ansi";
+        "navigate" = true;
+        "side-by-side" = true;
+      };
+      merge.conflictstyle = "zdiff3";
+    };
+
+    includes = [
+      {
+        condition = "hasconfig:remote.*.url:git@ssh.gitlab.42dot.ai:**/**";
+        path = "~/.gitconfig-work";
+      }
+      {
+        condition = "gitdir:~/projects/42dot/";
+        path = "~/.gitconfig-work";
+      }
+    ];
   };
 }
