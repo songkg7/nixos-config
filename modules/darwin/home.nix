@@ -20,6 +20,7 @@
 
       # Utility
       ripgrep
+      fd
     ];
 
     # secrets = {
