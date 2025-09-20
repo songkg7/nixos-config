@@ -35,6 +35,7 @@
       ../shared/programs/ai
       # ../shared/programs/aws
       ../shared/programs/bat
+      ../shared/programs/ranger
       # ../darwin/programs/homerow
     ];
 
