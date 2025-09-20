@@ -17,10 +17,11 @@
       # jetbrains.idea-ultimate
 
       # Utility
-      # ngrok
-      # ripgrep
+      ngrok
+      ripgrep
+      fd
       # slack
-      # unzip
+      unzip
       # xdg-utils
     ];
 
@@ -33,14 +34,12 @@
       inputs.nixvim.homeModules.nixvim
 
       ../shared/programs/1password
-      # ../shared/programs/ai
+      ../shared/programs/ai
       ../shared/programs/bat
       ../shared/programs/git
       # ../shared/programs/gpg
       # ../shared/programs/jq
       #
-      # ../linux/programs/input-method
-      # ../linux/programs/theme
       # ../linux/programs/wayland
       # ../linux/programs/zpl-open
     ];
