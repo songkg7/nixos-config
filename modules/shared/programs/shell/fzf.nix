@@ -1,0 +1,22 @@
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  fd = lib.getExe' pkgs.fd "fd";
+in {
+  # export FZF_DEFAULT_OPTS="--border --multi --info inline-right --marker ▏ --pointer ▌ --prompt '▌ '  \
+  #     --highlight-line --color gutter:-1,selected-bg:238,selected-fg:146,current-fg:189"
+  programs.fzf = rec {
+    enable = true;
+    defaultCommand = "${fd} --strip-cwd-prefix --exclude .git";
+    defaultOptions = [
+      "--color=dark"
+      "--color=fg:-1,bg:-1,hl:#98c379"
+      "--color=fg+:#ffffff,bg+:#282c34,hl+:#98c379"
+      "--color=info:#e5c07b,prompt:#98c379,pointer:#56b6c2"
+      "--color=marker:#56b6c2,spinner:#e5c07b,header:#56b6c2"
+    ];
+    fileWidgetCommand = defaultCommand;
+  };
+}
