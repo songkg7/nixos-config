@@ -36,6 +36,13 @@
     py = "python";
     vc = "warp-cli connect";
     vd = "warp-cli disconnect";
+
+    # git aliases
+    gaa = "git add .";
+    gst = "git status";
+    gd = "git diff";
+    gsta = "git stash";
+    gstc = "git stash clear";
   };
 
   programs.zsh = {
@@ -58,14 +65,6 @@
           prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
         fi
       }
-
-      # Direnv hook
-      if [ -n "$CLAUDECODE" ]; then
-        if command -v direnv >/dev/null 2>&1; then
-          eval "$(direnv hook zsh)"
-          eval "$(DIRENV_LOG_FORMAT= direnv export zsh)"
-        fi
-      fi
 
       # Startup splash
       figlet -f mike "Hello $(echo Haril)" | lolcat
