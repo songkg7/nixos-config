@@ -39,8 +39,9 @@
       # ../shared/programs/aws
       ../shared/programs/bat
       ../shared/programs/ranger
-      # ../darwin/programs/homerow
       ../shared/programs/shell
+
+      ../darwin/programs/homerow
     ];
 
     home.stateVersion = "25.05";

@@ -13,7 +13,7 @@ in {
       # gemini-mcp-tool = final.callPackage ./programs/gemini-mcp-tool {};
       # git-spr = final.callPackage ./programs/git-spr {};
       # hammerspoon = final.callPackage ./programs/hammerspoon {};
-      # homerow = final.callPackage ./programs/homerow {};
+      homerow = final.callPackage ./programs/homerow {};
       # nix-activate = final.callPackage ./programs/nix-activate {};
     })
   ];
