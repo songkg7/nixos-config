@@ -40,6 +40,7 @@
       ../shared/programs/bat
       ../shared/programs/ranger
       ../shared/programs/shell
+      ../shared/programs/nix
 
       ../darwin/programs/homerow
     ];
