@@ -25,6 +25,7 @@
     vi = "nvim";
     kc = "kubectl";
     ls = "lsd";
+    la = "lsd -al";
     lt = "ls --tree";
     lg = "lazygit";
     cat = "bat --paging=never";
