@@ -33,7 +33,7 @@
     imports = [
       inputs.nixvim.homeModules.nixvim
 
-      ../shared/programs/1password
+      # ../shared/programs/1password
       ../shared/programs/ai
       ../shared/programs/bat
       ../shared/programs/git

@@ -42,7 +42,6 @@
     dev-shell = import ./libraries/dev-shell {inherit inputs;};
     home-manager-shared = ./libraries/home-manager;
     nixpkgs-shared = ./libraries/nixpkgs;
-
     darwinSystems = ["x86_64-darwin" "aarch64-darwin"];
 
     mkDarwinSystem = system:

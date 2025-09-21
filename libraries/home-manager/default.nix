@@ -12,12 +12,12 @@ in {
     # inputs.home-manager-secrets.homeManagerModules.home-manager-secrets
 
     # local programs (local)
-    ./programs/1password
+    # ./programs/1password
     # ./programs/cleanshot
     # ./programs/clop
     # ./programs/defaults
     # ./programs/hammerspoon
-    # ./programs/homerow
+    ./programs/homerow
     # ./programs/jq
     # ./programs/lsd
 
