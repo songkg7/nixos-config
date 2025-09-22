@@ -19,7 +19,6 @@ in {
     # ./programs/hammerspoon
     ./programs/homerow
     # ./programs/jq
-    # ./programs/lsd
 
     # os systems
     (lib.mkIf isDarwin ./systems/darwin)
