@@ -43,6 +43,7 @@
       ../shared/programs/nix
 
       ../darwin/programs/homerow
+      ../darwin/programs/alttab
     ];
 
     home.stateVersion = "25.05";
