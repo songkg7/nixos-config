@@ -16,11 +16,18 @@
       # google-cloud-sdk
       # jetbrains.datagrip
       # jetbrains.idea-ultimate
-      neohtop
 
       # Utility
       ripgrep
       fd
+      fx
+      jq
+      htop
+      neohtop
+      lazydocker
+      lazygit
+      lsd
+      alt-tab-macos
     ];
 
     # secrets = {
@@ -43,7 +50,6 @@
       ../shared/programs/nix
 
       ../darwin/programs/homerow
-      ../darwin/programs/alttab
     ];
 
     home.stateVersion = "25.05";
