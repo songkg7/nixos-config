@@ -16,6 +16,7 @@
       # google-cloud-sdk
       # jetbrains.datagrip
       # jetbrains.idea-ultimate
+      jetbrains-toolbox
 
       # Utility
       ripgrep
@@ -31,6 +32,14 @@
       trash-cli
       walk
       tldr
+      ice-bar
+      loopwm
+
+      # Fonts
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.monaspace
+      nerd-fonts.hack
+      rubik
     ];
 
     # secrets = {
