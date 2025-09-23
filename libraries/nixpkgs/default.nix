@@ -28,6 +28,7 @@ in {
         # "cleanshot"
         "cursor"
         # "cursor-cli"
+        "jetbrains-toolbox"
         "datagrip"
         "homerow"
         "idea-ultimate"
