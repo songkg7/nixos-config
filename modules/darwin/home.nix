@@ -28,6 +28,9 @@
       lazygit
       lsd
       alt-tab-macos
+      trash-cli
+      walk
+      tldr
     ];
 
     # secrets = {
