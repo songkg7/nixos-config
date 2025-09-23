@@ -36,7 +36,7 @@
       loopwm
       obsidian
       raycast
-      slack
+      # FIXME: slack
       aerospace
       # TODO: lunarvim
 
