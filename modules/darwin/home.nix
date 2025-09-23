@@ -34,6 +34,11 @@
       tldr
       ice-bar
       loopwm
+      obsidian
+      raycast
+      slack
+      aerospace
+      # TODO: lunarvim
 
       # Fonts
       nerd-fonts.jetbrains-mono

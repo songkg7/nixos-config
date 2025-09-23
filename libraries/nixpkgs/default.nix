@@ -24,6 +24,8 @@ in {
         # pkgs
         "1password"
         "1password-cli"
+        "obsidian"
+        "raycast"
         # "claude-code"
         # "cleanshot"
         "cursor"
