@@ -30,9 +30,6 @@
     lg = "lazygit";
     cat = "bat --paging=never";
     ch = "chezmoi";
-    rm = "trash";
-    rml = "trash-list";
-    rmc = "trash-empty";
     ra = "ranger";
     py = "python";
     vc = "warp-cli connect";
