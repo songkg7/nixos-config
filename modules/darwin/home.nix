@@ -43,7 +43,18 @@
       raycast
       # FIXME: slack
       aerospace
-      # TODO: lunarvim
+      # NOTE: astronvim requirements
+      neovim
+      gdu
+      tree-sitter
+      bottom
+      # TODO: astronvim
+      # vimPlugins.astrocore
+      # vimPlugins.astrolsp
+      # vimPlugins.astrotheme
+      # vimPlugins.astroui
+      # vimPlugins.mason-null-ls-nvim
+      # vimPlugins.mason-nvim-dap-nvim
 
       age
       chezmoi
