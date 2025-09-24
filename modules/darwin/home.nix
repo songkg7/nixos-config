@@ -79,7 +79,7 @@
     # };
 
     imports = [
-      # inputs.nixvim.homeModules.nixvim
+      inputs.nixvim.homeModules.nixvim
 
       # ../shared/programs/1password
       # ../shared/programs/act
@@ -90,6 +90,7 @@
       ../shared/programs/ranger
       ../shared/programs/shell
       ../shared/programs/nix
+      ../shared/programs/vim
 
       ../darwin/programs/homerow
     ];
