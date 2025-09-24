@@ -18,6 +18,11 @@
       # jetbrains.idea-ultimate
       jetbrains-toolbox
 
+      # Cloud and DevOps
+      k9s
+      # databricks-cli
+      # copilot-cli
+
       # Utility
       ripgrep
       fd
@@ -29,7 +34,7 @@
       lazygit
       lsd
       alt-tab-macos
-      trash-cli
+      # TODO: find trash-cli alternatives
       walk
       tldr
       ice-bar
@@ -39,6 +44,15 @@
       # FIXME: slack
       aerospace
       # TODO: lunarvim
+
+      age
+      chezmoi
+      figlet
+      gum
+      httpie
+      lolcat
+      m-cli
+      mas
 
       # Fonts
       nerd-fonts.jetbrains-mono
