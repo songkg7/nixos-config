@@ -52,6 +52,8 @@
       # For GPG
       export GPG_TTY=$(tty)
 
+      export PATH="$HOME/.local/bin:$PATH"
+
       # Custom functions
       lk() {
         cd "$(walk --icons "$@")"
