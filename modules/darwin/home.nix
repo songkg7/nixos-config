@@ -70,7 +70,7 @@
       inputs.nixvim.homeModules.nixvim
       ../shared/programs/vim
 
-      # ../shared/programs/1password
+      ../shared/programs/1password
       # ../shared/programs/act
       ../shared/programs/ai
       ../shared/programs/git
