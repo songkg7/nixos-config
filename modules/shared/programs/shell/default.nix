@@ -34,13 +34,6 @@
     py = "python";
     vc = "warp-cli connect";
     vd = "warp-cli disconnect";
-
-    # git aliases
-    gaa = "git add .";
-    gst = "git status";
-    gd = "git diff";
-    gsta = "git stash";
-    gstc = "git stash clear";
   };
 
   programs.zsh = {
