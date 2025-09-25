@@ -1,12 +1,11 @@
 {
-  config,
   pkgs,
   inputs,
   ...
 }: {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.haril = {config, ...}: {
+  home-manager.users.haril = {...}: {
     home.username = "haril";
     home.homeDirectory = "/home/haril";
 

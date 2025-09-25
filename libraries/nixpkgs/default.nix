@@ -1,13 +1,6 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (pkgs.stdenvNoCC.hostPlatform) isDarwin;
-in {
+{lib, ...}: {
   nixpkgs.overlays = [
-    (final: prev: {
+    (final: _prev: {
       # cleanshot = final.callPackage ./programs/cleanshot {};
       # clop = final.callPackage ./programs/clop {};
       # gemini-mcp-tool = final.callPackage ./programs/gemini-mcp-tool {};
@@ -18,28 +11,26 @@ in {
     })
   ];
 
-  nixpkgs.config.allowUnfreePredicate = (
-    pkg:
-      builtins.elem (lib.getName pkg) [
-        # pkgs
-        "1password"
-        "1password-cli"
-        "obsidian"
-        "raycast"
-        "discord"
-        "slack"
-        # "claude-code"
-        # "cleanshot"
-        "cursor"
-        # "cursor-cli"
-        "jetbrains-toolbox"
-        "datagrip"
-        "homerow"
-        "idea-ultimate"
-        "ngrok"
-        "onepassword-password-manager"
-      ]
-  );
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      # pkgs
+      "1password"
+      "1password-cli"
+      "obsidian"
+      "raycast"
+      "discord"
+      "slack"
+      # "claude-code"
+      # "cleanshot"
+      "cursor"
+      # "cursor-cli"
+      "jetbrains-toolbox"
+      "datagrip"
+      "homerow"
+      "idea-ultimate"
+      "ngrok"
+      "onepassword-password-manager"
+    ];
 
   nixpkgs.config.permittedInsecurePackages = [
     # "figma-linux-0.10.0"

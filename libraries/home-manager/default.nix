@@ -1,8 +1,6 @@
 {
-  config,
   pkgs,
   lib,
-  inputs,
   ...
 }: let
   inherit (pkgs.stdenvNoCC.hostPlatform) isDarwin isLinux;

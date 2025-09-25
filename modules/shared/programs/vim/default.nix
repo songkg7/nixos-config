@@ -1,12 +1,8 @@
 {
-  config,
   lib,
   pkgs,
   ...
-}: let
-  inherit (pkgs.stdenvNoCC.hostPlatform) isLinux;
-  toLua = lib.generators.toLua {};
-in {
+}: {
   home.sessionVariables = {
     EDITOR = lib.mkDefault "vi";
   };

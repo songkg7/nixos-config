@@ -1,11 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-
-{
+{pkgs, ...}: {
   imports = [
     ./rofi.nix
     ./sway.nix

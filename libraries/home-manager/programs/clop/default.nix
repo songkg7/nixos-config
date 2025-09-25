@@ -3,18 +3,14 @@
   pkgs,
   lib,
   ...
-}:
-
-let
+}: let
   inherit (pkgs.stdenvNoCC.hostPlatform) isDarwin;
   cfg = config.services.clop;
-
-in
-{
+in {
   options.services.clop = {
     enable = lib.mkEnableOption "clop";
 
-    package = lib.mkPackageOption pkgs "clop" { };
+    package = lib.mkPackageOption pkgs "clop" {};
   };
 
   config = lib.mkMerge [
@@ -28,7 +24,7 @@ in
     }
 
     (lib.mkIf cfg.enable {
-      home.packages = [ cfg.package ];
+      home.packages = [cfg.package];
 
       launchd.agents.clop = {
         enable = true;
