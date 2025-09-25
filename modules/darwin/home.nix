@@ -43,6 +43,7 @@
       raycast
       # FIXME: slack
       aerospace
+      discord
 
       age
       chezmoi
