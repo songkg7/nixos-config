@@ -6,7 +6,6 @@
 }: {
   programs._1password = {
     enable = true;
-    # enableZshIntegration = true;
     enableFHSEnvironment = true;
   };
 

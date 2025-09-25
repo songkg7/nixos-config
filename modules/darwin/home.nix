@@ -72,10 +72,8 @@
       ../shared/programs/vim
 
       ../shared/programs/1password
-      # ../shared/programs/act
       ../shared/programs/ai
       ../shared/programs/git
-      # ../shared/programs/aws
       ../shared/programs/bat
       ../shared/programs/ranger
       ../shared/programs/shell
