@@ -12,6 +12,7 @@
     gdu
     tree-sitter
     bottom
+    gettext
   ];
 
   # 로컬 astro 파일들을 ~/.config/nvim에 복사
