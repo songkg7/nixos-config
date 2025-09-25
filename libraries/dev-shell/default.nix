@@ -3,25 +3,88 @@ with inputs; let
   inherit (nixpkgs.lib) genAttrs platforms;
   forAllSystems = f: genAttrs platforms.all (system: f (import nixpkgs {inherit system;}));
 in {
-  # checks = forAllSystems (pkgs: {
-  #   lefthook-check = lefthook.lib.${pkgs.system}.run {
-  #     src = ./.;
-  #     config = {
-  #       pre-commit.commands = {
-  #         nixfmt = {
-  #           run = "${pkgs.lib.getExe pkgs.nixfmt-rfc-style} {staged_files}";
-  #           glob = "*.nix";
-  #         };
-  #       };
-  #     };
-  #   };
-  # });
-
   devShells = forAllSystems (pkgs: {
     default = pkgs.mkShell {
-      # inherit (self.checks.${pkgs.system}.lefthook-check) shellHook;
+      packages = with pkgs; [
+        # for Nix
+        nixfmt-rfc-style
+        alejandra
+        nixpkgs-fmt
+        deadnix
+        statix
+        nix-tree
+        nix-du
+
+        git-lfs
+
+        # utilities
+        yq
+        tree
+        wget
+        nmap
+        zip
+        rsync
+        tmux
+        screen
+
+        # system info
+        fastfetch
+      ];
+
+      env = {
+        NIX_CONFIG = "experimental-features = nix-command flakes";
+      };
+
+      # 셸 진입 시 실행할 스크립트
+      shellHook = ''
+        # Clear screen for clean output
+        clear
+
+        # Display system info with fastfetch
+        echo "🚀 NixOS Config Development Environment"
+
+        # Dynamic separator line that fills terminal width
+        cols=$(tput cols 2>/dev/null || echo 80)
+        separator=$(printf "━%.0s" $(seq 1 $cols))
+        echo "$separator"
+
+        fastfetch --config none --logo nixos_small --structure "Title:Separator:OS:Host:Kernel:Uptime:Packages:Shell:Terminal:CPU:Memory"
+
+        echo "$separator"
+        echo ""
+
+        # Project info
+        echo "📍 Working directory: $(pwd)"
+        echo "🔧 Project: Personal NixOS Configuration"
+        echo ""
+
+        # Available tools summary
+        echo "📦 Available dev tools:"
+        echo "├─ Nix formatters: nixfmt-rfc-style, alejandra, nixpkgs-fmt"
+        echo "├─ Nix analyzers:  deadnix, statix, nix-tree, nix-du"
+        echo "└─ Utilities:      yq, tree, git-lfs, tmux, screen"
+        echo ""
+
+        # Quick reference
+        echo "⚡ Quick commands:"
+        printf "  %-20s %s\n" "nix fmt ." "Format all Nix files"
+        printf "  %-20s %s\n" "nix flake check" "Validate configuration"
+        printf "  %-20s %s\n" "nix flake update" "Update dependencies"
+        printf "  %-20s %s\n" "deadnix --edit" "Remove unused code"
+        printf "  %-20s %s\n" "statix fix" "Fix linting issues"
+        printf "  %-20s %s\n" "nix-tree" "Show dependency tree"
+        echo ""
+
+        # Note about home.nix tools
+        echo "💡 Additional tools from home.nix: git, ripgrep, fd, jq, htop, lazygit, etc."
+        echo ""
+
+        # Welcome message
+        echo "🎯 Ready for NixOS configuration development!"
+        echo ""
+      '';
     };
   });
 
-  # formatter = forAllSystems (pkgs: pkgs.nixfmt-rfc-style);
+  formatter = forAllSystems (pkgs: pkgs.nixfmt-rfc-style);
 }
