@@ -76,6 +76,7 @@
       ../shared/programs/ranger
       ../shared/programs/shell
       ../shared/programs/nix
+      ../shared/programs/direnv
 
       # ../darwin/programs/ssh
       ../darwin/programs/homerow
