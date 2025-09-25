@@ -41,7 +41,7 @@
       loopwm
       obsidian
       raycast
-      # FIXME: slack
+      slack
       aerospace
       discord
 
