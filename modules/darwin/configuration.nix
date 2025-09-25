@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./homebrew.nix
+  ];
+
   # Disable nix-darwin's Nix management to work with Determinate
   security.pam = {
     services.sudo_local.touchIdAuth = true;
