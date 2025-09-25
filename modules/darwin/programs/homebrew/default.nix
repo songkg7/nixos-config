@@ -39,7 +39,5 @@
     "KakaoTalk" = 869223134;
     "RunCat" = 1429033973;
     "ScreenBrush" = 1233965871;
-    "Vimari" = 1480933944;
-    "WeatherBug" = 1059074180;
   };
 }
