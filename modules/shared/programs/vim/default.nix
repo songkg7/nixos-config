@@ -76,7 +76,8 @@ in {
       # };
     # };
 
-    extraPlugins = with pkgs.vimPlugins; [
+    # extraPlugins = {};
+    plugins = with pkgs.vimPlugins; [
       astrocore
       astrotheme
       astroui
