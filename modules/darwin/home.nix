@@ -71,7 +71,8 @@
       inputs.nixvim.homeModules.nixvim
       ../shared/programs/vim
 
-      ../shared/programs/1password
+      # TODO:
+      # ../shared/programs/1password
       ../shared/programs/ai
       ../shared/programs/git
       ../shared/programs/bat
