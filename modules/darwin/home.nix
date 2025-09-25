@@ -79,8 +79,9 @@
     # };
 
     imports = [
-      inputs.nixvim.homeModules.nixvim
-      ../shared/programs/vim
+      # inputs.nixvim.homeModules.nixvim
+      # ../shared/programs/vim
+      ../shared/programs/astronvim
 
       # ../shared/programs/1password
       # ../shared/programs/act
