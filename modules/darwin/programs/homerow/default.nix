@@ -13,7 +13,8 @@
       label-font-size = 10;
       non-search-shortcut = "⌥F";
       scroll-px-per-ms = 1.5;
-      search-shortcut = "⌥⌘↩"; # ⌥⌘↩
+      search-shortcut = "⌥⌘↩";
+      scroll-shortcut = "⌃J";
     };
   };
 }
