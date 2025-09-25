@@ -44,8 +44,8 @@
       slack
       aerospace
       discord
-      _1password-cli
-      _1password-gui
+      # _1password-cli
+      # _1password-gui
 
       age
       chezmoi
@@ -81,6 +81,7 @@
       ../shared/programs/nix
 
       ../darwin/programs/homerow
+      ../darwin/programs/1password
     ];
 
     home.stateVersion = "25.05";
