@@ -33,6 +33,13 @@
   ];
 
   homebrew.masApps = {
-    # TODO: Amphetamine (ID: 937984704)
+    "Amphetamine" = 937984704;
+    "Bandizip" = 1265704574;
+    "Encrypto" = 935235287;
+    "KakaoTalk" = 869223134;
+    "RunCat" = 1429033973;
+    "ScreenBrush" = 1233965871;
+    "Vimari" = 1480933944;
+    "WeatherBug" = 1059074180;
   };
 }
