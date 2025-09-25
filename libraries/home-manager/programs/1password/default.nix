@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = config.programs._1password-cli;
+  cfg = config.programs._1password;
 
   makeWrapperFHSEnvironment = pkgs.runCommand "wrap-fhs-environment.sh" {} ''
     substitute ${./wrap-fhs-environment.sh} $out \
@@ -28,7 +28,7 @@
       })
     else cfg.package;
 in {
-  options.programs._1password-cli = {
+  options.programs._1password = {
     enable = lib.mkEnableOption "1password";
 
     package = lib.mkPackageOption pkgs "_1password" {};
