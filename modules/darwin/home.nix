@@ -44,6 +44,8 @@
       slack
       aerospace
       discord
+      _1password-cli
+      _1password-gui
 
       age
       chezmoi
