@@ -24,7 +24,4 @@ in {
     (lib.mkIf isDarwin ./systems/darwin)
     (lib.mkIf isLinux ./systems/linux)
   ];
-
-  # Enable Homebrew module for Darwin
-  homebrew.enable = isDarwin;
 }
