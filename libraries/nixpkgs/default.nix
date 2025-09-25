@@ -27,6 +27,7 @@ in {
         "obsidian"
         "raycast"
         "discord"
+        "slack"
         # "claude-code"
         # "cleanshot"
         "cursor"
@@ -36,7 +37,6 @@ in {
         "homerow"
         "idea-ultimate"
         "ngrok"
-        "slack"
         "onepassword-password-manager"
       ]
   );
