@@ -41,7 +41,6 @@
       loopwm
       obsidian
       raycast
-      slack
       aerospace
       discord
 
@@ -52,7 +51,6 @@
       httpie
       lolcat
       m-cli
-      mas
 
       # Fonts
       nerd-fonts.jetbrains-mono
