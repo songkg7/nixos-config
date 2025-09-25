@@ -15,6 +15,4 @@
   system.primaryUser = "haril";
 
   system.stateVersion = 6;
-
-  homebrew.enable = true;
 }
