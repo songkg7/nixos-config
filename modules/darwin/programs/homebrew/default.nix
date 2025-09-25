@@ -25,7 +25,6 @@
     "ghostty"
     "gureumkim"
     "karabiner-elements"
-    "keycastr"
     "notion"
     "setapp"
     "warp"
