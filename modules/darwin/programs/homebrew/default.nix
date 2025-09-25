@@ -1,4 +1,4 @@
-{...}: {
+_: {
   homebrew.enable = true;
   homebrew.onActivation.autoUpdate = true;
   homebrew.onActivation.cleanup = "uninstall";

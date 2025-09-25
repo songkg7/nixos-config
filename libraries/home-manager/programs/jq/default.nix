@@ -3,14 +3,12 @@
   pkgs,
   lib,
   ...
-}:
-
-let
+}: let
   cfg = config.programs.jq-patched;
   c = cfg.colors;
 
   package = pkgs.jq.overrideAttrs (attrs: {
-    nativeBuildInputs = (attrs.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+    nativeBuildInputs = (attrs.nativeBuildInputs or []) ++ [pkgs.makeWrapper];
 
     postFixup = ''
       ${attrs.postFixup or ""}
@@ -19,9 +17,7 @@ let
         --prefix JQ_COLORS "" "${c.null}:${c.false}:${c.true}:${c.numbers}:${c.strings}:${c.arrays}:${c.objects}:${c.fields}";
     '';
   });
-
-in
-{
+in {
   options.programs.jq-patched = {
     enable = lib.mkEnableOption "jq";
 
@@ -44,20 +40,20 @@ in
 
       type = lib.types.submodule {
         options = {
-          null = lib.mkOption { type = lib.types.str; };
-          false = lib.mkOption { type = lib.types.str; };
-          true = lib.mkOption { type = lib.types.str; };
-          numbers = lib.mkOption { type = lib.types.str; };
-          strings = lib.mkOption { type = lib.types.str; };
-          arrays = lib.mkOption { type = lib.types.str; };
-          objects = lib.mkOption { type = lib.types.str; };
-          fields = lib.mkOption { type = lib.types.str; };
+          null = lib.mkOption {type = lib.types.str;};
+          false = lib.mkOption {type = lib.types.str;};
+          true = lib.mkOption {type = lib.types.str;};
+          numbers = lib.mkOption {type = lib.types.str;};
+          strings = lib.mkOption {type = lib.types.str;};
+          arrays = lib.mkOption {type = lib.types.str;};
+          objects = lib.mkOption {type = lib.types.str;};
+          fields = lib.mkOption {type = lib.types.str;};
         };
       };
     };
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ package ];
+    home.packages = [package];
   };
 }

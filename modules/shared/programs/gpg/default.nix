@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+_: {
   programs.gpg = {
     enable = true;
     publicKeys = [

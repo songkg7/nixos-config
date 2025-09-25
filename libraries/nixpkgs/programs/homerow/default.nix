@@ -2,9 +2,6 @@
   lib,
   stdenvNoCC,
   fetchurl,
-  curl,
-  jq,
-  runCommand,
   unzip,
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {

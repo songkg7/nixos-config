@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  yamlFormat = pkgs.formats.yaml {};
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [gh];
 
   programs.gh = {

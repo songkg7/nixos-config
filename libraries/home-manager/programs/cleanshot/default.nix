@@ -3,18 +3,14 @@
   pkgs,
   lib,
   ...
-}:
-
-let
+}: let
   inherit (pkgs.stdenvNoCC.hostPlatform) isDarwin;
   cfg = config.services.cleanshot;
-
-in
-{
+in {
   options.services.cleanshot = {
     enable = lib.mkEnableOption "cleanshot";
 
-    package = lib.mkPackageOption pkgs "cleanshot" { };
+    package = lib.mkPackageOption pkgs "cleanshot" {};
   };
 
   config = lib.mkMerge [
@@ -28,7 +24,7 @@ in
     }
 
     (lib.mkIf cfg.enable {
-      home.packages = [ cfg.package ];
+      home.packages = [cfg.package];
 
       launchd.agents.cleanshot = {
         enable = true;

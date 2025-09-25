@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+_: {
   # programs.claude-code = {
   #   enable = true;
   #

@@ -11,7 +11,6 @@ in {
         alejandra
         nixpkgs-fmt
         deadnix
-        statix
         nix-tree
         nix-du
 
@@ -86,5 +85,5 @@ in {
     };
   });
 
-  formatter = forAllSystems (pkgs: pkgs.nixfmt-rfc-style);
+  formatter = forAllSystems (pkgs: pkgs.alejandra);
 }

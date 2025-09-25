@@ -1,10 +1,3 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-
-{
-  imports = [ ];
+{...}: {
+  imports = [];
 }

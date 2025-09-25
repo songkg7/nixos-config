@@ -33,7 +33,7 @@
       // {
         "NSStatusItem Visible Item-0" = cfg.config.show-menubar-icon;
       };
-    filteredConfig = lib.filterAttrs (n: v: v != null) allConfig;
+    filteredConfig = lib.filterAttrs (_n: v: v != null) allConfig;
   in
     lib.mapAttrsToList writeDefault filteredConfig;
 in {

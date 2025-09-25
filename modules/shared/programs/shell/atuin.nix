@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+_: {
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;

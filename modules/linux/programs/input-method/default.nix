@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+_: {
   i18n.inputMethod = {
     enabled = "kime";
   };

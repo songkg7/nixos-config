@@ -113,7 +113,10 @@
         style = "italic bright-blue";
         truncation_symbol = "⋯";
         truncation_length = 20;
-        ignore_branches = ["main" "master"];
+        ignore_branches = [
+          "main"
+          "master"
+        ];
         only_attached = true;
       };
 
@@ -155,7 +158,10 @@
       nodejs = {
         format = " [node](italic) [◫ ($version)](bold bright-green)";
         version_format = "v$raw";
-        detect_files = ["package-lock.json" "yarn.lock"];
+        detect_files = [
+          "package-lock.json"
+          "yarn.lock"
+        ];
         detect_folders = ["node_modules"];
         detect_extensions = [];
       };

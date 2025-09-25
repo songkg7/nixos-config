@@ -32,8 +32,6 @@
   };
 
   outputs = {
-    self,
-    flake-utils,
     home-manager,
     nix-darwin,
     nixpkgs,
@@ -42,7 +40,10 @@
     dev-shell = import ./libraries/dev-shell {inherit inputs;};
     home-manager-shared = ./libraries/home-manager;
     nixpkgs-shared = ./libraries/nixpkgs;
-    darwinSystems = ["x86_64-darwin" "aarch64-darwin"];
+    darwinSystems = [
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
 
     mkDarwinSystem = system:
       nix-darwin.lib.darwinSystem {
