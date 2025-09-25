@@ -29,6 +29,7 @@
     "notion"
     "setapp"
     "warp"
+    "telegram"
   ];
 
   homebrew.masApps = {
