@@ -29,6 +29,7 @@
     "setapp"
     "warp"
     "telegram"
+    "elgato-stream-deck"
   ];
 
   homebrew.masApps = {
