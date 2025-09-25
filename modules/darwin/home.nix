@@ -79,7 +79,6 @@
       ../shared/programs/nix
 
       ../darwin/programs/homerow
-      ../darwin/programs/1password
     ];
 
     home.stateVersion = "25.05";
