@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./delta.nix
     ./gh.nix
@@ -10,4 +12,12 @@
   home.packages = with pkgs; [
     git-who
   ];
+
+  home.shellAliases = {
+    gaa = "git add .";
+    gst = "git status";
+    gd = "git diff";
+    gsta = "git stash";
+    gstc = "git stash clear";
+  };
 }
