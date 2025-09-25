@@ -59,11 +59,11 @@
         fi
       }
 
-      # Startup splash
-      figlet -f mike "Hello $(echo Haril)" | lolcat
-
       # Warp terminal integration
       printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
+
+      # Startup splash
+      figlet -f mike "Hello $(echo Haril)" | lolcat
     '';
   };
 }
