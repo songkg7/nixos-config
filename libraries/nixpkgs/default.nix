@@ -26,6 +26,7 @@ in {
         "1password-cli"
         "obsidian"
         "raycast"
+        "discord"
         # "claude-code"
         # "cleanshot"
         "cursor"
