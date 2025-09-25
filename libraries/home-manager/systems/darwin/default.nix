@@ -3,12 +3,13 @@
   pkgs,
   lib,
   ...
-}: let
-  apps = pkgs.buildEnv {
-    name = "home-manager-applications";
-    paths = config.home.packages;
-    pathsToLink = "/Applications";
-  };
+}: {}
+# : let
+# apps = pkgs.buildEnv {
+#   name = "home-manager-applications";
+#   paths = config.home.packages;
+#   pathsToLink = "/Applications";
+# };
 # in {
 #   # Enable spotlight application
 #   home.activation.copyApplications = lib.hm.dag.entryAfter ["writeBoundary"] ''
