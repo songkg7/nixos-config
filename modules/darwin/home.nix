@@ -71,7 +71,6 @@
       inputs.nixvim.homeModules.nixvim
       ../shared/programs/vim
 
-      ../shared/programs/1password
       ../shared/programs/ai
       ../shared/programs/git
       ../shared/programs/bat
@@ -80,6 +79,7 @@
       ../shared/programs/nix
 
       ../darwin/programs/homerow
+      ../darwin/programs/1password
     ];
 
     home.stateVersion = "25.05";

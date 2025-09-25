@@ -1,4 +1,3 @@
 { config, pkgs, lib, ... }: {
-  # 1Password를 Homebrew로 관리
-  homebrew.casks = [ "1password" ];
+  # 기본 Home Manager의 Darwin linkapps 모듈을 사용
 }
