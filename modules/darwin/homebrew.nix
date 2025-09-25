@@ -4,8 +4,6 @@
   homebrew.onActivation.cleanup = "uninstall";
 
   homebrew.taps = [
-    "homebrew/cask"
-    "homebrew/core"
   ];
 
   homebrew.brews = [
