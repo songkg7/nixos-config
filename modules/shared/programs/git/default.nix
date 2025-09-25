@@ -15,5 +15,6 @@
     gd = "git diff";
     gsta = "git stash";
     gstc = "git stash clear";
+    gstp = "git stash pop";
   };
 }
