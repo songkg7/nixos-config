@@ -18,7 +18,7 @@
     "1password-cli"
   ];
 
-  homebrew.masApps = [
+  homebrew.masApps = {
     # TODO: Amphetamine (ID: 937984704)
-  ];
+  };
 }
