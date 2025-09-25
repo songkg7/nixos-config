@@ -17,5 +17,6 @@
   system.stateVersion = 6;
 
   homebrew.enable = true;
-  homebrew.casks = ["1password", "1password-cli"];
+
+  homebrew.casks = ["1password"];
 }
