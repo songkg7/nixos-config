@@ -80,6 +80,7 @@
       ../shared/programs/shell
       ../shared/programs/nix
 
+      ../darwin/programs/ssh
       ../darwin/programs/homerow
     ];
 

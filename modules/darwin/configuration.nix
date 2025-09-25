@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./homebrew.nix
+    ./programs/homebrew
   ];
 
   # Disable nix-darwin's Nix management to work with Determinate
