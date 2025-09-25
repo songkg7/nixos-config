@@ -11,91 +11,39 @@ in {
     EDITOR = lib.mkDefault "vi";
   };
 
+  home.packages = with pkgs; [
+    neovim
+    gdu
+    tree-sitter
+    bottom
+  ];
+
+  # 로컬 astro 파일들을 ~/.config/nvim에 복사
+  home.file.".config/nvim" = {
+    source = ./astro;
+    recursive = true;
+  };
+
   programs.nixvim = {
     enable = true;
 
     viAlias = true;
     vimAlias = true;
 
-    # colorscheme = "catppuccin";
-    # colorschemes.catppuccin.enable = true;
-
-    # performance.byteCompileLua = {
-    #   enable = true;
-    #   configs = true;
-    #   initLua = true;
-    #   nvimRuntime = true;
-    #   plugins = true;
+    # AstroNvim 설정을 사용하므로 기본 설정은 비활성화
+    # globals = {
+    #   mapleader = " ";
+    #   maplocalleader = " ";
     # };
 
-    globals = {
-      mapleader = " ";
-      maplocalleader = " ";
-    };
-
-    # opts = {
-    #   number = true;
-    #   relativenumber = true;
-    #
-    #   clipboard = "unnamedplus";
-    #
-    #   splitbelow = true;
-    #   splitright = true;
-    #
-    #   list = true;
-    #   listchars = "trail:⋅,tab:» ,nbsp:␣";
-    #
-    #   wrap = false;
-    #
-    #   expandtab = true;
-    #   shiftwidth = 4;
-    #   tabstop = 4;
-    #
-    #   scrolloff = 10;
-    #   virtualedit = "block";
-    #
-    #   inccommand = "split";
-    #   cursorline = true;
-    #   ignorecase = true;
-    #   termguicolors = true;
-    # };
-
-    # plugins = {
-    #   lsp = {
-    #     enable = true;
-    #     servers = {
-    #       nixd.enable = true;
-    #       pyright.enable = true;
-    #       ruff.enable = true;
-    #     };
-    #   };
-      # mini = {
-      #   enable = true;
-      #   mockDevIcons = true;
-      #   modules = { };
-      # };
-    # };
-
-    extraPlugins = with pkgs.vimPlugins; [
-      astrocore
-      astrotheme
-      astroui
-      astrolsp
-      mason-nvim-dap-nvim
-    ];
-    # extraConfigLuaPre = ''
-    #   require("github-theme").setup(${
-    #     toLua {
-    #       options = {
-    #         transparent = true;
-    #       };
-    #       groups.github_dark_default = {
-    #         CursorLine = {
-    #           bg = "bg2";
-    #         };
-    #       };
-    #     }
-    #   })
-    # '';
+    # TODO: 적용 방법을 알아내면 다시 활성화
+    # extraPlugins = with pkgs.vimPlugins; [
+    #   astrocore
+    #   astrotheme
+    #   astroui
+    #   astrolsp
+    #   mason-nvim-dap-nvim
+    #   mason-null-ls-nvim
+    # ];
   };
 }
