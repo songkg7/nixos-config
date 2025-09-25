@@ -14,6 +14,21 @@
     "slack"
     "1password"
     "1password-cli"
+    "adguard"
+    "clop"
+    "cursor"
+    "font-d2coding-nerd-font"
+    "font-noto-sans-kr"
+    "font-asta-sans"
+    "hammerspoon"
+    "input-source-pro"
+    "ghostty"
+    "gureumkim"
+    "karabiner-elements"
+    "keycastr"
+    "notion"
+    "setapp"
+    "warp"
   ];
 
   homebrew.masApps = {
