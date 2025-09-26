@@ -65,6 +65,7 @@
         (nixpkgs.lib.genAttrs darwinSystems mkDarwinSystem)
         // {
           darwin = mkDarwinSystem (builtins.currentSystem or "x86_64-darwin");
+          "kyung-keuns-iMac" = mkDarwinSystem (builtins.currentSystem or "x86_64-darwin");
         };
 
       nixosConfigurations.linux = nixpkgs.lib.nixosSystem {
