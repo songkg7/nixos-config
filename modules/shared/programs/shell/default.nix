@@ -60,5 +60,8 @@
       # Startup splash
       figlet -f mike "Hello $(echo Haril)" | lolcat
     '';
+    syntaxHighlighting = {
+      enable = true;
+    };
   };
 }
