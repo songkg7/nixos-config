@@ -70,9 +70,8 @@ in {
         printf "  %-20s %s\n" "alejandra ." "Format with alejandra directly"
         printf "  %-20s %s\n" "nix flake check" "Validate configuration"
         printf "  %-20s %s\n" "nix flake update" "Update dependencies"
+        printf "  %-20s %s\n" "nix flake show" "Show dependency tree"
         printf "  %-20s %s\n" "deadnix --edit" "Remove unused code"
-        printf "  %-20s %s\n" "statix fix" "Fix linting issues"
-        printf "  %-20s %s\n" "nix-tree" "Show dependency tree"
         echo ""
 
         # Note about home.nix tools
