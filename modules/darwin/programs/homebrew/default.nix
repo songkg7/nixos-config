@@ -30,6 +30,7 @@ _: {
     "warp"
     "telegram"
     "elgato-stream-deck"
+    "cloudflare-warp"
   ];
 
   homebrew.masApps = {
