@@ -28,9 +28,12 @@ _: {
     "notion"
     "setapp"
     "warp"
-    "telegram"
     "elgato-stream-deck"
+
+    # TODO: for work only
     "cloudflare-warp"
+    "telegram"
+    "mongodb-compass"
   ];
 
   homebrew.masApps = {
