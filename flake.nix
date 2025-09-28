@@ -44,11 +44,10 @@
       "x86_64-darwin"
       "aarch64-darwin"
     ];
-  in
-    dev-shell
-    // {
-      darwinConfigurations.darwin = nix-darwin.lib.darwinSystem {
-        system = "x86_64-darwin";
+
+    mkDarwinSystem = system:
+      nix-darwin.lib.darwinSystem {
+        inherit system;
         modules = [
           home-manager-shared
           nixpkgs-shared
@@ -59,6 +58,15 @@
         ];
         specialArgs = {inherit inputs;};
       };
+  in
+    dev-shell
+    // {
+      darwinConfigurations =
+        (nixpkgs.lib.genAttrs darwinSystems mkDarwinSystem)
+        // {
+          darwin = mkDarwinSystem (builtins.currentSystem or "x86_64-darwin");
+          "kyung-keuns-iMac" = mkDarwinSystem (builtins.currentSystem or "x86_64-darwin");
+        };
 
       nixosConfigurations.linux = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
