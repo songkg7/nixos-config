@@ -1,6 +1,5 @@
 _: {
   homebrew.enable = true;
-  homebrew.brewPrefix = "/opt/homebrew";
   homebrew.onActivation.autoUpdate = true;
   homebrew.onActivation.cleanup = "uninstall";
 
