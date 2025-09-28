@@ -1,47 +1,55 @@
-_: {
-  homebrew.enable = true;
-  homebrew.onActivation.autoUpdate = true;
-  homebrew.onActivation.cleanup = "uninstall";
+{pkgs, ...}: let
+  inherit (pkgs.stdenvNoCC) isAarch64 isAarch32;
+in {
+  homebrew = {
+    enable = true;
+    brewPrefix =
+      if isAarch64 || isAarch32
+      then "/opt/homebrew/bin"
+      else "/usr/local/bin";
+    onActivation.autoUpdate = true;
+    onActivation.cleanup = "uninstall";
 
-  homebrew.taps = [
-  ];
+    taps = [
+    ];
 
-  homebrew.brews = [
-    # NOTE: pakcages should be installed via nixpkgs whenever possible
-  ];
+    brews = [
+      # NOTE: pakcages should be installed via nixpkgs whenever possible
+    ];
 
-  homebrew.casks = [
-    "slack"
-    "1password"
-    "1password-cli"
-    "adguard"
-    "clop"
-    "cursor"
-    "font-d2coding-nerd-font"
-    "font-noto-sans-kr"
-    "font-asta-sans"
-    "hammerspoon"
-    "input-source-pro"
-    "ghostty"
-    "gureumkim"
-    "karabiner-elements"
-    "notion"
-    "setapp"
-    "warp"
-    "elgato-stream-deck"
+    casks = [
+      "slack"
+      "1password"
+      "1password-cli"
+      "adguard"
+      "clop"
+      "cursor"
+      "font-d2coding-nerd-font"
+      "font-noto-sans-kr"
+      "font-asta-sans"
+      "hammerspoon"
+      "input-source-pro"
+      "ghostty"
+      "gureumkim"
+      "karabiner-elements"
+      "notion"
+      "setapp"
+      "warp"
+      "elgato-stream-deck"
 
-    # TODO: for work only
-    "cloudflare-warp"
-    "telegram"
-    "mongodb-compass"
-  ];
+      # TODO: for work only
+      "cloudflare-warp"
+      "telegram"
+      "mongodb-compass"
+    ];
 
-  homebrew.masApps = {
-    "Amphetamine" = 937984704;
-    "Bandizip" = 1265704574;
-    "Encrypto" = 935235287;
-    "KakaoTalk" = 869223134;
-    "RunCat" = 1429033973;
-    "ScreenBrush" = 1233965871;
+    masApps = {
+      "Amphetamine" = 937984704;
+      "Bandizip" = 1265704574;
+      "Encrypto" = 935235287;
+      "KakaoTalk" = 869223134;
+      "RunCat" = 1429033973;
+      "ScreenBrush" = 1233965871;
+    };
   };
 }
