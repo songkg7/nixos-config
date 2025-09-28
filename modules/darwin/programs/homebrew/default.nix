@@ -3,10 +3,6 @@
 in {
   homebrew = {
     enable = true;
-    brewPrefix =
-      if isAarch64 || isAarch32
-      then "/opt/homebrew/bin"
-      else "/usr/local/bin";
     onActivation.autoUpdate = true;
     onActivation.cleanup = "uninstall";
 
