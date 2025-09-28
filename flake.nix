@@ -48,6 +48,19 @@
     dev-shell
     // {
       darwinConfigurations.darwin = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          home-manager-shared
+          nixpkgs-shared
+          home-manager.darwinModules.home-manager
+          ./modules/shared/configuration.nix
+          ./modules/darwin/configuration.nix
+          ./modules/darwin/home.nix
+        ];
+        specialArgs = {inherit inputs;};
+      };
+
+      darwinConfigurations.intel-darwin = nix-darwin.lib.darwinSystem {
         system = "x86_64-darwin";
         modules = [
           home-manager-shared
