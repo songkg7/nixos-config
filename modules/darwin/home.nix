@@ -77,6 +77,7 @@
       ../shared/programs/shell
       ../shared/programs/nix
       ../shared/programs/direnv
+      ../darwin/programs/aerospace
 
       # ../darwin/programs/ssh
       ../darwin/programs/homerow
