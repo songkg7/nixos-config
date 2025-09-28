@@ -79,7 +79,7 @@
       ../shared/programs/direnv
       ../darwin/programs/aerospace
 
-      # ../darwin/programs/ssh
+      ../darwin/programs/ssh
       ../darwin/programs/homerow
     ];
 
