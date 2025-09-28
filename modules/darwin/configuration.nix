@@ -11,7 +11,7 @@
   system.primaryUser = "haril";
 
   system.stateVersion = 6;
-  
+
   imports = [
     ./programs/homebrew
   ];
