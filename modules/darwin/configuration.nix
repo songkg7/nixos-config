@@ -12,7 +12,7 @@
 
   system.stateVersion = 6;
   
-#  imports = [
-#    ./programs/homebrew
-#  ];
+  imports = [
+    ./programs/homebrew
+  ];
 }
