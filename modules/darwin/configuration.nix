@@ -1,8 +1,4 @@
 {...}: {
-  imports = [
-    ./programs/homebrew
-  ];
-
   # Disable nix-darwin's Nix management to work with Determinate
   security.pam = {
     services.sudo_local.touchIdAuth = true;
@@ -15,4 +11,8 @@
   system.primaryUser = "haril";
 
   system.stateVersion = 6;
+  
+  imports = [
+    ./programs/homebrew
+  ];
 }
