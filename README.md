@@ -1,34 +1,110 @@
 # NixOS Config
 
-Personal nix files, installs some dotfiles and softwares.
+Personal Nix configuration supporting macOS (Darwin) and Linux systems with comprehensive dotfiles and development tools.
 
-## Installation
+## 🚀 Features
+
+### Core Functionality
+- **Multi-platform support**: macOS (Intel/Apple Silicon) and Linux
+- **Home Manager integration**: Unified user environment configuration
+- **Development shell**: Pre-configured environment with formatters and linters
+
+### Included Programs & Tools
+- **Shell & Terminal**: Starship, Atuin, Zoxide, FZF
+- **Development**: Git with Delta, GitHub CLI, Direnv, Mise
+- **Editors**: Neovim with AstroNvim configuration
+- **Utilities**: Bat, Ranger, JQ, Fonts configuration
+- **AI Tools**: OpenCode with custom agents, Gemini CLI
+- **macOS specific**: AeroSpace, Homebrew, Homerow
+- **Security**: 1Password, GPG configuration
+
+## 📋 Prerequisites
+
+Install Nix with flakes support:
 
 ```sh
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
 ```
 
-```sh
-# Linux
-$ nixos-rebuild switch --flake '.#linux' --sudo
+## 🛠 Installation
 
-# Darwin
-$ nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.darwin.system'
-$ sudo ./result/sw/bin/darwin-rebuild switch --flake '.#darwin'
+### Linux (NixOS)
+```sh
+nixos-rebuild switch --flake '.#linux' --sudo
 ```
 
-## Update (flake lock, custom packages)
-
+### macOS (Darwin)
 ```sh
-$ nix flake update --flake .
-fetching ...
+# For Apple Silicon Macs
+nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.apple-darwin.system'
+sudo ./result/sw/bin/darwin-rebuild switch --flake '.#apple-darwin'
+
+# For Intel Macs
+nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.intel-darwin.system'
+sudo ./result/sw/bin/darwin-rebuild switch --flake '.#intel-darwin'
 ```
 
-## Additional steps
+## 🔄 Updates & Maintenance
 
-- Enable iCloud configuration for gpg
+### Update Dependencies
+```sh
+nix flake update
+```
 
-## License
+### Format Code
+```sh
+nix fmt .
+# or use alejandra directly
+alejandra .
+```
 
-NixOS Config is [MIT Licensed](./LICENSE).
+### Validate Configuration
+```sh
+nix flake check
+```
+
+### Development Environment
+```sh
+nix develop
+# Provides access to formatters, linters, and development tools
+```
+
+## 📁 Project Structure
+
+```
+├── modules/
+│   ├── shared/           # Cross-platform configurations
+│   │   └── programs/     # Application configurations
+│   ├── darwin/           # macOS-specific settings
+│   └── linux/            # Linux-specific settings
+├── libraries/
+│   ├── home-manager/     # Home Manager modules
+│   ├── nixpkgs/          # Custom packages
+│   └── dev-shell/        # Development environment
+└── flake.nix            # Main configuration entry point
+```
+
+## 🎯 Key Commands
+
+| Command | Description |
+|---------|-------------|
+| `nix develop` | Enter development shell |
+| `nix flake show` | Show available outputs |
+| `nix flake check` | Validate configuration |
+| `nix fmt .` | Format Nix files |
+| `deadnix --edit` | Remove unused code |
+
+## ⚙️ Additional Configuration
+
+### GPG Setup
+- Import GPG keys and enable iCloud sync for secure key management
+
+### OpenCode AI Agents
+This configuration includes custom AI agents:
+- **Code Reviewer**: Specialized in code quality and security reviews
+- **Documentation**: Focused on creating clear, comprehensive documentation
+
+## 📝 License
+
+This project is [MIT Licensed](./LICENSE).
 
