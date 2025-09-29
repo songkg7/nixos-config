@@ -26,7 +26,6 @@ in {
       "hammerspoon"
       "input-source-pro"
       "ghostty"
-      "gureumkim"
       "karabiner-elements"
       "notion"
       "setapp"
