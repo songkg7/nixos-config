@@ -30,12 +30,15 @@ in {
       "notion"
       "setapp"
       "warp"
-      "elgato-stream-deck"
 
       # TODO: for work only
       "cloudflare-warp"
       "telegram"
       "mongodb-compass"
+      "sdm"
+
+      # TODO: personal use only
+      "elgato-stream-deck"
     ];
 
     masApps = {
