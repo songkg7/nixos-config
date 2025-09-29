@@ -22,6 +22,8 @@
       awscli2
       # databricks-cli
       # copilot-cli
+      gh
+      glab
 
       # Utility
       ripgrep
