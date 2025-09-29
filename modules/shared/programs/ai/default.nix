@@ -35,4 +35,18 @@ _: {
       };
     };
   };
+
+  # opencode
+  programs.opencode = {
+    enable = true;
+    settings = {
+      theme = "opencode";
+      model = "anthropic/claude-sonnet-4-20250514";
+      autoupdate = true;
+    };
+    agents = {
+      code-reviewer = ./opencode/code-reviewer-agent.md;
+      documentation = ./opencode/documentation-agent.md;
+    };
+  };
 }
