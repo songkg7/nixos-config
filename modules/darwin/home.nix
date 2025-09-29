@@ -19,6 +19,7 @@
 
       # Cloud and DevOps
       k9s
+      awscli2
       # databricks-cli
       # copilot-cli
 
