@@ -32,19 +32,16 @@
   };
 
   outputs = {
+    flake-utils,
     home-manager,
     nix-darwin,
     nixpkgs,
     ...
   } @ inputs: let
-    dev-shell = import ./libraries/dev-shell {inherit inputs;};
     home-manager-shared = ./libraries/home-manager;
     nixpkgs-shared = ./libraries/nixpkgs;
-    darwinSystems = [
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
 
+    # Darwin 시스템 생성 함수
     mkDarwinSystem = system:
       nix-darwin.lib.darwinSystem {
         inherit system;
@@ -58,16 +55,26 @@
         ];
         specialArgs = {inherit inputs;};
       };
+
+    darwinSystems = ["x86_64-darwin" "aarch64-darwin"];
   in
-    dev-shell
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import nixpkgs {inherit system;};
+    in {
+      devShells.default = import ./libraries/dev-shell {inherit inputs system;};
+
+      formatter = pkgs.alejandra;
+    })
     // {
+      # Darwin configurations
       darwinConfigurations =
         (nixpkgs.lib.genAttrs darwinSystems mkDarwinSystem)
         // {
-          darwin = mkDarwinSystem (builtins.currentSystem or "aarch64-darwin");
-          "kyung-keuns-iMac" = mkDarwinSystem (builtins.currentSystem or "x86_64-darwin");
+          intel-darwin = mkDarwinSystem "x86_64-darwin";
+          apple-darwin = mkDarwinSystem "aarch64-darwin";
         };
 
+      # Linux configuration
       nixosConfigurations.linux = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
