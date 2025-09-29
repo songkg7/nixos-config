@@ -5,6 +5,10 @@ Personal nix files, installs some dotfiles and softwares.
 ## Installation
 
 ```sh
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
+```
+
+```sh
 # Linux
 $ nixos-rebuild switch --flake '.#linux' --sudo
 
@@ -22,8 +26,7 @@ fetching ...
 
 ## Additional steps
 
-- SSH keys `~/.ssh/id_ed25519`, `~/.ssh/id_ed25519.pub`
-- GPG private keys
+- Enable iCloud configuration for gpg
 
 ## License
 
