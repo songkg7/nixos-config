@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  inherit (pkgs.stdenvNoCC) isAarch64 isAarch32;
-in {
+{
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
