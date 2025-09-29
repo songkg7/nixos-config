@@ -1,10 +1,8 @@
-{inputs, ...}:
-with inputs; let
-  inherit (nixpkgs.lib) genAttrs platforms;
-  forAllSystems = f: genAttrs platforms.all (system: f (import nixpkgs {inherit system;}));
-in {
-  devShells = forAllSystems (pkgs: {
-    default = pkgs.mkShell {
+{inputs, system, ...}:
+let
+  pkgs = import inputs.nixpkgs {inherit system;};
+in
+pkgs.mkShell {
       packages = with pkgs; [
         # for Nix
         nixfmt-rfc-style
@@ -82,8 +80,4 @@ in {
         echo "🎯 Ready for NixOS configuration development!"
         echo ""
       '';
-    };
-  });
-
-  formatter = forAllSystems (pkgs: pkgs.alejandra);
 }
