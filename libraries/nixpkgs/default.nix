@@ -3,7 +3,6 @@
     (final: _prev: {
       # cleanshot = final.callPackage ./programs/cleanshot {};
       # clop = final.callPackage ./programs/clop {};
-      # gemini-mcp-tool = final.callPackage ./programs/gemini-mcp-tool {};
       # git-spr = final.callPackage ./programs/git-spr {};
       # hammerspoon = final.callPackage ./programs/hammerspoon {};
       homerow = final.callPackage ./programs/homerow {};
@@ -20,7 +19,7 @@
       "raycast"
       "discord"
       "slack"
-      # "claude-code"
+      "claude-code"
       # "cleanshot"
       "cursor"
       # "cursor-cli"
