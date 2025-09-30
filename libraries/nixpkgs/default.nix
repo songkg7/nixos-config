@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  inputs,
+  ...
+}: {
   nixpkgs.overlays = [
     (final: _prev: {
       # cleanshot = final.callPackage ./programs/cleanshot {};
@@ -8,6 +12,7 @@
       # hammerspoon = final.callPackage ./programs/hammerspoon {};
       homerow = final.callPackage ./programs/homerow {};
       # nix-activate = final.callPackage ./programs/nix-activate {};
+      serena = inputs.serena.packages.${final.system}.serena;
     })
   ];
 
