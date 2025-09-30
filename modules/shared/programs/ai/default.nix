@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   # programs.claude-code = {
   #   enable = true;
   #
@@ -18,9 +18,6 @@
   #     };
   #   };
   # };
-  home.packages = with pkgs; [
-    serena
-  ];
 
   programs.gemini-cli = {
     enable = true;
