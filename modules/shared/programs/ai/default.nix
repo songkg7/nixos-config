@@ -40,7 +40,7 @@ _: {
   programs.opencode = {
     enable = true;
     settings = {
-      theme = "opencode";
+      theme = "catppuccin";
       model = "anthropic/claude-sonnet-4-20250514";
       autoupdate = true;
     };
