@@ -12,7 +12,7 @@
       # hammerspoon = final.callPackage ./programs/hammerspoon {};
       homerow = final.callPackage ./programs/homerow {};
       # nix-activate = final.callPackage ./programs/nix-activate {};
-      serena = inputs.serena.packages.${final.system}.serena;
+      serena = final.callPackage ./programs/serena {};
     })
   ];
 
