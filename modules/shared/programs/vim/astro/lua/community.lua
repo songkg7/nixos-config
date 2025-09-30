@@ -9,4 +9,7 @@ return {
   -- import/override with your plugins folder
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
+  { import = "astrocommunity.colorscheme.rose-pine" },
+  { import = "astrocommunity.colorscheme.oxocarbon-nvim" },
+  { import = "astrocommunity.colorscheme.catppuccin", enabled = true },
 }
