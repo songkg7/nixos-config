@@ -37,6 +37,7 @@
 
       # TODO: personal use only
       "elgato-stream-deck"
+      "orbstack"
     ];
 
     masApps = {
