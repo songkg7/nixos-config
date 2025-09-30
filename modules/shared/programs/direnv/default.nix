@@ -3,11 +3,16 @@
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
-    nix-direnv.enable = true;
+    nix-direnv = {
+      enable = true;
+    };
     # TODO:
     # mise.enable = true;
   };
 
+  home.file."nixos-config/.envrc".text = ''
+    use flake
+  '';
   # Optional: Add direnv configuration
   # xdg.configFile."direnv/direnvrc".text = ''
   #   # Global direnv configuration
