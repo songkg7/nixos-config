@@ -24,6 +24,8 @@
       # copilot-cli
       gh
       glab
+      # TODO: Seperate configration each env. e.g. private and work.
+      # colima
 
       # Utility
       ripgrep
