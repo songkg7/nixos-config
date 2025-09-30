@@ -39,28 +39,14 @@ _: {
   # opencode
   programs.opencode = {
     enable = true;
+    settings = {
+      theme = "catppuccin";
+      model = "anthropic/claude-sonnet-4-20250514";
+      autoupdate = true;
+    };
     agents = {
       code-reviewer = ./opencode/code-reviewer-agent.md;
       documentation = ./opencode/documentation-agent.md;
-    };
-  };
-
-  xdg.configFile."opencode/config.json".text = builtins.toJSON {
-    theme = "catppuccin";
-    model = "anthropic/claude-sonnet-4-20250514";
-    autoupdate = true;
-    mcp = {
-      serena = {
-        enabled = true;
-        type = "local";
-        command = [
-          "/Users/haril/.local/share/mise/installs/uv/0.8.18/uv-x86_64-apple-darwin/uvx"
-          "--from"
-          "git+https//github.com/oraios/serena"
-          "serena"
-          "start-mcp-server"
-        ];
-      };
     };
   };
 }
