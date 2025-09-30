@@ -48,5 +48,8 @@ _: {
       code-reviewer = ./opencode/code-reviewer-agent.md;
       documentation = ./opencode/documentation-agent.md;
     };
+    commands = {
+      commit = ./opencode/commit-command.md;
+    };
   };
 }
