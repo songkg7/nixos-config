@@ -38,33 +38,17 @@
   # opencode
   programs.opencode = {
     enable = true;
+    settings = {
+      theme = "catppuccin";
+      model = "anthropic/claude-sonnet-4-20250514";
+      autoupdate = true;
+    };
     agents = {
       code-reviewer = ./opencode/code-reviewer-agent.md;
       documentation = ./opencode/documentation-agent.md;
     };
     commands = {
       commit = ./opencode/commit-command.md;
-    };
-  };
-
-  xdg.configFile."opencode/config.json".text = builtins.toJSON {
-    theme = "catppuccin";
-    model = "anthropic/claude-sonnet-4-20250514";
-    autoupdate = true;
-    mcp = {
-      serena = {
-        enabled = true;
-        type = "stdio";
-        command = [
-          "uvx"
-        ];
-        args = [
-          "--from"
-          "git+https//github.com/oraios/serena"
-          "serena"
-          "start-mcp-server"
-        ];
-      };
     };
   };
 }
