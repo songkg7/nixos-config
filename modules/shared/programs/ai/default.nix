@@ -1,6 +1,6 @@
 {
   programs.claude-code = {
-    enable = true;
+    enable = false;
     settings = {
       includeCoAuthoredBy = false;
       # env = {
@@ -9,13 +9,24 @@
       # };
     };
 
-    # mcpServers = {
-    #   gemini-cli = {
-    #     type = "stdio";
-    #     command = pkgs.lib.getExe pkgs.gemini-mcp-tool;
-    #     args = [ ];
-    #   };
-    # };
+    mcpServers = {
+      github = {
+        type = "http";
+        url = "https://api.githubcopilot.com/mcp/";
+      };
+      filesystem = {
+        type = "stdio";
+        command = "npx";
+        args = [
+          "-y"
+          "@modelcontextprotocol/server-filesystem"
+          "/tmp"
+        ];
+      };
+      # TODO: Add when available
+      # serena = {
+      # };
+    };
   };
 
   programs.gemini-cli = {
