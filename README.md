@@ -35,13 +35,13 @@ nixos-rebuild switch --flake '.#linux' --sudo
 
 ### macOS (Darwin)
 ```sh
-# For Apple Silicon Macs
-nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.apple-darwin.system'
-sudo ./result/sw/bin/darwin-rebuild switch --flake '.#apple-darwin'
+# For Apple Silicon Macs (Work)
+nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.work.system'
+sudo ./result/sw/bin/darwin-rebuild switch --flake '.#work'
 
-# For Intel Macs
-nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.intel-darwin.system'
-sudo ./result/sw/bin/darwin-rebuild switch --flake '.#intel-darwin'
+# For Intel Macs (Personal)
+nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.personal.system'
+sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal'
 ```
 
 ## 🔄 Updates & Maintenance
