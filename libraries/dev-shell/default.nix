@@ -38,11 +38,6 @@ in
 
     # 셸 진입 시 실행할 스크립트
     shellHook = ''
-       # Install lefthook pre-commit hooks if not already installed
-       if [ ! -f .git/hooks/pre-commit ]; then
-         lefthook install
-       fi
-
        # Clear screen for clean output
        clear
 
@@ -58,6 +53,11 @@ in
 
       echo "$separator"
       echo ""
+
+       # Install lefthook pre-commit hooks if not already installed
+       if [ ! -f .git/hooks/pre-commit ]; then
+         lefthook install
+       fi
 
       # Project info
       echo "📍 Working directory: $(pwd)"
