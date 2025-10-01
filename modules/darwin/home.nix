@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  environment,
   ...
 }: {
   home-manager.useGlobalPkgs = true;
@@ -10,58 +11,68 @@
     home.username = "haril";
     home.homeDirectory = "/Users/haril";
 
-    home.packages = with pkgs; [
-      # Development
-      # google-cloud-sdk
-      # jetbrains.datagrip
-      # jetbrains.idea-ultimate
-      jetbrains-toolbox
+    home.packages = with pkgs;
+      [
+        # Development
+        jetbrains-toolbox
 
-      # Cloud and DevOps
-      k9s
-      awscli2
-      # databricks-cli
-      # copilot-cli
-      gh
-      glab
-      # TODO: Seperate configration each env. e.g. private and work.
-      # colima
+        # Cloud and DevOps
+        gh
+        glab
+        k9s
+        awscli2
 
-      # Utility
-      ripgrep
-      fd
-      fx
-      jq
-      htop
-      neohtop
-      lazydocker
-      lazygit
-      lsd
-      alt-tab-macos
-      # TODO: find trash-cli alternatives
-      walk
-      tldr
-      ice-bar
-      loopwm
-      obsidian
-      raycast
-      aerospace
-      discord
+        # Utility
+        ripgrep
+        fd
+        fx
+        jq
+        htop
+        lazydocker
+        lazygit
+        lsd
+        alt-tab-macos
+        walk
+        tldr
+        aerospace
 
-      age
-      chezmoi
-      figlet
-      gum
-      httpie
-      lolcat
-      m-cli
+        age
+        chezmoi
+        figlet
+        gum
+        httpie
+        lolcat
+        m-cli
 
-      # Fonts
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.monaspace
-      nerd-fonts.hack
-      rubik
-    ];
+        # GUI Apps
+        ice-bar
+        loopwm
+        raycast
+        neohtop
+        obsidian
+        discord
+
+        # Fonts
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.monaspace
+        nerd-fonts.hack
+        rubik
+      ]
+      ++ (
+        if environment == "work"
+        then [
+          # NOTE: business use only
+          colima
+        ]
+        else []
+      )
+      ++ (
+        if environment == "personal"
+        then [
+          # NOTE: personal use only
+        ]
+        else []
+      );
 
     # secrets = {
     #   mount = "/tmp/user/$UID/secrets";

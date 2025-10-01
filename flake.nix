@@ -42,7 +42,7 @@
     nixpkgs-shared = ./libraries/nixpkgs;
 
     # Darwin 시스템 생성 함수
-    mkDarwinSystem = system:
+    mkDarwinSystem = system: environment:
       nix-darwin.lib.darwinSystem {
         inherit system;
         modules = [
@@ -53,10 +53,8 @@
           ./modules/darwin/configuration.nix
           ./modules/darwin/home.nix
         ];
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs environment;};
       };
-
-    darwinSystems = ["x86_64-darwin" "aarch64-darwin"];
   in
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {inherit system;};
@@ -67,12 +65,10 @@
     })
     // {
       # Darwin configurations
-      darwinConfigurations =
-        (nixpkgs.lib.genAttrs darwinSystems mkDarwinSystem)
-        // {
-          intel-darwin = mkDarwinSystem "x86_64-darwin";
-          apple-darwin = mkDarwinSystem "aarch64-darwin";
-        };
+      darwinConfigurations = {
+        work-apple-darwin = mkDarwinSystem "aarch64-darwin" "work";
+        personal-intel-darwin = mkDarwinSystem "x86_64-darwin" "personal";
+      };
 
       # Linux configuration
       nixosConfigurations.linux = nixpkgs.lib.nixosSystem {

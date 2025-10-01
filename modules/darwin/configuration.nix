@@ -12,6 +12,6 @@
   system.stateVersion = 6;
 
   imports = [
-    ./programs/homebrew
+    (import ./programs/homebrew {inherit environment;})
   ];
 }
