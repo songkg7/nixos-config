@@ -66,8 +66,8 @@
     // {
       # Darwin configurations
       darwinConfigurations = {
-        work-apple-darwin = mkDarwinSystem "aarch64-darwin" "work";
-        personal-intel-darwin = mkDarwinSystem "x86_64-darwin" "personal";
+        work = mkDarwinSystem "aarch64-darwin" "work";
+        personal = mkDarwinSystem "x86_64-darwin" "personal";
       };
 
       # Linux configuration
