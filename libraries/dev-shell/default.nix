@@ -18,6 +18,7 @@ in
       git-lfs
 
       # utilities
+      lefthook
       yq
       tree
       wget
