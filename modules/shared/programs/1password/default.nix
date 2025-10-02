@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs._1password = {
     enable = true;
     enableFHSEnvironment = true;
   };
 
-  home.packages = with pkgs; [_1password-gui];
+  home.packages = with pkgs; [ _1password-gui ];
 }

@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   nixpkgs.overlays = [
     (final: _prev: {
       # cleanshot = final.callPackage ./programs/cleanshot {};
@@ -6,12 +7,13 @@
       # gemini-mcp-tool = final.callPackage ./programs/gemini-mcp-tool {};
       # git-spr = final.callPackage ./programs/git-spr {};
       # hammerspoon = final.callPackage ./programs/hammerspoon {};
-      homerow = final.callPackage ./programs/homerow {};
+      homerow = final.callPackage ./programs/homerow { };
       # nix-activate = final.callPackage ./programs/nix-activate {};
     })
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       # pkgs
       "1password"

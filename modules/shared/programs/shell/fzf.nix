@@ -2,9 +2,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   fd = lib.getExe' pkgs.fd "fd";
-in {
+in
+{
   programs.fzf = rec {
     enable = true;
     defaultCommand = "${fd} --strip-cwd-prefix --exclude .git";

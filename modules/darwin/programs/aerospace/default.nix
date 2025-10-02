@@ -4,12 +4,12 @@
 
     # Startup configuration
     userSettings = {
-      after-login-command = [];
-      after-startup-command = [];
+      after-login-command = [ ];
+      after-startup-command = [ ];
       start-at-login = true;
 
       # Focus and mouse behavior
-      on-focus-changed = ["move-mouse window-lazy-center"];
+      on-focus-changed = [ "move-mouse window-lazy-center" ];
 
       # Normalizations
       enable-normalization-flatten-containers = true;
@@ -63,7 +63,10 @@
         "alt-shift-j" = "move down";
         "alt-shift-k" = "move up";
         "alt-shift-l" = "move right";
-        "alt-shift-s" = ["move-node-to-monitor --wrap-around next" "focus-monitor --wrap-around next"];
+        "alt-shift-s" = [
+          "move-node-to-monitor --wrap-around next"
+          "focus-monitor --wrap-around next"
+        ];
 
         # Window management
         "alt-shift-m" = "fullscreen";
@@ -103,15 +106,36 @@
 
       # Service mode bindings
       mode.service.binding = {
-        "esc" = ["reload-config" "mode main"];
-        "r" = ["flatten-workspace-tree" "mode main"];
-        "f" = ["layout floating tiling" "mode main"];
+        "esc" = [
+          "reload-config"
+          "mode main"
+        ];
+        "r" = [
+          "flatten-workspace-tree"
+          "mode main"
+        ];
+        "f" = [
+          "layout floating tiling"
+          "mode main"
+        ];
 
         # Join commands
-        "alt-shift-h" = ["join-with left" "mode main"];
-        "alt-shift-j" = ["join-with down" "mode main"];
-        "alt-shift-k" = ["join-with up" "mode main"];
-        "alt-shift-l" = ["join-with right" "mode main"];
+        "alt-shift-h" = [
+          "join-with left"
+          "mode main"
+        ];
+        "alt-shift-j" = [
+          "join-with down"
+          "mode main"
+        ];
+        "alt-shift-k" = [
+          "join-with up"
+          "mode main"
+        ];
+        "alt-shift-l" = [
+          "join-with right"
+          "mode main"
+        ];
       };
 
       # Window detection rules
@@ -144,17 +168,17 @@
         {
           "if".app-id = "com.tinyspeck.slackmacgap";
           check-further-callbacks = true;
-          run = ["move-node-to-workspace 3"];
+          run = [ "move-node-to-workspace 3" ];
         }
         {
           "if".app-id = "ru.keepcoder.Telegram";
           check-further-callbacks = true;
-          run = ["move-node-to-workspace 3"];
+          run = [ "move-node-to-workspace 3" ];
         }
         {
           "if".app-id = "com.jetbrains.intellij";
           check-further-callbacks = true;
-          run = ["move-node-to-workspace 2"];
+          run = [ "move-node-to-workspace 2" ];
         }
         {
           "if".app-id = "com.cron.electron";
@@ -211,7 +235,7 @@
             app-id = "app.zen-browser.zen";
             window-title-regex-substring = "Picture-in-Picture";
           };
-          run = ["layout floating"];
+          run = [ "layout floating" ];
         }
         {
           "if".app-id = "com.apple.mail";

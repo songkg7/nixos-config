@@ -2,9 +2,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   inherit (pkgs.stdenvNoCC.hostPlatform) isDarwin isLinux;
-in {
+in
+{
   home-manager.sharedModules = [
     # home-manager-secrets (nix flake input)
     # inputs.home-manager-secrets.homeManagerModules.home-manager-secrets

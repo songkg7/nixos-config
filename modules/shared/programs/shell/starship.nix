@@ -162,8 +162,8 @@
           "package-lock.json"
           "yarn.lock"
         ];
-        detect_folders = ["node_modules"];
-        detect_extensions = [];
+        detect_folders = [ "node_modules" ];
+        detect_extensions = [ ];
       };
 
       python = {

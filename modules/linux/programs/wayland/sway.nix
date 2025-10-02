@@ -2,13 +2,15 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   sway = config.wayland.windowManager.sway.package;
   left = "h";
   right = "l";
   up = "k";
   down = "j";
-in {
+in
+{
   home.packages = with pkgs; [
     polkit_gnome
   ];
@@ -20,7 +22,7 @@ in {
       modifier = "Mod4";
       terminal = "${pkgs.wezterm}/bin/wezterm";
       fonts = {
-        names = ["PragmataProMono Nerd Font Mono"];
+        names = [ "PragmataProMono Nerd Font Mono" ];
         style = "";
         size = 9.0;
       };
@@ -65,10 +67,10 @@ in {
         };
         background = "#ffffff";
       };
-      bars = [];
+      bars = [ ];
       startup = [
-        {command = "${sway}/bin/swaymsg workspace 1";}
-        {command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";}
+        { command = "${sway}/bin/swaymsg workspace 1"; }
+        { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
       ];
       keybindings = {
         # Core sway

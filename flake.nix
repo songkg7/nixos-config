@@ -36,43 +36,48 @@
     };
   };
 
-  outputs = {
-    flake-utils,
-    agenix,
-    home-manager,
-    nix-darwin,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    home-manager-shared = ./libraries/home-manager;
-    nixpkgs-shared = ./libraries/nixpkgs;
+  outputs =
+    {
+      flake-utils,
+      agenix,
+      home-manager,
+      nix-darwin,
+      nixpkgs,
+      ...
+    }@inputs:
+    let
+      home-manager-shared = ./libraries/home-manager;
+      nixpkgs-shared = ./libraries/nixpkgs;
 
-    # Darwin 시스템 생성 함수
-    mkDarwinSystem = system: environment:
-      nix-darwin.lib.darwinSystem {
-        inherit system;
-        modules = [
-          agenix.nixosModules.default
-          home-manager-shared
-          nixpkgs-shared
-          home-manager.darwinModules.home-manager
-          {home-manager.extraSpecialArgs = {inherit environment;};}
-          ./modules/shared/configuration.nix
-          ./modules/darwin/configuration.nix
-          ./modules/darwin/home.nix
-        ];
-        specialArgs = {inherit inputs environment;};
-      };
-  in
+      # Darwin 시스템 생성 함수
+      mkDarwinSystem =
+        system: environment:
+        nix-darwin.lib.darwinSystem {
+          inherit system;
+          modules = [
+            agenix.nixosModules.default
+            home-manager-shared
+            nixpkgs-shared
+            home-manager.darwinModules.home-manager
+            { home-manager.extraSpecialArgs = { inherit environment; }; }
+            ./modules/shared/configuration.nix
+            ./modules/darwin/configuration.nix
+            ./modules/darwin/home.nix
+          ];
+          specialArgs = { inherit inputs environment; };
+        };
+    in
     flake-utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {inherit system;};
-      in {
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
         packages.agenix = agenix.packages.${system}.default;
 
-        devShells.default = import ./libraries/dev-shell {inherit inputs system;};
+        devShells.default = import ./libraries/dev-shell { inherit inputs system; };
 
-        formatter = pkgs.alejandra;
+        formatter = pkgs.nixfmt-tree;
       }
     )
     // {
@@ -94,7 +99,7 @@
           ./modules/linux/configuration.nix
           ./modules/linux/home.nix
         ];
-        specialArgs = {inherit inputs;};
+        specialArgs = { inherit inputs; };
       };
     };
 }

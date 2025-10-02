@@ -1,4 +1,5 @@
-{environment, ...}: {
+{ environment, ... }:
+{
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
@@ -11,47 +12,48 @@
       # NOTE: pakcages should be installed via nixpkgs whenever possible
     ];
 
-    casks =
-      [
-        "slack"
-        "1password"
-        "1password-cli"
-        "clop"
-        "cursor"
-        "font-d2coding-nerd-font"
-        "font-noto-sans-kr"
-        "font-asta-sans"
-        "hammerspoon"
-        "input-source-pro"
-        "ghostty"
-        "karabiner-elements"
-        "notion"
-        "setapp"
-        "warp"
-        "telegram"
+    casks = [
+      "slack"
+      "1password"
+      "1password-cli"
+      "clop"
+      "cursor"
+      "font-d2coding-nerd-font"
+      "font-noto-sans-kr"
+      "font-asta-sans"
+      "hammerspoon"
+      "input-source-pro"
+      "ghostty"
+      "karabiner-elements"
+      "notion"
+      "setapp"
+      "warp"
+      "telegram"
 
-        # common use for remote work
-        "cloudflare-warp"
-        "mongodb-compass"
-        "sdm"
-      ]
-      ++ (
-        if environment == "work"
-        then [
+      # common use for remote work
+      "cloudflare-warp"
+      "mongodb-compass"
+      "sdm"
+    ]
+    ++ (
+      if environment == "work" then
+        [
           # NOTE: business use only
         ]
-        else []
-      )
-      ++ (
-        if environment == "personal"
-        then [
+      else
+        [ ]
+    )
+    ++ (
+      if environment == "personal" then
+        [
           # NOTE: personal use only
           "adguard"
           "elgato-stream-deck"
           "orbstack"
         ]
-        else []
-      );
+      else
+        [ ]
+    );
 
     masApps = {
       "Amphetamine" = 937984704;

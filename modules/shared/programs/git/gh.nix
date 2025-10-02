@@ -1,10 +1,11 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [gh];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ gh ];
 
   programs.gh = {
     enable = true;
     settings = {
-      aliases = {};
+      aliases = { };
       editor = "";
       git_protocol = "ssh";
       prompt = "enabled";
