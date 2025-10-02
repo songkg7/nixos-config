@@ -19,7 +19,6 @@
         # Cloud and DevOps
         gh
         glab
-        k9s
         awscli2
 
         # Utility
@@ -84,7 +83,6 @@
     imports = [
       inputs.nixvim.homeModules.nixvim
       ../shared/programs/vim
-
       ../shared/programs/ai
       ../shared/programs/git
       ../shared/programs/bat
@@ -92,8 +90,9 @@
       ../shared/programs/shell
       ../shared/programs/nix
       ../shared/programs/direnv
-      ../darwin/programs/aerospace
+      ../shared/programs/kubernetes
 
+      ../darwin/programs/aerospace
       ../darwin/programs/ssh
       ../darwin/programs/homerow
     ];
