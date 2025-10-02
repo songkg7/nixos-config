@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+_: {
   programs.gpg = {
     enable = true;
     publicKeys = [
@@ -8,9 +7,5 @@
         trust = "ultimate";
       }
     ];
-  };
-
-  home.file.".test/secret1" = {
-    source = config.age.secrets.secret1.file;
   };
 }
