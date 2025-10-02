@@ -1,4 +1,4 @@
-_: {}
+_: { }
 # : let
 # apps = pkgs.buildEnv {
 #   name = "home-manager-applications";
@@ -38,4 +38,3 @@ _: {}
 #
 #   disabledModules = ["targets/darwin/linkapps.nix"];
 # }
-

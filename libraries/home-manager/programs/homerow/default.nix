@@ -3,44 +3,45 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   inherit (pkgs.stdenvNoCC.hostPlatform) isDarwin;
   cfg = config.services.homerow;
 
   # Helper functions for defaults write commands (similar to defaults module)
-  boolValue = x:
-    if x
-    then "YES"
-    else "NO";
+  boolValue = x: if x then "YES" else "NO";
 
-  writeValue = value:
-    if lib.isBool value
-    then "-bool ${boolValue value}"
-    else if lib.isInt value
-    then "-int ${toString value}"
-    else if lib.isFloat value
-    then "-float ${lib.strings.floatToString value}"
-    else if lib.isString value
-    then "-string '${value}'"
-    else throw "invalid value type for homerow config: ${toString value}";
+  writeValue =
+    value:
+    if lib.isBool value then
+      "-bool ${boolValue value}"
+    else if lib.isInt value then
+      "-int ${toString value}"
+    else if lib.isFloat value then
+      "-float ${lib.strings.floatToString value}"
+    else if lib.isString value then
+      "-string '${value}'"
+    else
+      throw "invalid value type for homerow config: ${toString value}";
 
-  writeDefault = key: value: "/usr/bin/defaults write com.superultra.Homerow '${key}' ${writeValue value}";
+  writeDefault =
+    key: value: "/usr/bin/defaults write com.superultra.Homerow '${key}' ${writeValue value}";
 
   # Convert homerow config to defaults write commands
-  homerowDefaults = let
-    allConfig =
-      cfg.config
-      // {
+  homerowDefaults =
+    let
+      allConfig = cfg.config // {
         "NSStatusItem Visible Item-0" = cfg.config.show-menubar-icon;
       };
-    filteredConfig = lib.filterAttrs (_n: v: v != null) allConfig;
-  in
+      filteredConfig = lib.filterAttrs (_n: v: v != null) allConfig;
+    in
     lib.mapAttrsToList writeDefault filteredConfig;
-in {
+in
+{
   options.services.homerow = {
     enable = lib.mkEnableOption "homerow";
 
-    package = lib.mkPackageOption pkgs "homerow" {};
+    package = lib.mkPackageOption pkgs "homerow" { };
 
     config = {
       auto-deactivate-scrolling = lib.mkOption {
@@ -81,12 +82,14 @@ in {
             lib.types.str
           ]
         );
-        default = [];
+        default = [ ];
         description = "Ignored applications";
-        apply = value:
-          if !(lib.isList value)
-          then value
-          else "(${(lib.strings.concatStringsSep "," (lib.map (val: "\"${val}\"") value))})";
+        apply =
+          value:
+          if !(lib.isList value) then
+            value
+          else
+            "(${(lib.strings.concatStringsSep "," (lib.map (val: "\"${val}\"") value))})";
       };
       enable-hyper-key = lib.mkOption {
         type = lib.types.bool;
@@ -190,10 +193,10 @@ in {
     }
 
     (lib.mkIf cfg.enable {
-      home.packages = [cfg.package];
+      home.packages = [ cfg.package ];
 
       # Use home.activation to write defaults (similar to defaults module)
-      home.activation.homerowDefaults = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      home.activation.homerowDefaults = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         ${lib.concatStringsSep "\n" homerowDefaults}
       '';
 

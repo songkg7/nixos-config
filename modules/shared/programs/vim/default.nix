@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   home.sessionVariables = {
     EDITOR = lib.mkDefault "vi";
   };

@@ -2,9 +2,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   inherit (pkgs.stdenvNoCC.hostPlatform) isDarwin isLinux;
-in {
+in
+{
   age = {
     identityPaths = [
       (lib.mkIf isDarwin "/Users/haril/.ssh/id_ed25519_agenix")

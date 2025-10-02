@@ -1,4 +1,5 @@
-{environment, ...}: {
+{ environment, ... }:
+{
   security.pam = {
     services.sudo_local.touchIdAuth = true;
   };
@@ -12,6 +13,6 @@
   system.stateVersion = 6;
 
   imports = [
-    (import ./programs/homebrew {inherit environment;})
+    (import ./programs/homebrew { inherit environment; })
   ];
 }

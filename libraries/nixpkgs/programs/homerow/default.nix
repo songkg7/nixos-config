@@ -13,7 +13,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     sha256 = "1cb1qc4kwb3w5x7s6ag0q4mygawcngmvy29viyn6sk3n28jng3wd";
   };
 
-  nativeBuildInputs = [unzip];
+  nativeBuildInputs = [ unzip ];
 
   sourceRoot = "Homerow.app";
 
@@ -28,7 +28,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     description = "Keyboard shortcuts for every button in macOS";
     homepage = "https://homerow.app";
     license = lib.licenses.unfree;
-    maintainers = with lib.maintainers; [haril];
+    maintainers = with lib.maintainers; [ haril ];
     platforms = lib.platforms.darwin;
   };
 })

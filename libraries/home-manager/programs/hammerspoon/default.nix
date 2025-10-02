@@ -3,14 +3,16 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   inherit (pkgs.stdenvNoCC.hostPlatform) isDarwin;
   cfg = config.services.hammerspoon;
-in {
+in
+{
   options.services.hammerspoon = {
     enable = lib.mkEnableOption "hammerspoon";
 
-    package = lib.mkPackageOption pkgs "hammerspoon" {};
+    package = lib.mkPackageOption pkgs "hammerspoon" { };
 
     config = {
       HSUploadCrashData = lib.mkOption {
@@ -68,7 +70,7 @@ in {
     }
 
     (lib.mkIf cfg.enable {
-      home.packages = [cfg.package];
+      home.packages = [ cfg.package ];
 
       darwin.defaults."org.hammerspoon.Hammerspoon" = cfg.config;
 

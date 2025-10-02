@@ -54,8 +54,6 @@ nix flake update
 ### Format Code
 ```sh
 nix fmt .
-# or use alejandra directly
-alejandra .
 ```
 
 ### Validate Configuration
