@@ -1,8 +1,4 @@
 _: {
-  imports = [
-    ./programs/age/default.nix
-  ];
-
   nix = {
     optimise = {
       automatic = true;
