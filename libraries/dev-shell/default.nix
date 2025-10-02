@@ -16,9 +16,6 @@ pkgs.mkShell {
     nix-tree
     nix-du
 
-    # agenix for secret management
-    inputs.agenix.packages.${system}.default
-
     git-lfs
 
     # utilities

@@ -39,7 +39,6 @@
   outputs =
     {
       flake-utils,
-      agenix,
       home-manager,
       nix-darwin,
       nixpkgs,
@@ -55,7 +54,6 @@
         nix-darwin.lib.darwinSystem {
           inherit system;
           modules = [
-            agenix.nixosModules.default
             home-manager-shared
             nixpkgs-shared
             home-manager.darwinModules.home-manager
@@ -73,10 +71,7 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
-        packages.agenix = agenix.packages.${system}.default;
-
         devShells.default = import ./libraries/dev-shell { inherit inputs system; };
-
         formatter = pkgs.nixfmt-tree;
       }
     )
@@ -91,7 +86,6 @@
       nixosConfigurations.linux = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          agenix.nixosModules.default
           home-manager-shared
           nixpkgs-shared
           home-manager.nixosModules.home-manager
