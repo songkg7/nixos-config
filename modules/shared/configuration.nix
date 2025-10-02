@@ -1,8 +1,8 @@
-{ lib, pkgs, ... }:
-let
-  inherit (pkgs.stdenvNoCC.hostPlatform) isDarwin isLinux;
-in
-{
+_: {
+  imports = [
+    ./programs/age/default.nix
+  ];
+
   nix = {
     optimise = {
       automatic = true;
@@ -20,25 +20,5 @@ in
       keep-derivations = true
       experimental-features = nix-command flakes
     '';
-  };
-
-  age = {
-    identityPaths = [
-      # FIXME: use home directory variable
-      (lib.mkIf isDarwin "/Users/haril/.ssh/id_ed25519_agenix")
-      (lib.mkIf isLinux "/home/haril/.ssh/id_ed25519_agenix")
-    ];
-    secrets = {
-      test-secret = {
-        file = ./secrets/test-secret.age;
-        # path = "/run/secrets/test-secret";
-        # owner = "haril";
-        # group = "staff";
-        # mode = "400";
-      };
-      secret1 = {
-        file = ./secrets/secret1.age;
-      };
-    };
   };
 }
