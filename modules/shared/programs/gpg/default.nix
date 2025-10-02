@@ -11,6 +11,6 @@
   };
 
   home.file.".test/secret1" = {
-    source = config.age.secrets.secret1.path;
+    source = config.age.secrets.secret1.file;
   };
 }
