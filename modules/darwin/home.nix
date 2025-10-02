@@ -62,6 +62,7 @@
         if environment == "work"
         then [
           # NOTE: business use only
+          docker
           colima
         ]
         else []
