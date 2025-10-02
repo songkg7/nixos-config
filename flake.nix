@@ -31,38 +31,46 @@
     };
   };
 
-  outputs = {
-    flake-utils,
-    home-manager,
-    nix-darwin,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    home-manager-shared = ./libraries/home-manager;
-    nixpkgs-shared = ./libraries/nixpkgs;
+  outputs =
+    {
+      flake-utils,
+      home-manager,
+      nix-darwin,
+      nixpkgs,
+      ...
+    }@inputs:
+    let
+      home-manager-shared = ./libraries/home-manager;
+      nixpkgs-shared = ./libraries/nixpkgs;
 
-    # Darwin 시스템 생성 함수
-    mkDarwinSystem = system: environment:
-      nix-darwin.lib.darwinSystem {
-        inherit system;
-        modules = [
-          home-manager-shared
-          nixpkgs-shared
-          home-manager.darwinModules.home-manager
-          ./modules/shared/configuration.nix
-          ./modules/darwin/configuration.nix
-          ./modules/darwin/home.nix
-        ];
-        specialArgs = {inherit inputs environment;};
-      };
-  in
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {inherit system;};
-    in {
-      devShells.default = import ./libraries/dev-shell {inherit inputs system;};
+      # Darwin 시스템 생성 함수
+      mkDarwinSystem =
+        system: environment:
+        nix-darwin.lib.darwinSystem {
+          inherit system;
+          modules = [
+            home-manager-shared
+            nixpkgs-shared
+            home-manager.darwinModules.home-manager
+            { home-manager.extraSpecialArgs = { inherit environment; }; }
+            ./modules/shared/configuration.nix
+            ./modules/darwin/configuration.nix
+            ./modules/darwin/home.nix
+          ];
+          specialArgs = { inherit inputs environment; };
+        };
+    in
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
+        devShells.default = import ./libraries/dev-shell { inherit inputs system; };
 
-      formatter = pkgs.alejandra;
-    })
+        formatter = pkgs.alejandra;
+      }
+    )
     // {
       # Darwin configurations
       darwinConfigurations = {
@@ -81,7 +89,7 @@
           ./modules/linux/configuration.nix
           ./modules/linux/home.nix
         ];
-        specialArgs = {inherit inputs;};
+        specialArgs = { inherit inputs; };
       };
     };
 }
