@@ -54,6 +54,7 @@
         nix-darwin.lib.darwinSystem {
           inherit system;
           modules = [
+            inputs.agenix.darwinModules.default
             home-manager-shared
             nixpkgs-shared
             home-manager.darwinModules.home-manager
@@ -86,6 +87,7 @@
       nixosConfigurations.linux = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          inputs.agenix.nixosModules.default
           home-manager-shared
           nixpkgs-shared
           home-manager.nixosModules.home-manager

@@ -1,13 +1,8 @@
 let
-  haril = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDeXjbE3iBeowyVr6AnZ0GXnAS5ce4n0LVhUHRfXIGt4 agenix-key";
+  haril = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL1RtDi9ri3XMhCYCX1vPMYnoOMPVpnmvvD4yuJcuzdS agenix-key";
 in
 {
-  "test-secret.age" = {
+  "mise-work-env.age" = {
     publicKeys = [ haril ];
-    armor = true;
-  };
-  "secret1.age" = {
-    publicKeys = [ haril ];
-    armor = true;
   };
 }
