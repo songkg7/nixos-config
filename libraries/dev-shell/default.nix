@@ -16,6 +16,9 @@ pkgs.mkShell {
     nix-tree
     nix-du
 
+    # secrets management
+    inputs.agenix.packages.${system}.default
+
     git-lfs
 
     # utilities
@@ -69,6 +72,7 @@ pkgs.mkShell {
     echo "📦 Available dev tools:"
     echo "├─ Nix formatters: alejandra (default), nixfmt-rfc-style, nixpkgs-fmt"
     echo "├─ Nix analyzers:  deadnix, statix, nix-tree, nix-du"
+    echo "├─ Secrets:        agenix (encrypt/decrypt secrets)"
     echo "└─ Utilities:      yq, tree, git-lfs, tmux, screen"
     echo ""
 
@@ -80,6 +84,8 @@ pkgs.mkShell {
     printf "  %-20s %s\n" "nix flake update" "Update dependencies"
     printf "  %-20s %s\n" "nix flake show" "Show dependency tree"
     printf "  %-20s %s\n" "deadnix --edit" "Remove unused code"
+    printf "  %-20s %s\n" "agenix -e file.age" "Edit/create encrypted file"
+    printf "  %-20s %s\n" "agenix -d file.age" "Decrypt and view file"
     echo ""
 
     # Note about home.nix tools

@@ -82,8 +82,13 @@
 
       # secrets = {
       #   mount = "/tmp/user/$UID/secrets";
-      #   identityPaths = ["${config.home.homeDirectory}/.ssh/id_ed25519"];
+      #   identityPaths = [ "${config.home.homeDirectory}/.ssh/agenix" ];
       #   enableForceReload = true;
+      # };
+
+      # NOTE: Secret file needs to be configured at the system level
+      # home.file.".config/mise/conf.d/mise.work.toml" = {
+      #   source = config.age.secrets.mise-work-env.path;
       # };
 
       imports = [
