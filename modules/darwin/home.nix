@@ -86,11 +86,6 @@
       #   enableForceReload = true;
       # };
 
-      # NOTE: Secret file needs to be configured at the system level
-      # home.file.".config/mise/conf.d/mise.work.toml" = {
-      #   source = config.age.secrets.mise-work-env.path;
-      # };
-
       imports = [
         inputs.nixvim.homeModules.nixvim
         ../shared/programs/vim
