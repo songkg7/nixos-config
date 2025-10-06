@@ -10,8 +10,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    # Import shared secrets configuration
-    ../shared/secrets
   ]
   ++ (with inputs.nixos-hardware.nixosModules; [
     # Include nixos-hardware libraries.
