@@ -5,4 +5,7 @@ in
   "mise-work-env.age" = {
     publicKeys = [ haril ];
   };
+  "mise-personal-env.age" = {
+    publicKeys = [ haril ];
+  };
 }

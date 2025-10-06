@@ -34,7 +34,11 @@ in
         # FIXME: Use `config.age.secrest.<name>.path` instead.
         path = "/${homeDir}/${username}/.config/mise/conf.d/mise.work.toml";
         owner = config.users.users.haril.name;
-        mode = "770";
+      };
+      "mise.personal.toml" = {
+        file = ./secrets/mise-personal-env.age;
+        path = "/${homeDir}/${username}/.config/mise/conf.d/mise.personal.toml";
+        owner = config.users.users.haril.name;
       };
     };
   };
