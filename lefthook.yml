@@ -1,6 +1,6 @@
 pre-commit:
   commands:
     validate:
-      run: nix flake check
+      run: nix flake check --all-systems
     deadnix:
       run: deadnix --edit
