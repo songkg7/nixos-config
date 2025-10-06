@@ -14,7 +14,5 @@
 
   imports = [
     (import ./programs/homebrew { inherit environment; })
-    # Import shared secrets configuration
-    ../shared/secrets
   ];
 }

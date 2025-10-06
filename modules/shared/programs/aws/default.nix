@@ -1,0 +1,5 @@
+{
+  programs.aws = {
+    enable = true;
+  };
+}
