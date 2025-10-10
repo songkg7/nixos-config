@@ -1,5 +1,5 @@
 {
-  programs.aws = {
+  programs.awscli = {
     enable = true;
   };
 }

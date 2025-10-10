@@ -96,6 +96,7 @@
         ../shared/programs/nix
         ../shared/programs/direnv
         ../shared/programs/kubernetes
+        ../shared/programs/aws
 
         ../darwin/programs/aerospace
         ../darwin/programs/ssh
