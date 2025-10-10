@@ -23,7 +23,6 @@
           # Cloud and DevOps
           gh
           glab
-          awscli2
 
           # Utility
           ripgrep
