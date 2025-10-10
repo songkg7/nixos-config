@@ -8,6 +8,9 @@
       # git-spr = final.callPackage ./programs/git-spr {};
       # hammerspoon = final.callPackage ./programs/hammerspoon {};
       homerow = final.callPackage ./programs/homerow { };
+      awscli2 = _prev.awscli2.overrideAttrs (_: {
+        doCheck = false;
+      });
       # nix-activate = final.callPackage ./programs/nix-activate {};
     })
   ];
