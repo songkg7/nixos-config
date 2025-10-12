@@ -45,6 +45,7 @@
           httpie
           lolcat
           m-cli
+          helix
 
           # GUI Apps
           ice-bar
