@@ -89,8 +89,4 @@ return {
     event = "VeryLazy",
     config = function() require("nvim-surround").setup {} end,
   },
-  {
-    "mg979/vim-visual-multi",
-    lazy = false,
-  },
 }
