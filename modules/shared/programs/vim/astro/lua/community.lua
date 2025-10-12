@@ -24,4 +24,10 @@ return {
 
   -- Git
   { import = "astrocommunity.git.git-blame-nvim" },
+
+  -- Editing Support
+  { import = "astrocommunity.editing-support.vim-visual-multi" },
+  -- { import = "astrocommunity.editing-support.multiple-cursors-nvim" },
+  { import = "astrocommunity.editing-support.auto-save-nvim" },
+  { import = "astrocommunity.editing-support.neogen" },
 }
