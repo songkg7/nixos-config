@@ -10,6 +10,7 @@
 
     brews = [
       # NOTE: pakcages should be installed via nixpkgs whenever possible
+      "bats-core"
     ];
 
     casks = [
