@@ -46,6 +46,7 @@
           lolcat
           m-cli
           helix
+          bats
 
           # GUI Apps
           ice-bar
