@@ -46,7 +46,7 @@
           lolcat
           m-cli
           helix
-          bats
+          # bats # Temporarily disabled due to nokogiri compilation issues
 
           # GUI Apps
           ice-bar
