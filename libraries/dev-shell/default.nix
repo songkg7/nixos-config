@@ -70,7 +70,7 @@ pkgs.mkShell {
 
     # Available tools summary
     echo "📦 Available dev tools:"
-    echo "├─ Nix formatters: alejandra (default), nixfmt-rfc-style, nixpkgs-fmt"
+    echo "├─ Nix formatters: nixfmt-rfc-style(default), nixpkgs-fmt"
     echo "├─ Nix analyzers:  deadnix, statix, nix-tree, nix-du"
     echo "├─ Secrets:        agenix (encrypt/decrypt secrets)"
     echo "└─ Utilities:      yq, tree, git-lfs, tmux, screen"
@@ -78,8 +78,7 @@ pkgs.mkShell {
 
     # Quick reference
     echo "⚡ Quick commands:"
-    printf "  %-20s %s\n" "nix fmt ." "Format all Nix files (alejandra)"
-    printf "  %-20s %s\n" "alejandra ." "Format with alejandra directly"
+    printf "  %-20s %s\n" "nix fmt ." "Format all Nix files"
     printf "  %-20s %s\n" "nix flake check" "Validate configuration"
     printf "  %-20s %s\n" "nix flake update" "Update dependencies"
     printf "  %-20s %s\n" "nix flake show" "Show dependency tree"
