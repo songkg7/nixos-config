@@ -32,6 +32,7 @@
       "idea-ultimate"
       "ngrok"
       "onepassword-password-manager"
+      "databricks-cli"
     ];
 
   nixpkgs.config.permittedInsecurePackages = [

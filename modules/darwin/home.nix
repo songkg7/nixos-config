@@ -19,6 +19,7 @@
         [
           # Development
           jetbrains-toolbox
+          databricks-cli
 
           # Cloud and DevOps
           gh
