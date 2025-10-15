@@ -26,7 +26,6 @@
     lg = "lazygit";
     cat = "bat --paging=never";
     ch = "chezmoi";
-    ra = "ranger";
     py = "python";
     vc = "warp-cli connect";
     vd = "warp-cli disconnect";
