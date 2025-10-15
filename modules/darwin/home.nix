@@ -38,6 +38,7 @@
           walk
           tldr
           aerospace
+          ouch
 
           age
           chezmoi
