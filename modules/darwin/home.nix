@@ -94,7 +94,7 @@
         ../shared/programs/ai
         ../shared/programs/git
         ../shared/programs/bat
-        ../shared/programs/ranger
+        ../shared/programs/yazi
         ../shared/programs/shell
         ../shared/programs/nix
         ../shared/programs/direnv
