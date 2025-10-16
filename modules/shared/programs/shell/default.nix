@@ -15,6 +15,8 @@
     USE_GKE_GCLOUD_AUTH_PLUGIN = "True";
     _ZO_FZF_OPTS = "--height 40% --border";
     LANG = "en_US.UTF-8";
+
+    GUM_FILTER_REVERSE = "true";
   };
 
   home.shellAliases = {
