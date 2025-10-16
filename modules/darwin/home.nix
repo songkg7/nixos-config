@@ -31,6 +31,7 @@
           fx
           jq
           htop
+          glances
           lazydocker
           lazygit
           lsd
@@ -48,7 +49,6 @@
           lolcat
           m-cli
           helix
-          # bats # Temporarily disabled due to nokogiri compilation issues
 
           # GUI Apps
           ice-bar
