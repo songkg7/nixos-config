@@ -29,6 +29,7 @@
       "setapp"
       "warp"
       "telegram"
+      "redis-insight"
 
       # common use for remote work
       "cloudflare-warp"
