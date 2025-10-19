@@ -57,6 +57,7 @@
           neohtop
           obsidian
           discord
+          iina
 
           # Fonts
           nerd-fonts.jetbrains-mono
