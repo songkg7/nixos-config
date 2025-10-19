@@ -1,4 +1,9 @@
-{ environment, ... }:
+{
+  environment,
+  pkgs,
+  lib,
+  ...
+}:
 {
   homebrew = {
     enable = true;
@@ -36,25 +41,19 @@
       "mongodb-compass"
       "sdm"
     ]
-    ++ (
-      if environment == "work" then
-        [
-          # NOTE: business use only
-        ]
-      else
-        [ ]
-    )
-    ++ (
-      if environment == "personal" then
-        [
-          # NOTE: personal use only
-          "adguard"
-          "elgato-stream-deck"
-          "orbstack"
-        ]
-      else
-        [ ]
-    );
+    ++ lib.optionals pkgs.stdenv.isAarch64 [
+      # NOTE: Apple Silicon only
+      "dayflow"
+    ]
+    ++ lib.optionals (environment == "work") [
+      # NOTE: business use only
+    ]
+    ++ lib.optionals (environment == "personal") [
+      # NOTE: personal use only
+      "adguard"
+      "elgato-stream-deck"
+      "orbstack"
+    ];
 
     masApps = {
       "Amphetamine" = 937984704;
