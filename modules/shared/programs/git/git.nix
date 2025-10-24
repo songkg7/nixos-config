@@ -1,8 +1,6 @@
 _: {
   programs.git = {
     enable = true;
-    userName = "haril song";
-    userEmail = "songkg7@gmail.com";
     signing = {
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHfugxfdZ+OHTxqc3RQB+4Y0J18Vea3UNt/9nH6fXL8";
       signByDefault = true;
@@ -17,17 +15,18 @@ _: {
       "mise.*.local.toml"
     ];
 
-    aliases = {
-      st = "status";
-      a = "!git add $(git status -s | fzf -m | awk '{print $2}')";
-      unstage = "reset HEAD --";
-      bs = "!git switch $(git branch | fzf)";
-      poi = "!git branch --merged | grep -v '\\*\\|main\\|master\\|int\\|dev' | xargs -n 1 git branch -d";
-    };
-
-    lfs.enable = true;
-
-    extraConfig = {
+    settings = {
+      user = {
+        name = "haril song";
+        email = "songkg7@gmail.com";
+      };
+      alias = {
+        st = "status";
+        a = "!git add $(git status -s | fzf -m | awk '{print $2}')";
+        unstage = "reset HEAD --";
+        bs = "!git switch $(git branch | fzf)";
+        poi = "!git branch --merged | grep -v '\\*\\|main\\|master\\|int\\|dev' | xargs -n 1 git branch -d";
+      };
       column.ui = "auto";
       branch.sort = "-committerdate";
       core = {
@@ -90,6 +89,8 @@ _: {
       };
       merge.conflictstyle = "zdiff3";
     };
+
+    lfs.enable = true;
 
     includes = [
       {
