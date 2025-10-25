@@ -40,6 +40,7 @@
           tldr
           aerospace
           ouch
+          parallel
 
           age
           chezmoi
