@@ -62,4 +62,11 @@
       commit = ./opencode/commit-command.md;
     };
   };
+
+  # codex
+  programs.codex = {
+    enable = true;
+    settings = {
+    };
+  };
 }
