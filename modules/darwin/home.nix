@@ -9,10 +9,15 @@
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
   home-manager.users.haril =
-    { ... }:
+    { config, ... }:
     {
       home.username = "haril";
       home.homeDirectory = "/Users/haril";
+
+      home.file."haril-vault" = {
+        source = config.lib.file.mkOutOfStoreSymlink
+          "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/haril-vault";
+      };
 
       home.packages =
         with pkgs;
