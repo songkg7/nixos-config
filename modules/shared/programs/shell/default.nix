@@ -31,6 +31,8 @@
     py = "python";
     vc = "warp-cli connect";
     vd = "warp-cli disconnect";
+    h = "atsearch";
+    hh = "atuin search -i";
   };
 
   programs.zsh = {
@@ -50,6 +52,10 @@
         cd "$(fd . --type d | fzf)"
       }
 
+      atsearch() {
+        atuin search "$1" --format "{host}\t{command}"
+      }
+
       prompt_context() {
         if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
           prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
@@ -62,6 +68,7 @@
       # Startup splash
       figlet -f mike "Hello $(echo Haril)" | lolcat
     '';
+
     syntaxHighlighting = {
       enable = true;
     };
