@@ -15,8 +15,7 @@
       home.homeDirectory = "/Users/haril";
 
       home.file."haril-vault" = {
-        source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/haril-vault";
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/haril-vault";
       };
 
       home.packages =
@@ -57,13 +56,13 @@
           helix
 
           # GUI Apps
-          ice-bar
-          loopwm
-          raycast
-          neohtop
-          obsidian
-          discord
-          iina
+          # ice-bar
+          # loopwm
+          # raycast
+          # neohtop
+          # obsidian
+          # discord
+          # iina
 
           # Fonts
           nerd-fonts.jetbrains-mono

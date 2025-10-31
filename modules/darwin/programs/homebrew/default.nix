@@ -35,6 +35,13 @@
       "warp"
       "telegram"
       "redis-insight"
+      "jordanbaird-ice"
+      "loop"
+      "raycast"
+      "neohtop"
+      "obsidian"
+      "discord"
+      "iina"
 
       # common use for remote work
       "cloudflare-warp"
