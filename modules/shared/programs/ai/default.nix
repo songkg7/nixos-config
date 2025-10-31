@@ -50,7 +50,7 @@
   programs.opencode = {
     enable = true;
     settings = {
-      theme = "catppuccin";
+      theme = "cyberdream";
       model = "anthropic/claude-sonnet-4-20250514";
       autoupdate = true;
     };
