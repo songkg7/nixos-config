@@ -39,12 +39,12 @@
           lazydocker
           lazygit
           lsd
-          alt-tab-macos
           walk
           tldr
           aerospace
           ouch
           parallel
+          qsv
 
           age
           chezmoi
@@ -56,6 +56,7 @@
           helix
 
           # GUI Apps
+          alt-tab-macos
           # ice-bar
           # loopwm
           # raycast
