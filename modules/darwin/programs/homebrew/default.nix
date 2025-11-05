@@ -13,8 +13,10 @@
     taps = [
     ];
 
+    # NOTE: pakcages should be installed via nixpkgs whenever possible
     brews = [
-      # NOTE: pakcages should be installed via nixpkgs whenever possible
+      # https://tailscale.com/kb/1065/macos-variants
+      "tailscale"
     ];
 
     casks = [
