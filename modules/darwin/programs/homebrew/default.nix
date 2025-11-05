@@ -42,6 +42,7 @@
       "obsidian"
       "discord"
       "iina"
+      "tailscale-app"
 
       # common use for remote work
       "cloudflare-warp"
