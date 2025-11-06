@@ -54,7 +54,6 @@
           httpie
           lolcat
           m-cli
-          helix
 
           # GUI Apps
           alt-tab-macos
@@ -86,6 +85,7 @@
           if environment == "personal" then
             [
               # NOTE: personal use only
+              helix
             ]
           else
             [ ]
