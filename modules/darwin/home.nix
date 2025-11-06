@@ -28,7 +28,6 @@
           # Cloud and DevOps
           gh
           glab
-          tailscale
 
           # Utility
           ripgrep
