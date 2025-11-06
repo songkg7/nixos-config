@@ -4,6 +4,7 @@
     ./delta.nix
     ./gh.nix
     ./git.nix
+    ./jujutsu.nix
   ];
 
   home.packages = with pkgs; [
