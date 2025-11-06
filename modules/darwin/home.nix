@@ -46,6 +46,7 @@
           ouch
           parallel
           qsv
+          tmux
 
           age
           chezmoi
