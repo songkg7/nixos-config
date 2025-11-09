@@ -52,7 +52,7 @@
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       # NOTE: Apple Silicon only
-      "dayflow"
+      # "dayflow"
     ]
     ++ lib.optionals (environment == "work") [
       # NOTE: business use only
