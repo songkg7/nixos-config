@@ -22,20 +22,20 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";
+  # boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.grub.configurationLimit = 3;
 
   # Boot output
-  boot.kernel.sysctl = {
-    "fs.inotify.max_user_watches" = 524288;
-  };
-  boot.kernelParams = [
-    "quiet"
-    "rd.udev.log_level=3"
-  ];
-  boot.consoleLogLevel = 0;
-  boot.initrd.verbose = false;
-  boot.plymouth.enable = true;
+  # boot.kernel.sysctl = {
+  #   "fs.inotify.max_user_watches" = 524288;
+  # };
+  # boot.kernelParams = [
+  #   "quiet"
+  #   "rd.udev.log_level=3"
+  # ];
+  # boot.consoleLogLevel = 0;
+  # boot.initrd.verbose = false;
+  # boot.plymouth.enable = true;
 
   # Enable opengl, vdpau
   hardware.graphics.enable = true;
