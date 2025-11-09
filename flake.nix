@@ -34,6 +34,8 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs =
@@ -41,6 +43,7 @@
       flake-utils,
       home-manager,
       nix-darwin,
+      nixos-wsl,
       nixpkgs,
       ...
     }@inputs:
@@ -88,6 +91,7 @@
         system = "x86_64-linux";
         modules = [
           inputs.agenix.nixosModules.default
+          nixos-wsl.nixosModules.default
           home-manager-shared
           nixpkgs-shared
           home-manager.nixosModules.home-manager
