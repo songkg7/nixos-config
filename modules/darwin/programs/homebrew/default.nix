@@ -16,6 +16,12 @@
     # NOTE: pakcages should be installed via nixpkgs whenever possible
     brews = [
       # https://tailscale.com/kb/1065/macos-variants
+    ]
+    ++ lib.optionals (environment == "work") [
+      # NOTE: business use only
+    ]
+    ++ lib.optionals (environment == "personal") [
+      # NOTE: personal use only
       "tailscale"
     ];
 
@@ -56,6 +62,7 @@
     ]
     ++ lib.optionals (environment == "work") [
       # NOTE: business use only
+      "tailscale-app"
     ]
     ++ lib.optionals (environment == "personal") [
       # NOTE: personal use only
