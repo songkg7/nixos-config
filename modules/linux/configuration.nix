@@ -74,6 +74,7 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
   services.pulseaudio.enable = true;
+  services.tailscale.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
