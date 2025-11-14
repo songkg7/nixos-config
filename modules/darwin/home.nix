@@ -46,6 +46,7 @@
           parallel
           qsv
           tmux
+          trash-cli
 
           age
           chezmoi
