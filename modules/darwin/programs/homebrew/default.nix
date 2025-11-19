@@ -50,6 +50,7 @@
       "obsidian"
       "discord"
       "iina"
+      "antigravity"
 
       # common use for remote work
       "cloudflare-warp"
