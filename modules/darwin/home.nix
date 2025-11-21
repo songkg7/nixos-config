@@ -27,7 +27,6 @@
 
           # Cloud and DevOps
           gh
-          glab
 
           # Utility
           ripgrep
@@ -78,6 +77,7 @@
               # NOTE: business use only
               docker
               colima
+              glab
             ]
           else
             [ ]

@@ -42,7 +42,6 @@
       "setapp"
       "warp"
       "telegram"
-      "redis-insight"
       "jordanbaird-ice"
       "loop"
       "raycast"
@@ -51,11 +50,6 @@
       "discord"
       "iina"
       "antigravity"
-
-      # common use for remote work
-      "cloudflare-warp"
-      "mongodb-compass"
-      "sdm"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       # NOTE: Apple Silicon only
@@ -64,6 +58,10 @@
     ++ lib.optionals (environment == "work") [
       # NOTE: business use only
       "tailscale-app"
+      "cloudflare-warp"
+      "sdm"
+      "mongodb-compass"
+      "redis-insight"
     ]
     ++ lib.optionals (environment == "personal") [
       # NOTE: personal use only
