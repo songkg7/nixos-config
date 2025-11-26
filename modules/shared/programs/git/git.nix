@@ -88,6 +88,9 @@ _: {
         "side-by-side" = true;
       };
       merge.conflictstyle = "zdiff3";
+      advice = {
+        skippedCherryPicks = false;
+      };
     };
 
     lfs.enable = true;
