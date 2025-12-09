@@ -42,6 +42,7 @@
       export GPG_TTY=$(tty)
 
       export PATH="$HOME/.local/bin:$PATH"
+      export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 
       # Custom functions
       lk() {
