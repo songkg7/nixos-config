@@ -4,7 +4,7 @@
     launchd.enable = true;
 
     # Startup configuration
-    userSettings = {
+    settings = {
       after-login-command = [ ];
       after-startup-command = [ ];
       start-at-login = true;
