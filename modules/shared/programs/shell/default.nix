@@ -73,5 +73,9 @@
     syntaxHighlighting = {
       enable = true;
     };
+
+    autosuggestion = {
+      enable = true;
+    };
   };
 }
