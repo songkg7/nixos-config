@@ -31,7 +31,7 @@ in
     secrets = {
       "mise.work.toml" = {
         file = ./secrets/mise-work-env.age;
-        # FIXME: Use `config.age.secrest.<name>.path` instead.
+        # FIXME: Use `config.age.secret.<name>.path` instead.
         path = "/${homeDir}/${username}/.config/mise/conf.d/mise.work.toml";
         owner = config.users.users.haril.name;
       };
