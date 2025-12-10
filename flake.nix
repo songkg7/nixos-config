@@ -50,6 +50,16 @@
     let
       home-manager-shared = ./libraries/home-manager;
       nixpkgs-shared = ./libraries/nixpkgs;
+      user-profile = {
+        personal = {
+          name = "haril song";
+          email = "songkg7@gmail.com";
+        };
+        work = {
+          name = "kyungkeun.song";
+          email = ">[REDACTED_EMAIL]<<";
+        };
+      };
 
       # Darwin 시스템 생성 함수
       mkDarwinSystem =
@@ -61,12 +71,12 @@
             home-manager-shared
             nixpkgs-shared
             home-manager.darwinModules.home-manager
-            { home-manager.extraSpecialArgs = { inherit environment; }; }
+            { home-manager.extraSpecialArgs = { inherit environment user-profile; }; }
             ./modules/shared/configuration.nix
             ./modules/darwin/configuration.nix
             ./modules/darwin/home.nix
           ];
-          specialArgs = { inherit inputs environment; };
+          specialArgs = { inherit inputs environment user-profile; };
         };
     in
     flake-utils.lib.eachDefaultSystem (
@@ -95,11 +105,12 @@
           home-manager-shared
           nixpkgs-shared
           home-manager.nixosModules.home-manager
+          { home-manager.extraSpecialArgs = { inherit user-profile; }; }
           ./modules/shared/configuration.nix
           ./modules/linux/configuration.nix
           ./modules/linux/home.nix
         ];
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs user-profile; };
       };
     };
 }

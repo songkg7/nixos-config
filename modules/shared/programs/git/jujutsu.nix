@@ -1,11 +1,12 @@
-_: {
+{ user-profile, ... }:
+{
   programs.jujutsu = {
     enable = true;
 
     settings = {
       user = {
-        name = "haril song";
-        email = "songkg7@gmail.com";
+        name = user-profile.personal.name;
+        email = user-profile.personal.email;
       };
     };
   };

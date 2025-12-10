@@ -1,9 +1,9 @@
-_:
+{ user-profile, ... }:
 let
   gitInclude = {
     user = {
-      name = "kyungkeun.song";
-      email = ">[REDACTED_EMAIL]<<";
+      name = user-profile.work.name;
+      email = user-profile.work.email;
     };
   };
 in
@@ -26,8 +26,8 @@ in
 
     settings = {
       user = {
-        name = "haril song";
-        email = "songkg7@gmail.com";
+        name = user-profile.personal.name;
+        email = user-profile.personal.email;
       };
       alias = {
         st = "status";
