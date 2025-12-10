@@ -1,4 +1,13 @@
-_: {
+_:
+let
+  gitInclude = {
+    user = {
+      name = "kyungkeun.song";
+      email = ">[REDACTED_EMAIL]<<";
+    };
+  };
+in
+{
   programs.git = {
     enable = true;
     signing = {
@@ -97,12 +106,9 @@ _: {
 
     includes = [
       {
-        condition = "hasconfig:remote.*.url:git@ssh.gitlab.42dot.ai:**/**";
-        path = "~/.gitconfig-work";
-      }
-      {
         condition = "gitdir:~/projects/42dot/";
-        path = "~/.gitconfig-work";
+        contents = gitInclude;
+        contentSuffix = "gitcofnig-work";
       }
     ];
   };
