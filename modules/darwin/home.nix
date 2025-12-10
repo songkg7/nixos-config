@@ -77,6 +77,7 @@
               # NOTE: business use only
               docker
               colima
+              podman
               glab
             ]
           else

@@ -1,4 +1,7 @@
-{ lib, ... }:
+{
+  lib,
+  ...
+}:
 {
   imports = [
     ./atuin.nix
@@ -8,16 +11,20 @@
     ./zoxide.nix
   ];
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    AUTHOR = "haril";
-    USE_GKE_GCLOUD_AUTH_PLUGIN = "True";
-    _ZO_FZF_OPTS = "--height 40% --border";
-    LANG = "en_US.UTF-8";
-
-    GUM_FILTER_REVERSE = "true";
-  };
+  home.sessionVariables = lib.mkMerge [
+    {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      AUTHOR = "haril";
+      USE_GKE_GCLOUD_AUTH_PLUGIN = "True";
+      _ZO_FZF_OPTS = "--height 40% --border";
+      LANG = "en_US.UTF-8";
+      GUM_FILTER_REVERSE = "true";
+    }
+    # (lib.mkIf (environment == "work") {
+    #   DOCKER_HOST = "unix:///var/folders/3p/qnvz_wss4g32qcwxcmvsk70c0000gp/T/podman/podman-machine-default-api.sock";
+    # })
+  ];
 
   home.shellAliases = {
     vi = "nvim";
