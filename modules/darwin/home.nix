@@ -46,6 +46,7 @@
           qsv
           tmux
           trash-cli
+          git-filter-repo
 
           age
           chezmoi
