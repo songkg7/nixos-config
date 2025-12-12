@@ -48,6 +48,6 @@
         # ../linux/programs/zpl-open
       ];
 
-      home.stateVersion = "25.05";
+      home.stateVersion = "25.11";
     };
 }
