@@ -79,6 +79,7 @@
               docker
               colima
               podman
+              podman-compose
               glab
             ]
           else
