@@ -36,7 +36,6 @@
           htop
           glances
           lazydocker
-          lazygit
           lsd
           walk
           tldr
@@ -46,7 +45,6 @@
           qsv
           tmux
           trash-cli
-          git-filter-repo
 
           age
           chezmoi

@@ -9,6 +9,8 @@
 
   home.packages = with pkgs; [
     git-who
+    lazygit
+    git-filter-repo
   ];
 
   home.shellAliases = {
