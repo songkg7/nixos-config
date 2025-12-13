@@ -54,10 +54,6 @@
           name = "haril song";
           email = "songkg7@gmail.com";
         };
-        work = {
-          name = "kyungkeun.song";
-          email = ">[REDACTED_EMAIL]<<";
-        };
       };
 
       # Darwin 시스템 생성 함수
