@@ -1,12 +1,4 @@
 { user-profile, ... }:
-let
-  gitInclude = {
-    user = {
-      name = user-profile.work.name;
-      email = user-profile.work.email;
-    };
-  };
-in
 {
   programs.git = {
     enable = true;
@@ -107,8 +99,7 @@ in
     includes = [
       {
         condition = "gitdir:~/projects/42dot/";
-        contents = gitInclude;
-        contentSuffix = "gitcofnig-work";
+        path = "~/.config/git/gitconfig-work";
       }
     ];
   };
