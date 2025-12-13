@@ -93,24 +93,6 @@
             [ ]
         );
 
-      age = {
-        identityPaths = [ "${config.home.homeDirectory}/.ssh/agenix" ];
-        secrets = {
-          gitconfig-work = {
-            file = ../../secrets/gitconfig-work.age;
-            path = "${config.home.homeDirectory}/.config/git/gitconfig-work";
-          };
-          "mise.work.toml" = {
-            file = ../../secrets/mise-work-env.age;
-            path = "${config.home.homeDirectory}/.config/mise/conf.d/mise.work.toml";
-          };
-          "mise.personal.toml" = {
-            file = ../../secrets/mise-personal-env.age;
-            path = "${config.home.homeDirectory}/.config/mise/conf.d/mise.personal.toml";
-          };
-        };
-      };
-
       imports = [
         inputs.nixvim.homeModules.nixvim
         inputs.agenix.homeManagerModules.default
@@ -124,6 +106,7 @@
         ../shared/programs/direnv
         ../shared/programs/kubernetes
         ../shared/programs/aws
+        ../shared/programs/age
 
         ../darwin/programs/aerospace
         ../darwin/programs/ssh
