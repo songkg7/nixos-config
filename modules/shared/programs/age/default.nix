@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  config,
+  lib,
+  environment,
+  ...
+}:
 let
   secretsPath = ../../../../secrets;
   homeConfig = "${config.home.homeDirectory}/.config";
@@ -18,6 +23,12 @@ in
       "mise.personal.toml" = {
         file = secretsPath + /mise-personal-env.age;
         path = "${homeConfig}/mise/conf.d/mise.personal.toml";
+      };
+    }
+    // lib.optionalAttrs (environment == "work") {
+      "awsconfig-work" = {
+        file = secretsPath + /awsconfig-work.age;
+        path = "${config.home.homeDirectory}/.aws/config";
       };
     };
   };

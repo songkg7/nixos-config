@@ -12,4 +12,7 @@ in
     publicKeys = [ haril ];
     armor = true;
   };
+  "awsconfig-work.age" = {
+    publicKeys = [ haril ];
+  };
 }

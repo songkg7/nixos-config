@@ -100,12 +100,20 @@
           home-manager-shared
           nixpkgs-shared
           home-manager.nixosModules.home-manager
-          { home-manager.extraSpecialArgs = { inherit user-profile; }; }
+          {
+            home-manager.extraSpecialArgs = {
+              inherit user-profile;
+              environment = "personal";
+            };
+          }
           ./modules/shared/configuration.nix
           ./modules/linux/configuration.nix
           ./modules/linux/home.nix
         ];
-        specialArgs = { inherit inputs user-profile; };
+        specialArgs = {
+          inherit inputs user-profile;
+          environment = "personal";
+        };
       };
     };
 }
