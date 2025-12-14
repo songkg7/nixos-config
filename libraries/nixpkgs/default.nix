@@ -33,6 +33,7 @@
       "ngrok"
       "onepassword-password-manager"
       "databricks-cli"
+      "zsh-abbr"
     ];
 
   nixpkgs.config.permittedInsecurePackages = [
