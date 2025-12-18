@@ -57,7 +57,6 @@
     ]
     ++ lib.optionals (environment == "work") [
       # NOTE: business use only
-      "tailscale-app"
       "cloudflare-warp"
       "sdm"
       "mongodb-compass"
