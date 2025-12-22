@@ -50,6 +50,7 @@
       "discord"
       "iina"
       "antigravity"
+      "google-chrome"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       # NOTE: Apple Silicon only
