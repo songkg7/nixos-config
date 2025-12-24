@@ -63,6 +63,15 @@
     };
   };
 
+  home.file = {
+    ".config/opencode/opencode.json" = {
+      source = ./opencode/opencode.json;
+    };
+    ".config/opencode/oh-my-opencode.json" = {
+      source = ./opencode/oh-my-opencode.json;
+    };
+  };
+
   # codex
   programs.codex = {
     enable = true;
