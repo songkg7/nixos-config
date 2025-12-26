@@ -26,6 +26,7 @@
     ];
 
     casks = [
+      # NOTE: common use
       "slack"
       "1password"
       "1password-cli"
@@ -51,6 +52,7 @@
       "iina"
       "antigravity"
       "google-chrome"
+      "comet"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       # NOTE: Apple Silicon only
