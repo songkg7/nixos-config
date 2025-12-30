@@ -53,6 +53,7 @@
       "antigravity"
       "google-chrome"
       "comet"
+      "spotify"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       # NOTE: Apple Silicon only

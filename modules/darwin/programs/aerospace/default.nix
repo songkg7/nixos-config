@@ -243,6 +243,11 @@
           check-further-callbacks = true;
           run = "layout floating";
         }
+        {
+          "if".app-id = "com.spotify.client";
+          check-further-callbacks = true;
+          run = "layout floating";
+        }
       ];
     };
   };
