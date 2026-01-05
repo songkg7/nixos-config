@@ -51,13 +51,13 @@
     enable = true;
     settings = {
       theme = "cyberdream";
-      model = "anthropic/claude-sonnet-4-20250514";
+      # model = "anthropic/claude-sonnet-4-20250514";
       autoupdate = true;
     };
-    agents = {
-      code-reviewer = ./opencode/code-reviewer-agent.md;
-      documentation = ./opencode/documentation-agent.md;
-    };
+    # agents = {
+    #   code-reviewer = ./opencode/code-reviewer-agent.md;
+    #   documentation = ./opencode/documentation-agent.md;
+    # };
     commands = {
       commit = ./opencode/commit-command.md;
     };
