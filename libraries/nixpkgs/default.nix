@@ -1,15 +1,37 @@
 { lib, ... }:
 {
   nixpkgs.overlays = [
-    (final: _prev: {
-      # cleanshot = final.callPackage ./programs/cleanshot {};
-      # clop = final.callPackage ./programs/clop {};
-      # gemini-mcp-tool = final.callPackage ./programs/gemini-mcp-tool {};
-      # git-spr = final.callPackage ./programs/git-spr {};
-      # hammerspoon = final.callPackage ./programs/hammerspoon {};
-      homerow = final.callPackage ./programs/homerow { };
-      # nix-activate = final.callPackage ./programs/nix-activate {};
-    })
+    (
+      final: prev:
+      let
+        catalystOverrides =
+          if prev ? llvmPackages_20 then
+            {
+              llvmPackages_20 = prev.llvmPackages_20.overrideScope (
+                _self: super: {
+                  compiler-rt-libc = super.compiler-rt-libc.overrideAttrs (old: {
+                    cmakeFlags = (old.cmakeFlags or [ ]) ++ [
+                      "-DCOMPILER_RT_ENABLE_MACCATALYST=OFF"
+                    ];
+                  });
+                }
+              );
+
+            }
+          else
+            { };
+      in
+      {
+        # cleanshot = final.callPackage ./programs/cleanshot {};
+        # clop = final.callPackage ./programs/clop {};
+        # gemini-mcp-tool = final.callPackage ./programs/gemini-mcp-tool {};
+        # git-spr = final.callPackage ./programs/git-spr {};
+        # hammerspoon = final.callPackage ./programs/hammerspoon {};
+        homerow = final.callPackage ./programs/homerow { };
+        # nix-activate = final.callPackage ./programs/nix-activate {};
+      }
+      // catalystOverrides
+    )
   ];
 
   nixpkgs.config.allowUnfreePredicate =
