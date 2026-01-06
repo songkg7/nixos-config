@@ -22,14 +22,14 @@
 		}
 	},
 	"lsp": {
-		"jdtls": {
-			"command": ["jdtls"],
-			"extensions": [".java"],
-			"priority": 10
-		},
 		"kotlin-language-server": {
-			"command": ["kotlin-language-server"],
-			"extensions": [".kt", ".kts"],
+			"command": [
+				"kotlin-language-server"
+			],
+			"extensions": [
+				".kt",
+				".kts"
+			],
 			"priority": 10,
 			"initialization": {
 				"kotlin": {
