@@ -15,6 +15,16 @@
           READ_ONLY_MODE = "true";
         };
       };
+      exa = {
+        command = "npx";
+        args = [
+          "-y"
+          "exa-mcp-server"
+        ];
+        env = {
+          EXA_API_KEY = "{env:EXA_API_KEY}";
+        };
+      };
     };
   };
 
