@@ -1,4 +1,23 @@
 {
+  programs.mcp = {
+    enable = true;
+    servers = {
+      atlassian = {
+        command = "uvx";
+        args = [ "mcp-atlassian" ];
+        env = {
+          JIRA_URL = "{env:JIRA_URL}";
+          JIRA_USERNAME = "{env:JIRA_USERNAME}";
+          JIRA_API_TOKEN = "{env:JIRA_TUI_JIRA_API_TOKEN}";
+          CONFLUENCE_URL = "{env:CONFLUENCE_URL}";
+          CONFLUENCE_USERNAME = "{env:CONFLUENCE_USERNAME}";
+          CONFLUENCE_API_TOKEN = "{env:CONFLUENCE_API_TOKEN}";
+          READ_ONLY_MODE = "true";
+        };
+      };
+    };
+  };
+
   programs.claude-code = {
     enable = false;
     settings = {
@@ -9,24 +28,24 @@
       # };
     };
 
-    mcpServers = {
-      github = {
-        type = "http";
-        url = "https://api.githubcopilot.com/mcp/";
-      };
-      filesystem = {
-        type = "stdio";
-        command = "npx";
-        args = [
-          "-y"
-          "@modelcontextprotocol/server-filesystem"
-          "/tmp"
-        ];
-      };
-      # TODO: Add when available
-      # serena = {
-      # };
-    };
+    # mcpServers = {
+    #   github = {
+    #     type = "http";
+    #     url = "https://api.githubcopilot.com/mcp/";
+    #   };
+    #   filesystem = {
+    #     type = "stdio";
+    #     command = "npx";
+    #     args = [
+    #       "-y"
+    #       "@modelcontextprotocol/server-filesystem"
+    #       "/tmp"
+    #     ];
+    #   };
+    #   # TODO: Add when available
+    #   # serena = {
+    #   # };
+    # };
   };
 
   programs.gemini-cli = {
@@ -49,6 +68,7 @@
   # opencode
   programs.opencode = {
     enable = true;
+    enableMcpIntegration = true;
     settings = {
       theme = "cyberdream";
       # model = "anthropic/claude-sonnet-4-20250514";

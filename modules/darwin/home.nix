@@ -23,6 +23,7 @@
         [
           # Development
           jetbrains-toolbox
+          uv
           databricks-cli
 
           # Cloud and DevOps
