@@ -70,7 +70,7 @@
     enable = true;
     enableMcpIntegration = true;
     settings = {
-      theme = "cyberdream";
+      theme = "lucent-orng";
       # model = "anthropic/claude-sonnet-4-20250514";
       autoupdate = true;
     };
