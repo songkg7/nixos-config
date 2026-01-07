@@ -26,6 +26,17 @@
           EXA_API_KEY = "{env:EXA_API_KEY}";
         };
       };
+      mongodb = {
+        command = "npx";
+        args = [
+          "-y"
+          "mongodb-mcp-server@latest"
+          "--readOnly"
+        ];
+        env = {
+          MDB_MCP_CONNECTION_STRING = "{env:MDB_MCP_CONNECTION_STRING_INT}";
+        };
+      };
     };
   };
 
