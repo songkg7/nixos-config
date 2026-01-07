@@ -16,6 +16,7 @@
         };
       };
       exa = {
+        disabled = true;
         command = "npx";
         args = [
           "-y"
