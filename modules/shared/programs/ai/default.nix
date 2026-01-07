@@ -37,6 +37,14 @@
           MDB_MCP_CONNECTION_STRING = "{env:MDB_MCP_CONNECTION_STRING_INT}";
         };
       };
+      postgres = {
+        command = "uvx";
+        args = [
+          "postgres-mcp"
+          "--access-mode=restricted"
+          "{env:POSTGRES_MCP_DATABASE_URL_INT}"
+        ];
+      };
     };
   };
 
