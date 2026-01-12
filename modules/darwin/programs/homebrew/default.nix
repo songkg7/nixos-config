@@ -54,6 +54,7 @@
       "google-chrome"
       "comet"
       "spotify"
+      "opencode-desktop"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       # NOTE: Apple Silicon only
