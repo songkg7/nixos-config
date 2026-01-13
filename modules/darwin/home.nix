@@ -89,6 +89,9 @@
             [
               # NOTE: personal use only
               helix
+
+              # AI
+              mgrep
             ]
           else
             [ ]
