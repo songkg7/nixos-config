@@ -47,10 +47,6 @@
       export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 
       # Custom functions
-      lk() {
-        cd "$(walk --icons "$@")"
-      }
-
       sd() {
         cd "$(fd . --type d | fzf)"
       }
@@ -82,6 +78,19 @@
 
     zsh-abbr = {
       enable = true;
+    };
+
+    # TODO: add extra profile
+    # profileExtra = ''
+    # '';
+    siteFunctions = {
+      mkcd = ''
+        mkdir --parents "$1" && cd "$1"
+      '';
+
+      lk = ''
+        cd "$(walk --icons "$@")"
+      '';
     };
   };
 }
