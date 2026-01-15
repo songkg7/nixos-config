@@ -46,6 +46,7 @@
           qsv
           tmux
           trash-cli
+          pueue
 
           age
           chezmoi
