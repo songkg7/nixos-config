@@ -35,6 +35,7 @@
     vd = "warp-cli disconnect";
     h = "atsearch";
     hh = "atuin search -i";
+    rm = "trash";
   };
 
   programs.zsh = {
