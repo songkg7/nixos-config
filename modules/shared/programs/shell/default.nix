@@ -40,6 +40,11 @@
 
   programs.zsh = {
     enable = true;
+
+    loginExtra = ''
+      figlet -f mike "Hello $(echo Haril)" | lolcat
+    '';
+
     initContent = lib.mkOrder 0 ''
       # For GPG
       export GPG_TTY=$(tty)
@@ -48,14 +53,6 @@
       export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 
       # Custom functions
-      sd() {
-        cd "$(fd . --type d | fzf)"
-      }
-
-      atsearch() {
-        atuin search "$1" --format "{host}\t{command}"
-      }
-
       prompt_context() {
         if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
           prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
@@ -64,9 +61,6 @@
 
       # Warp terminal integration
       printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
-
-      # Startup splash
-      figlet -f mike "Hello $(echo Haril)" | lolcat
     '';
 
     syntaxHighlighting = {
@@ -91,6 +85,14 @@
 
       lk = ''
         cd "$(walk --icons "$@")"
+      '';
+
+      atsearch = ''
+        atuin search "$1" --format "{host}\t{command}"
+      '';
+
+      sd = ''
+        cd "$(fd . --type d | fzf)"
       '';
     };
   };
