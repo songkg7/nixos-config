@@ -51,9 +51,6 @@
     '';
 
     initContent = lib.mkOrder 0 ''
-      # For GPG
-      export GPG_TTY=$(tty)
-
       # Warp terminal integration
       printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
     '';

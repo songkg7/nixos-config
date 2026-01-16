@@ -112,6 +112,7 @@
         ../shared/programs/kubernetes
         ../shared/programs/aws
         ../shared/programs/age
+        ../shared/programs/gpg
 
         ../darwin/programs/aerospace
         ../darwin/programs/ssh

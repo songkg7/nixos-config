@@ -38,7 +38,7 @@
         ../shared/programs/yazi
         ../shared/programs/shell
         ../shared/programs/age
-        # ../shared/programs/gpg
+        ../shared/programs/gpg
         # ../shared/programs/jq
         #
         # ../linux/programs/wayland
