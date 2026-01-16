@@ -21,7 +21,7 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixvim = {
       url = "github:nix-community/nixvim";
