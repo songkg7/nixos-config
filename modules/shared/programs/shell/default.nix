@@ -21,6 +21,11 @@
     GUM_FILTER_REVERSE = "true";
   };
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "/Applications/Ghostty.app/Contents/MacOS"
+  ];
+
   home.shellAliases = {
     vi = "nvim";
     kc = "kubectl";
@@ -48,16 +53,6 @@
     initContent = lib.mkOrder 0 ''
       # For GPG
       export GPG_TTY=$(tty)
-
-      export PATH="$HOME/.local/bin:$PATH"
-      export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
-
-      # Custom functions
-      prompt_context() {
-        if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-          prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-        fi
-      }
 
       # Warp terminal integration
       printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
@@ -93,6 +88,12 @@
 
       sd = ''
         cd "$(fd . --type d | fzf)"
+      '';
+
+      prompt_context = ''
+        if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+          prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+        fi
       '';
     };
   };
