@@ -12,6 +12,10 @@ in
     publicKeys = [ haril ];
     armor = true;
   };
+  "allowed-signers.age" = {
+    publicKeys = [ haril ];
+    armor = true;
+  };
   "awsconfig-work.age" = {
     publicKeys = [ haril ];
   };

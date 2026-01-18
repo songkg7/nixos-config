@@ -16,6 +16,10 @@ in
         file = secretsPath + /gitconfig-work.age;
         path = "${homeConfig}/git/gitconfig-work";
       };
+      allowed-signers = {
+        file = secretsPath + /allowed-signers.age;
+        path = "${homeConfig}/git/allowed_signers";
+      };
       "mise.work.toml" = {
         file = secretsPath + /mise-work-env.age;
         path = "${homeConfig}/mise/conf.d/mise.work.toml";
