@@ -21,8 +21,12 @@
       home.packages =
         with pkgs;
         [
+          # Databases / Analytics
+          duckdb
+
           # Development
           jetbrains-toolbox
+
           uv
           databricks-cli
 

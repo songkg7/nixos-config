@@ -13,6 +13,9 @@
       home.homeDirectory = "/home/haril";
 
       home.packages = with pkgs; [
+        # Databases / Analytics
+        duckdb
+
         # Development
         # curl
         # jetbrains.datagrip
