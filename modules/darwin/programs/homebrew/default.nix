@@ -55,6 +55,7 @@
       "comet"
       "spotify"
       "opencode-desktop"
+      "gcloud-cli"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       # NOTE: Apple Silicon only
