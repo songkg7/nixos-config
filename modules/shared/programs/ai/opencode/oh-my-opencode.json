@@ -3,10 +3,22 @@
   "google_auth": false,
   "agents": {
     "Sisyphus": {
-      "model": "openai/gpt-5.2-codex"
+      "model": "openai/gpt-5.1-codex"
+    },
+    "librarian": {
+      "model": "google/gemini-3-flash-preview"
     },
     "oracle": {
       "model": "openai/gpt-5.2"
+    },
+    "frontend-ui-ux-engineer": {
+      "model": "google/gemini-3-pro-high"
+    },
+    "document-writer": {
+      "model": "google/gemini-2.5-flash"
+    },
+    "multimodal-looker": {
+      "model": "google/gemini-2.5-flash"
     }
   }
 }
