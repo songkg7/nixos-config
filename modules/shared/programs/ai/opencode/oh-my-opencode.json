@@ -9,7 +9,7 @@
       "model": "google/gemini-3-flash-preview"
     },
     "oracle": {
-      "model": "openai/gpt-5.2"
+      "model": "openai/gpt-5.2-pro"
     },
     "frontend-ui-ux-engineer": {
       "model": "google/gemini-3-pro-high"
