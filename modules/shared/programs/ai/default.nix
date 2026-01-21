@@ -45,6 +45,10 @@
           "{env:POSTGRES_MCP_DATABASE_URL_INT}"
         ];
       };
+      osgrep = {
+        command = "osgrep";
+        args = [ "mcp" ];
+      };
     };
   };
 
