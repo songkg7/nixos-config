@@ -1,6 +1,12 @@
 pre-commit:
   commands:
-    validate:
-      run: nix flake check
     deadnix:
-      run: deadnix --edit
+      run: deadnix --edit .
+      stage_fixed: true
+
+pre-push:
+  commands:
+    validate:
+      run: nix flake check --all-systems
+    deadnix:
+      run: deadnix .
