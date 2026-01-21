@@ -14,8 +14,10 @@
 - `nix build .#darwinConfigurations.work.system` - Build without applying (test build)
 
 ## Git Hooks & Automation
-- Pre-commit hooks automatically run `nix flake check --all-systems` and `deadnix --edit`
+- Pre-commit hooks run `deadnix --edit` (auto-fix)
+- Pre-push hooks run `nix flake check --all-systems` and `deadnix .` (check-only)
 - Hooks configured via lefthook (lefthook.yml)
+- Before every commit, confirm `AGENTS.md` is up to date
 
 ## Code Style Guidelines
 - **Formatting**: Use `nixfmt-tree` (default formatter set in flake.nix)
