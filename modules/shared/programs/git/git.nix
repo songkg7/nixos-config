@@ -14,6 +14,7 @@
       ".direnv"
       "mise.local.toml"
       "mise.*.local.toml"
+      ".osgrep"
     ];
 
     settings = {
