@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
@@ -17,7 +19,7 @@
 
   networking = {
     # networking.hostName = "nixos";
-    nameservers = [
+    nameservers = lib.mkIf (!config.wsl.enable) [
       "1.1.1.1"
       "1.0.0.1"
     ];
