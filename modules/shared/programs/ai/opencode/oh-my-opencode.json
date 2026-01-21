@@ -10,15 +10,6 @@
     },
     "oracle": {
       "model": "openai/gpt-5.2-pro"
-    },
-    "frontend-ui-ux-engineer": {
-      "model": "google/gemini-3-pro-high"
-    },
-    "document-writer": {
-      "model": "google/gemini-2.5-flash"
-    },
-    "multimodal-looker": {
-      "model": "google/gemini-2.5-flash"
     }
   }
 }
