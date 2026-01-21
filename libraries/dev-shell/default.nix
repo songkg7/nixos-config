@@ -9,7 +9,6 @@ in
 pkgs.mkShell {
   packages = with pkgs; [
     # for Nix
-    nixfmt-rfc-style
     alejandra
     nixpkgs-fmt
     deadnix
@@ -70,7 +69,7 @@ pkgs.mkShell {
 
     # Available tools summary
     echo "📦 Available dev tools:"
-    echo "├─ Nix formatters: nixfmt-rfc-style(default), nixpkgs-fmt"
+    echo "├─ Nix formatters: nixfmt-tree (nix fmt .), nixpkgs-fmt"
     echo "├─ Nix analyzers:  deadnix, statix, nix-tree, nix-du"
     echo "├─ Secrets:        agenix (encrypt/decrypt secrets)"
     echo "└─ Utilities:      yq, tree, git-lfs, tmux, screen"
