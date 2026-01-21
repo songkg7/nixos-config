@@ -27,6 +27,7 @@
         };
       };
       mongodb = {
+        disabled = true;
         command = "npx";
         args = [
           "-y"
@@ -38,6 +39,7 @@
         };
       };
       postgres = {
+        disabled = true;
         command = "uvx";
         args = [
           "postgres-mcp"
