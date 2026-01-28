@@ -1,4 +1,8 @@
 {
+  environment,
+  ...
+}:
+{
   programs.mcp = {
     enable = true;
     servers = {
@@ -103,7 +107,7 @@
 
   # opencode
   programs.opencode = {
-    enable = true;
+    enable = if environment == "personal" then false else true;
     enableMcpIntegration = true;
     settings = {
       theme = "lucent-orng";
@@ -120,9 +124,9 @@
   };
 
   home.file = {
-    ".config/opencode/opencode.json" = {
-      source = ./opencode/opencode.json;
-    };
+    # ".config/opencode/opencode.json" = {
+    #   source = ./opencode/opencode.json;
+    # };
     ".config/opencode/oh-my-opencode.json" = {
       source = ./opencode/oh-my-opencode.json;
     };
