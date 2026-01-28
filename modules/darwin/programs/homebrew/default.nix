@@ -16,6 +16,7 @@
     # NOTE: pakcages should be installed via nixpkgs whenever possible
     brews = [
       # https://tailscale.com/kb/1065/macos-variants
+      "mole"
     ]
     ++ lib.optionals (environment == "work") [
       # NOTE: business use only

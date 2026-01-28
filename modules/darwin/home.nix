@@ -96,7 +96,7 @@
               helix
 
               # AI
-              mgrep
+              # mgrep
             ]
           else
             [ ]
