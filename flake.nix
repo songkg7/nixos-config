@@ -88,7 +88,8 @@
       # Darwin configurations
       darwinConfigurations = {
         work = mkDarwinSystem "aarch64-darwin" "work";
-        personal = mkDarwinSystem "x86_64-darwin" "personal";
+        personal = mkDarwinSystem "aarch64-darwin" "personal";
+        personal-intel = mkDarwinSystem "x86_64-darwin" "personal";
       };
 
       # Linux configuration

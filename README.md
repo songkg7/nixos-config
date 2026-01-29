@@ -39,9 +39,13 @@ nixos-rebuild switch --flake '.#linux' --sudo
 nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.work.system'
 sudo ./result/sw/bin/darwin-rebuild switch --flake '.#work'
 
-# For Intel Macs (Personal)
+# For Apple Silicon Macs (Personal)
 nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.personal.system'
 sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal'
+
+# For Intel Macs (Personal)
+nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.personal-intel.system'
+sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal-intel'
 ```
 
 ## 🔄 Updates & Maintenance
@@ -105,4 +109,3 @@ This configuration includes custom AI agents:
 ## 📝 License
 
 This project is [MIT Licensed](./LICENSE).
-

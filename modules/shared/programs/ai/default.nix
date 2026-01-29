@@ -129,7 +129,11 @@
                 output = 65535;
               };
               modalities = {
-                input = [ "text" "image" "pdf" ];
+                input = [
+                  "text"
+                  "image"
+                  "pdf"
+                ];
                 output = [ "text" ];
               };
             };
@@ -140,7 +144,11 @@
                 output = 65536;
               };
               modalities = {
-                input = [ "text" "image" "pdf" ];
+                input = [
+                  "text"
+                  "image"
+                  "pdf"
+                ];
                 output = [ "text" ];
               };
             };
@@ -151,7 +159,11 @@
                 output = 65536;
               };
               modalities = {
-                input = [ "text" "image" "pdf" ];
+                input = [
+                  "text"
+                  "image"
+                  "pdf"
+                ];
                 output = [ "text" ];
               };
             };
@@ -173,7 +185,10 @@
                 output = 128000;
               };
               modalities = {
-                input = [ "text" "image" ];
+                input = [
+                  "text"
+                  "image"
+                ];
                 output = [ "text" ];
               };
               options = {
@@ -191,7 +206,10 @@
                 output = 128000;
               };
               modalities = {
-                input = [ "text" "image" ];
+                input = [
+                  "text"
+                  "image"
+                ];
                 output = [ "text" ];
               };
               options = {
