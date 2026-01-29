@@ -113,6 +113,98 @@
       theme = "lucent-orng";
       # model = "anthropic/claude-sonnet-4-20250514";
       autoupdate = true;
+      plugin = [
+        "oh-my-opencode"
+        "opencode-openai-codex-auth"
+        "opencode-antigravity-auth@1.1.2"
+      ];
+      "$schema" = "https://opencode.ai/config.json";
+      provider = {
+        google = {
+          models = {
+            "gemini-3-pro-high" = {
+              name = "Gemini 3 Pro High (Antigravity)";
+              limit = {
+                context = 1048576;
+                output = 65535;
+              };
+              modalities = {
+                input = [ "text" "image" "pdf" ];
+                output = [ "text" ];
+              };
+            };
+            "gemini-3-flash" = {
+              name = "Gemini 3 Flash (Antigravity)";
+              limit = {
+                context = 1048576;
+                output = 65536;
+              };
+              modalities = {
+                input = [ "text" "image" "pdf" ];
+                output = [ "text" ];
+              };
+            };
+            "gemini-2.5-flash" = {
+              name = "Gemini 2.5 Flash (Antigravity)";
+              limit = {
+                context = 1048576;
+                output = 65536;
+              };
+              modalities = {
+                input = [ "text" "image" "pdf" ];
+                output = [ "text" ];
+              };
+            };
+          };
+        };
+        openai = {
+          options = {
+            reasoningEffort = "medium";
+            reasoningSummary = "auto";
+            textVerbosity = "medium";
+            include = [ "reasoning.encrypted_content" ];
+            store = false;
+          };
+          models = {
+            "gpt-5.2" = {
+              name = "GPT 5.2 Medium (OAuth)";
+              limit = {
+                context = 272000;
+                output = 128000;
+              };
+              modalities = {
+                input = [ "text" "image" ];
+                output = [ "text" ];
+              };
+              options = {
+                reasoningEffort = "medium";
+                reasoningSummary = "auto";
+                textVerbosity = "medium";
+                include = [ "reasoning.encrypted_content" ];
+                store = false;
+              };
+            };
+            "gpt-5.2-medium" = {
+              name = "GPT 5.2 Medium (OAuth)";
+              limit = {
+                context = 272000;
+                output = 128000;
+              };
+              modalities = {
+                input = [ "text" "image" ];
+                output = [ "text" ];
+              };
+              options = {
+                reasoningEffort = "medium";
+                reasoningSummary = "auto";
+                textVerbosity = "medium";
+                include = [ "reasoning.encrypted_content" ];
+                store = false;
+              };
+            };
+          };
+        };
+      };
     };
     # agents = {
     #   code-reviewer = ./opencode/code-reviewer-agent.md;
