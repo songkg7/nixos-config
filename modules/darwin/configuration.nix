@@ -19,5 +19,6 @@
 
   imports = [
     (import ./programs/homebrew { inherit environment pkgs lib; })
+    (import ./programs/macos-defaults { })
   ];
 }

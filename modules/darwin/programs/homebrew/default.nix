@@ -41,6 +41,7 @@
       "ghostty"
       "karabiner-elements"
       "notion"
+      "notion-calendar"
       "setapp"
       "warp"
       "telegram"
