@@ -25,7 +25,7 @@
     };
     NSGlobalDomain = {
       ApplePressAndHoldEnabled = false;
-      KeyRepeat = 1;
+      KeyRepeat = 100;
     };
     CustomUserPreferences = {
       "kCFPreferencesAnyApplication" = {
