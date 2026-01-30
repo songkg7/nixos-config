@@ -1,5 +1,4 @@
 {
-  environment,
   ...
 }:
 {
@@ -107,7 +106,7 @@
 
   # opencode
   programs.opencode = {
-    enable = if environment == "personal" then false else true;
+    enable = true;
     enableMcpIntegration = true;
     settings = {
       theme = "lucent-orng";
