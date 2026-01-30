@@ -1,3 +1,7 @@
+{ pkgs, ... }:
+let
+  brewPrefix = if pkgs.stdenv.isAarch64 then "/opt/homebrew" else "/usr/local";
+in
 {
   programs.aerospace = {
     enable = true;
@@ -42,7 +46,7 @@
       exec = {
         inherit-env-vars = true;
         env-vars = {
-          PATH = "/opt/homebrew/bin:/opt/homebrew/sbin:\${PATH}";
+          PATH = "${brewPrefix}/bin:${brewPrefix}/sbin:\${PATH}";
         };
       };
 

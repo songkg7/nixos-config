@@ -1,5 +1,7 @@
 {
+  config,
   environment,
+  inputs,
   lib,
   pkgs,
   ...
@@ -17,8 +19,22 @@
 
   system.stateVersion = 6;
 
+  nix-homebrew = {
+    enable = true;
+    user = config.system.primaryUser;
+    autoMigrate = true;
+    enableRosetta = false;
+    taps = {
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+    };
+    mutableTaps = false;
+  };
+
+  homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
+
   imports = [
-    (import ./programs/homebrew { inherit environment pkgs lib; })
+    (import ./programs/homebrew { inherit config environment pkgs lib; })
     (import ./programs/macos-defaults { })
   ];
 }

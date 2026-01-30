@@ -19,6 +19,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -63,6 +75,7 @@
           inherit system;
           modules = [
             inputs.agenix.darwinModules.default
+            inputs.nix-homebrew.darwinModules.nix-homebrew
             home-manager-shared
             nixpkgs-shared
             home-manager.darwinModules.home-manager

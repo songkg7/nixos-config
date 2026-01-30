@@ -14,7 +14,6 @@ Personal Nix configuration supporting macOS (Darwin) and Linux systems with comp
 - **Development**: Git with Delta, GitHub CLI, Direnv, Mise
 - **Editors**: Neovim with AstroNvim configuration
 - **Utilities**: Bat, Ranger, JQ, Fonts configuration
-- **AI Tools**: OpenCode with custom agents, Gemini CLI
 - **macOS specific**: AeroSpace, Homebrew, Homerow
 - **Security**: 1Password, GPG configuration
 
@@ -25,6 +24,8 @@ Install Nix with flakes support:
 ```sh
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
 ```
+
+**macOS Notes:** `nix-homebrew` manages Homebrew (no manual install required). Xcode CLT may be required, and `masApps` requires being signed into the App Store.
 
 ## 🛠 Installation
 
@@ -100,11 +101,6 @@ nix develop
 
 ### GPG Setup
 - Import GPG keys and enable iCloud sync for secure key management
-
-### OpenCode AI Agents
-This configuration includes custom AI agents:
-- **Code Reviewer**: Specialized in code quality and security reviews
-- **Documentation**: Focused on creating clear, comprehensive documentation
 
 ## 📝 License
 

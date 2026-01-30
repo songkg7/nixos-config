@@ -1,4 +1,5 @@
 {
+  config,
   environment,
   pkgs,
   lib,
@@ -7,11 +8,11 @@
 {
   homebrew = {
     enable = true;
+    user = config.system.primaryUser;
     onActivation.autoUpdate = true;
-    onActivation.cleanup = "uninstall";
+    onActivation.cleanup = "none";
 
-    taps = [
-    ];
+    taps = lib.mkDefault [ ];
 
     # NOTE: pakcages should be installed via nixpkgs whenever possible
     brews = [
