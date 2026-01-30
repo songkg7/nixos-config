@@ -6,8 +6,6 @@
     nix-direnv = {
       enable = true;
     };
-    # TODO:
-    # mise.enable = true;
   };
 
   home.file."nixos-config/.envrc".text = ''
