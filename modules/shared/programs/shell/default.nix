@@ -76,7 +76,9 @@ in
     };
 
     profileExtra = lib.optionalString pkgs.stdenv.isDarwin ''
-      fpath+=("${brewPrefix}/share/zsh/site-functions")
+      if [[ -d "${brewPrefix}/share/zsh/site-functions" ]]; then
+        fpath+=("${brewPrefix}/share/zsh/site-functions")
+      fi
 
       if [[ -r "$HOME/.orbstack/shell/init.zsh" ]]; then
         source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
