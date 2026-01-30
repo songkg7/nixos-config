@@ -26,5 +26,9 @@
     "explore": {
       "model": "google/gemini-3-flash-preview"
     }
+  },
+  "git_master": {
+    "commit_footer": false,
+    "include_co_authored_by": false
   }
 }
