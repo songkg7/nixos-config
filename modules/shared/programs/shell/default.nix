@@ -1,7 +1,11 @@
 {
   lib,
+  pkgs,
   ...
 }:
+let
+  brewPrefix = if pkgs.stdenv.isAarch64 then "/opt/homebrew" else "/usr/local";
+in
 {
   imports = [
     ./atuin.nix
@@ -24,6 +28,10 @@
   home.sessionPath = [
     "$HOME/.local/bin"
     "/Applications/Ghostty.app/Contents/MacOS"
+  ]
+  ++ lib.optionals pkgs.stdenv.isDarwin [
+    "${brewPrefix}/bin"
+    "${brewPrefix}/sbin"
   ];
 
   home.shellAliases = {
@@ -67,9 +75,18 @@
       enable = true;
     };
 
-    # TODO: add extra profile
-    # profileExtra = ''
-    # '';
+    profileExtra = lib.optionalString pkgs.stdenv.isDarwin ''
+      fpath+=("${brewPrefix}/share/zsh/site-functions")
+
+      if [[ -r "$HOME/.orbstack/shell/init.zsh" ]]; then
+        source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
+      fi
+
+      toolboxDir="$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+      if [[ -d "$toolboxDir" ]]; then
+        path+=("$toolboxDir")
+      fi
+    '';
     siteFunctions = {
       mkcd = ''
         mkdir -p "$1" && cd "$1"

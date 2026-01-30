@@ -34,7 +34,14 @@
   homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
 
   imports = [
-    (import ./programs/homebrew { inherit config environment pkgs lib; })
+    (import ./programs/homebrew {
+      inherit
+        config
+        environment
+        pkgs
+        lib
+        ;
+    })
     (import ./programs/macos-defaults { })
   ];
 }
