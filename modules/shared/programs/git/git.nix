@@ -16,6 +16,7 @@
       "mise.*.local.toml"
       ".osgrep"
       ".sisyphus"
+      ".worktrees"
     ];
 
     settings = {
