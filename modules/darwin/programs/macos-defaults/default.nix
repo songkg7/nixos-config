@@ -25,6 +25,7 @@
     };
     NSGlobalDomain = {
       ApplePressAndHoldEnabled = false;
+      "com.apple.keyboard.fnState" = true;
       KeyRepeat = 1;
     };
     CustomUserPreferences = {
