@@ -31,6 +31,26 @@
       flake = false;
     };
 
+    homebrew-steipete = {
+      url = "github:steipete/homebrew-tap";
+      flake = false;
+    };
+
+    homebrew-antoniorodr = {
+      url = "github:antoniorodr/homebrew-memo";
+      flake = false;
+    };
+
+    homebrew-yakitrak = {
+      url = "github:yakitrak/homebrew-yakitrak";
+      flake = false;
+    };
+
+    homebrew-openhue = {
+      url = "github:openhue/homebrew-cli";
+      flake = false;
+    };
+
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

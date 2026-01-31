@@ -27,6 +27,10 @@
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
+      "steipete/tap" = inputs.homebrew-steipete;
+      "antoniorodr/memo" = inputs.homebrew-antoniorodr;
+      "yakitrak/yakitrak" = inputs.homebrew-yakitrak;
+      "openhue/cli" = inputs.homebrew-openhue;
     };
     mutableTaps = false;
   };
