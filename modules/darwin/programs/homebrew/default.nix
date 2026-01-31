@@ -16,15 +16,10 @@
 
     # NOTE: pakcages should be installed via nixpkgs whenever possible
     brews = [
-      # https://tailscale.com/kb/1065/macos-variants
       "mole"
     ]
     ++ lib.optionals (environment == "work") [
       # NOTE: business use only
-    ]
-    ++ lib.optionals (pkgs.stdenv.isDarwin && pkgs.stdenv.isx86_64) [
-      # NOTE: personal-intel use only
-      "tailscale"
     ];
 
     casks = [
