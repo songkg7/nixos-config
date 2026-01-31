@@ -32,7 +32,7 @@
       "yakitrak/yakitrak" = inputs.homebrew-yakitrak;
       "openhue/cli" = inputs.homebrew-openhue;
     };
-    mutableTaps = false;
+    mutableTaps = true;
   };
 
   homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
