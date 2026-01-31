@@ -22,8 +22,8 @@
     ++ lib.optionals (environment == "work") [
       # NOTE: business use only
     ]
-    ++ lib.optionals (environment == "personal") [
-      # NOTE: personal use only
+    ++ lib.optionals (pkgs.stdenv.isDarwin && pkgs.stdenv.isx86_64) [
+      # NOTE: personal-intel use only
       "tailscale"
     ];
 
@@ -57,6 +57,7 @@
       "google-chrome"
       "comet"
       "spotify"
+      "tailscale-app"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       # NOTE: Apple Silicon only
