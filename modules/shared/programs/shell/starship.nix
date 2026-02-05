@@ -43,7 +43,7 @@
       username = {
         style_user = "bright-yellow bold italic";
         style_root = "purple bold italic";
-        format = "[⭘ $user]($style) ";
+        format = "[ ⭘ $user]($style) ";
         disabled = false;
         show_always = false;
       };
@@ -72,7 +72,7 @@
 
       localip = {
         ssh_only = true;
-        format = " ◯[$localipv4](bold magenta)";
+        format = " ◯ [$localipv4](bold magenta)";
         disabled = false;
       };
 
