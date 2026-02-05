@@ -59,7 +59,7 @@
   };
 
   programs.claude-code = {
-    enable = false;
+    enable = true;
     settings = {
       includeCoAuthoredBy = false;
       # env = {
@@ -82,9 +82,6 @@
     #       "/tmp"
     #     ];
     #   };
-    #   # TODO: Add when available
-    #   # serena = {
-    #   # };
     # };
   };
 
