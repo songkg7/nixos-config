@@ -16,7 +16,7 @@
           CONFLUENCE_URL = "{env:CONFLUENCE_URL}";
           CONFLUENCE_USERNAME = "{env:CONFLUENCE_USERNAME}";
           CONFLUENCE_API_TOKEN = "{env:CONFLUENCE_API_TOKEN}";
-          READ_ONLY_MODE = "true";
+          READ_ONLY_MODE = "false";
         };
       };
       exa = {
