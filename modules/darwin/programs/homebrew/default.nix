@@ -49,6 +49,7 @@
       "comet"
       "spotify"
       "tailscale-app"
+      "conductor"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       # NOTE: Apple Silicon only
