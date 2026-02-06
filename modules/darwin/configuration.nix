@@ -46,6 +46,8 @@
         lib
         ;
     })
-    (import ./programs/macos-defaults { })
+    (import ./programs/macos-defaults {
+      inherit environment lib;
+    })
   ];
 }

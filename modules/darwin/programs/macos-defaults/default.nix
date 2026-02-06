@@ -1,4 +1,6 @@
 {
+  environment,
+  lib,
   ...
 }:
 {
@@ -10,11 +12,13 @@
       expose-group-apps = true;
       show-recents = false;
       persistent-apps = [
-        { app = "/Applications/Notion Calendar.app"; }
         { app = "/Applications/Spotify.app"; }
+        { app = "/Applications/Warp.app"; }
+      ]
+      ++ lib.optionals (environment == "personal") [
+        { app = "/Applications/Notion Calendar.app"; }
         { app = "/Applications/KakaoTalk.app"; }
         { app = "/Applications/Discord.app"; }
-        { app = "/Applications/Warp.app"; }
       ];
       persistent-others = [
         { folder = "/Users/haril/Downloads"; }

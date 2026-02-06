@@ -36,17 +36,13 @@
       "input-source-pro"
       "ghostty"
       "karabiner-elements"
-      "notion"
-      "notion-calendar"
       "setapp"
       "warp"
-      "telegram"
       "jordanbaird-ice"
       "loop"
       "raycast"
       "neohtop"
       "obsidian"
-      "discord"
       "iina"
       "antigravity"
       "google-chrome"
@@ -69,17 +65,22 @@
     ++ lib.optionals (environment == "personal") [
       # NOTE: personal use only
       "adguard"
+      "discord"
       "elgato-stream-deck"
+      "notion"
+      "notion-calendar"
       "orbstack"
+      "telegram"
     ];
 
     masApps = {
       "Amphetamine" = 937984704;
       "Bandizip" = 1265704574;
       "Encrypto" = 935235287;
-      "KakaoTalk" = 869223134;
       "RunCat" = 1429033973;
       "ScreenBrush" = 1233965871;
+    } // lib.optionalAttrs (environment == "personal") {
+      "KakaoTalk" = 869223134;
     };
   };
 }
