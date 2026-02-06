@@ -23,7 +23,7 @@
     enable = true;
     user = config.system.primaryUser;
     autoMigrate = true;
-    enableRosetta = false;
+    enableRosetta = pkgs.stdenv.isAarch64;
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
