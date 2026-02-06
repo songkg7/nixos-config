@@ -1,10 +1,13 @@
 {
   environment,
-  lib,
+  user-profile,
   ...
 }:
+let
+  username = user-profile.username;
+  envConfig = (import ../../environments).${environment};
+in
 {
-  # Dock is managed as a fixed list and may overwrite manual changes.
   system.defaults = {
     dock = {
       tilesize = 40;
@@ -15,13 +18,9 @@
         { app = "/Applications/Spotify.app"; }
         { app = "/Applications/Warp.app"; }
       ]
-      ++ lib.optionals (environment == "personal") [
-        { app = "/Applications/Notion Calendar.app"; }
-        { app = "/Applications/KakaoTalk.app"; }
-        { app = "/Applications/Discord.app"; }
-      ];
+      ++ envConfig.dockApps;
       persistent-others = [
-        { folder = "/Users/haril/Downloads"; }
+        { folder = "/Users/${username}/Downloads"; }
       ];
     };
     spaces = {

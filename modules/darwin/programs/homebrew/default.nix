@@ -5,6 +5,9 @@
   lib,
   ...
 }:
+let
+  envConfig = (import ../../environments).${environment};
+in
 {
   homebrew = {
     enable = true;
@@ -14,16 +17,12 @@
 
     taps = lib.mkDefault [ ];
 
-    # NOTE: pakcages should be installed via nixpkgs whenever possible
     brews = [
       "mole"
     ]
-    ++ lib.optionals (environment == "work") [
-      # NOTE: business use only
-    ];
+    ++ envConfig.brews;
 
     casks = [
-      # NOTE: common use
       "slack"
       "1password"
       "1password-cli"
@@ -52,27 +51,9 @@
       "conductor"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
-      # NOTE: Apple Silicon only
       "opencode-desktop"
-      # "dayflow"
     ]
-    ++ lib.optionals (environment == "work") [
-      # NOTE: business use only
-      "cloudflare-warp"
-      "sdm"
-      "mongodb-compass"
-      "redis-insight"
-    ]
-    ++ lib.optionals (environment == "personal") [
-      # NOTE: personal use only
-      "adguard"
-      "discord"
-      "elgato-stream-deck"
-      "notion"
-      "notion-calendar"
-      "orbstack"
-      "telegram"
-    ];
+    ++ envConfig.casks;
 
     masApps = {
       "Amphetamine" = 937984704;
@@ -81,8 +62,6 @@
       "RunCat" = 1429033973;
       "ScreenBrush" = 1233965871;
     }
-    // lib.optionalAttrs (environment == "personal") {
-      "KakaoTalk" = 869223134;
-    };
+    // envConfig.masApps;
   };
 }

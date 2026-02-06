@@ -7,6 +7,7 @@
 }:
 let
   username = user-profile.username;
+  envConfig = (import ./environments).${environment};
 in
 {
   home-manager.useGlobalPkgs = true;
@@ -30,7 +31,6 @@ in
 
           # Development
           jetbrains-toolbox
-
           uv
           databricks-cli
 
@@ -66,13 +66,6 @@ in
 
           # GUI Apps
           alt-tab-macos
-          # ice-bar
-          # loopwm
-          # raycast
-          # neohtop
-          # obsidian
-          # discord
-          # iina
 
           # Fonts
           nerd-fonts.jetbrains-mono
@@ -80,31 +73,7 @@ in
           nerd-fonts.hack
           rubik
         ]
-        ++ (
-          if environment == "work" then
-            [
-              # NOTE: business use only
-              docker
-              colima
-              podman
-              podman-compose
-              glab
-            ]
-          else
-            [ ]
-        )
-        ++ (
-          if environment == "personal" then
-            [
-              # NOTE: personal use only
-              helix
-
-              # AI
-              # mgrep
-            ]
-          else
-            [ ]
-        );
+        ++ (map (name: pkgs.${name}) envConfig.packages);
 
       imports = [
         inputs.nixvim.homeModules.nixvim

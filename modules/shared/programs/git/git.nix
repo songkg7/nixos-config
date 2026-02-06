@@ -1,4 +1,13 @@
-{ config, user-profile, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  user-profile,
+  ...
+}:
+let
+  isDarwin = pkgs.stdenv.isDarwin;
+in
 {
   programs.git = {
     enable = true;
@@ -70,8 +79,6 @@
       };
       help.autocorrect = "prompt";
       gpg.format = "ssh";
-      "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-      "gpg \"ssh\"".allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
       filter.lfs = {
         clean = "git-lfs clean -- %f";
         smudge = "git-lfs smudge -- %f";
@@ -95,11 +102,15 @@
       advice = {
         skippedCherryPicks = false;
       };
+    }
+    // lib.optionalAttrs isDarwin {
+      "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      "gpg \"ssh\"".allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
     };
 
     lfs.enable = true;
 
-    includes = [
+    includes = lib.optionals isDarwin [
       {
         condition = "gitdir:~/projects/42dot/";
         path = "~/.config/git/gitconfig-work";

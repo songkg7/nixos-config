@@ -1,21 +1,23 @@
 {
   config,
-  environment,
   inputs,
-  lib,
   pkgs,
+  user-profile,
   ...
 }:
+let
+  username = user-profile.username;
+in
 {
   security.pam = {
     services.sudo_local.touchIdAuth = true;
   };
 
-  users.users.haril = {
-    home = "/Users/haril";
+  users.users.${username} = {
+    home = "/Users/${username}";
   };
 
-  system.primaryUser = "haril";
+  system.primaryUser = username;
 
   system.stateVersion = 6;
 
@@ -38,16 +40,7 @@
   homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
 
   imports = [
-    (import ./programs/homebrew {
-      inherit
-        config
-        environment
-        pkgs
-        lib
-        ;
-    })
-    (import ./programs/macos-defaults {
-      inherit environment lib;
-    })
+    ./programs/homebrew
+    ./programs/macos-defaults
   ];
 }

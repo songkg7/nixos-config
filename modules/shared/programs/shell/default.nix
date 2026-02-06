@@ -11,7 +11,7 @@ in
   imports = [
     ./atuin.nix
     ./fzf.nix
-    ./starship.nix
+    ./starship
     ./mise.nix
     ./zoxide.nix
   ];
