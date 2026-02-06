@@ -2,11 +2,17 @@
   config,
   lib,
   environment,
+  pkgs,
   ...
 }:
 let
   secretsPath = ../../../../secrets;
   homeConfig = "${config.home.homeDirectory}/.config";
+  envConfig =
+    if pkgs.stdenv.isDarwin then
+      (import ../../../darwin/environments).${environment}
+    else
+      { ageSecrets.hasAwsConfig = false; };
 in
 {
   age = {
@@ -29,7 +35,7 @@ in
         path = "${homeConfig}/mise/conf.d/mise.personal.toml";
       };
     }
-    // lib.optionalAttrs (environment == "work") {
+    // lib.optionalAttrs envConfig.ageSecrets.hasAwsConfig {
       "awsconfig-work" = {
         file = secretsPath + /awsconfig-work.age;
         path = "${config.home.homeDirectory}/.aws/config";

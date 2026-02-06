@@ -1,7 +1,6 @@
 {
   work = {
     packages = [
-      # NOTE: business use only - from home.nix
       "docker"
       "colima"
       "podman"
@@ -9,9 +8,7 @@
       "glab"
     ];
 
-    brews = [
-      # NOTE: business use only
-    ];
+    brews = [ ];
 
     casks = [
       "cloudflare-warp"
@@ -23,11 +20,17 @@
     masApps = { };
 
     dockApps = [ ];
+
+    sshIncludes = [ "~/.colima/ssh_config" ];
+
+    # Additional agenix secrets for work environment
+    ageSecrets = {
+      hasAwsConfig = true;
+    };
   };
 
   personal = {
     packages = [
-      # NOTE: personal use only - from home.nix
       "helix"
     ];
 
@@ -52,5 +55,11 @@
       { app = "/Applications/KakaoTalk.app"; }
       { app = "/Applications/Discord.app"; }
     ];
+
+    sshIncludes = [ "~/.orbstack/ssh/config" ];
+
+    ageSecrets = {
+      hasAwsConfig = false;
+    };
   };
 }

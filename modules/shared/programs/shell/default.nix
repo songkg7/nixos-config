@@ -28,9 +28,9 @@ in
 
   home.sessionPath = [
     "$HOME/.local/bin"
-    "/Applications/Ghostty.app/Contents/MacOS"
   ]
   ++ lib.optionals pkgs.stdenv.isDarwin [
+    "/Applications/Ghostty.app/Contents/MacOS"
     "${brewPrefix}/bin"
     "${brewPrefix}/sbin"
   ];
