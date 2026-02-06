@@ -1,4 +1,4 @@
-{ user-profile, ... }:
+{ config, user-profile, ... }:
 {
   programs.git = {
     enable = true;
@@ -71,7 +71,7 @@
       help.autocorrect = "prompt";
       gpg.format = "ssh";
       "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-      "gpg \"ssh\"".allowedSignersFile = "/Users/haril/.config/git/allowed_signers";
+      "gpg \"ssh\"".allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
       filter.lfs = {
         clean = "git-lfs clean -- %f";
         smudge = "git-lfs smudge -- %f";

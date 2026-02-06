@@ -82,6 +82,7 @@
       home-manager-shared = ./libraries/home-manager;
       nixpkgs-shared = ./libraries/nixpkgs;
       user-profile = {
+        username = "haril";
         personal = {
           name = "haril song";
           email = "songkg7@gmail.com";

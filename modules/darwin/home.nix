@@ -2,17 +2,21 @@
   pkgs,
   inputs,
   environment,
+  user-profile,
   ...
 }:
+let
+  username = user-profile.username;
+in
 {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
-  home-manager.users.haril =
+  home-manager.users.${username} =
     { config, ... }:
     {
-      home.username = "haril";
-      home.homeDirectory = "/Users/haril";
+      home.username = username;
+      home.homeDirectory = "/Users/${username}";
 
       home.file."haril-vault" = {
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/haril-vault";

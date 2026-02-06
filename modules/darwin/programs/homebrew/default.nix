@@ -80,7 +80,8 @@
       "Encrypto" = 935235287;
       "RunCat" = 1429033973;
       "ScreenBrush" = 1233965871;
-    } // lib.optionalAttrs (environment == "personal") {
+    }
+    // lib.optionalAttrs (environment == "personal") {
       "KakaoTalk" = 869223134;
     };
   };

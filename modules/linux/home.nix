@@ -1,16 +1,20 @@
 {
   pkgs,
   inputs,
+  user-profile,
   ...
 }:
+let
+  username = user-profile.username;
+in
 {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.haril =
+  home-manager.users.${username} =
     { ... }:
     {
-      home.username = "haril";
-      home.homeDirectory = "/home/haril";
+      home.username = username;
+      home.homeDirectory = "/home/${username}";
 
       home.packages = with pkgs; [
         # Databases / Analytics

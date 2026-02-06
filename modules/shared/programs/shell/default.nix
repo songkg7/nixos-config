@@ -4,7 +4,8 @@
   ...
 }:
 let
-  brewPrefix = if pkgs.stdenv.isAarch64 then "/opt/homebrew" else "/usr/local";
+  darwinUtils = import ../../../../libraries/darwin-utils.nix { inherit pkgs; };
+  inherit (darwinUtils) brewPrefix;
 in
 {
   imports = [
@@ -61,7 +62,7 @@ in
     initContent = lib.mkOrder 0 ''
       # Warp terminal integration
       printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
-      
+
       figlet -f mike "Hello $(echo Haril)" | lolcat
     '';
 

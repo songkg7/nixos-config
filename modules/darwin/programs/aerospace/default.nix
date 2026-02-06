@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
-  brewPrefix = if pkgs.stdenv.isAarch64 then "/opt/homebrew" else "/usr/local";
+  darwinUtils = import ../../../../libraries/darwin-utils.nix { inherit pkgs; };
+  inherit (darwinUtils) brewPrefix;
 in
 {
   programs.aerospace = {
