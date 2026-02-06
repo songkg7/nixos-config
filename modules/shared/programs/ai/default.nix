@@ -60,29 +60,6 @@
 
   programs.claude-code = {
     enable = true;
-    # settings = {
-    #   includeCoAuthoredBy = false;
-    # env = {
-    #   CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL = "1";
-    #   CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1";
-    # };
-    # };
-
-    # mcpServers = {
-    #   github = {
-    #     type = "http";
-    #     url = "https://api.githubcopilot.com/mcp/";
-    #   };
-    #   filesystem = {
-    #     type = "stdio";
-    #     command = "npx";
-    #     args = [
-    #       "-y"
-    #       "@modelcontextprotocol/server-filesystem"
-    #       "/tmp"
-    #     ];
-    #   };
-    # };
   };
 
   programs.gemini-cli = {
@@ -221,19 +198,12 @@
         };
       };
     };
-    # agents = {
-    #   code-reviewer = ./opencode/code-reviewer-agent.md;
-    #   documentation = ./opencode/documentation-agent.md;
-    # };
     commands = {
       commit = ./opencode/commit-command.md;
     };
   };
 
   home.file = {
-    # ".config/opencode/opencode.json" = {
-    #   source = ./opencode/opencode.json;
-    # };
     ".config/opencode/oh-my-opencode.json" = {
       source = ./opencode/oh-my-opencode.json;
     };

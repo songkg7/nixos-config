@@ -17,39 +17,28 @@ in
       home.homeDirectory = "/home/${username}";
 
       home.packages = with pkgs; [
-        # Databases / Analytics
         duckdb
-
-        # Development
-        # curl
-        # jetbrains.datagrip
-        # jetbrains.idea-ultimate
-
-        # Utility
         ngrok
         ripgrep
         fd
-        # slack
         unzip
-        # xdg-utils
       ];
 
       imports = [
         inputs.nixvim.homeModules.nixvim
         inputs.agenix.homeManagerModules.default
-
-        # ../shared/programs/1password
+        ../shared/programs/vim
         ../shared/programs/ai
-        ../shared/programs/bat
         ../shared/programs/git
+        ../shared/programs/bat
         ../shared/programs/yazi
         ../shared/programs/shell
+        ../shared/programs/nix
+        ../shared/programs/direnv
+        ../shared/programs/kubernetes
+        ../shared/programs/aws
         ../shared/programs/age
         ../shared/programs/gpg
-        # ../shared/programs/jq
-        #
-        # ../linux/programs/wayland
-        # ../linux/programs/zpl-open
       ];
 
       home.stateVersion = "25.11";
