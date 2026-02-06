@@ -54,13 +54,15 @@ in
   programs.zsh = {
     enable = true;
 
-    loginExtra = ''
-      figlet -f mike "Hello $(echo Haril)" | lolcat
-    '';
+    # loginExtra = ''
+    #   figlet -f mike "Hello $(echo Haril)" | lolcat
+    # '';
 
     initContent = lib.mkOrder 0 ''
       # Warp terminal integration
       printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
+      
+      figlet -f mike "Hello $(echo Haril)" | lolcat
     '';
 
     syntaxHighlighting = {
