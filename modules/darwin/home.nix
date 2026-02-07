@@ -36,6 +36,7 @@ in
 
           # Cloud and DevOps
           gh
+          ngrok
 
           # Utility
           ripgrep
