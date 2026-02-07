@@ -37,7 +37,7 @@ in
       "karabiner-elements"
       "setapp"
       "warp"
-      "jordanbaird-ice"
+      "thaw"
       "loop"
       "raycast"
       "neohtop"
