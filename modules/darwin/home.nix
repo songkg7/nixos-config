@@ -53,7 +53,6 @@ in
           ouch
           parallel
           qsv
-          tmux
           trash-cli
           pueue
 
@@ -91,6 +90,7 @@ in
         ../shared/programs/aws
         ../shared/programs/age
         ../shared/programs/gpg
+        ../shared/programs/tmux
 
         ../darwin/programs/aerospace
         ../darwin/programs/ssh

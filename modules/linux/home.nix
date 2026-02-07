@@ -39,6 +39,7 @@ in
         ../shared/programs/aws
         ../shared/programs/age
         ../shared/programs/gpg
+        ../shared/programs/tmux
       ];
 
       home.stateVersion = "25.11";
