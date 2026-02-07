@@ -59,7 +59,7 @@
   };
 
   programs.claude-code = {
-    enable = true;
+    enable = false;
   };
 
   programs.gemini-cli = {
