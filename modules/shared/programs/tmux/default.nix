@@ -25,6 +25,9 @@ _: {
 
       # reload config
       bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded"
+
+      # new/attach session
+      bind-key C command-prompt -p "New Session:" "new-session -A -s '%%'"
     '';
   };
 }
