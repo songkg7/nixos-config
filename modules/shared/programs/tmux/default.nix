@@ -22,18 +22,27 @@
           set -g @sessionx-bind-select-down 'ctrl-n'
         '';
       }
+      {
+        plugin = tmuxPlugins.resurrect;
+        extraConfig = ''
+          set -g @resurrect-capture-pane-contents 'on'
+        '';
+      }
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '15'
+        '';
+      }
+      tmuxPlugins.vim-tmux-navigator
+      tmuxPlugins.extrakto
     ];
 
     extraConfig = ''
       # pane split
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
-
-      # pane navigation - vim style
-      bind h select-pane -L
-      bind j select-pane -D
-      bind k select-pane -U
-      bind l select-pane -R
 
       # new window at current path
       bind c new-window -c "#{pane_current_path}"
