@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ... }: {
   programs.tmux = {
     enable = true;
     prefix = "C-a";
@@ -8,6 +8,21 @@ _: {
     terminal = "tmux-256color";
     historyLimit = 10000;
     keyMode = "vi";
+
+    plugins = with pkgs; [
+      {
+        plugin = tmuxPlugins.tmux-sessionx;
+        extraConfig = ''
+          set -g @sessionx-bind 'o'
+          set -g @sessionx-zoxide-mode 'on'
+          set -g @sessionx-filter-current 'false'
+          set -g @sessionx-preview-location 'right'
+          set -g @sessionx-preview-ratio '55%'
+          set -g @sessionx-bind-select-up 'ctrl-p'
+          set -g @sessionx-bind-select-down 'ctrl-n'
+        '';
+      }
+    ];
 
     extraConfig = ''
       # pane split
