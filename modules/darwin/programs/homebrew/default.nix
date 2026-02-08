@@ -49,6 +49,9 @@ in
       "spotify"
       "tailscale-app"
       "conductor"
+
+      # NOTE: just testing
+      "kiro-cli"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       "opencode-desktop"

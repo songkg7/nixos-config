@@ -56,6 +56,7 @@
       "onepassword-password-manager"
       "databricks-cli"
       "zsh-abbr"
+      "kiro-cli"
     ];
 
   nixpkgs.config.permittedInsecurePackages = [
