@@ -52,6 +52,7 @@ in
 
       # NOTE: just testing
       "kiro-cli"
+      "codex"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       "opencode-desktop"
