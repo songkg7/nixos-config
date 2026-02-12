@@ -91,6 +91,7 @@ in
         ../shared/programs/age
         ../shared/programs/gpg
         ../shared/programs/tmux
+        ../shared/programs/zellij
 
         ../darwin/programs/aerospace
         ../darwin/programs/ssh

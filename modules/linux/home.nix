@@ -40,6 +40,7 @@ in
         ../shared/programs/age
         ../shared/programs/gpg
         ../shared/programs/tmux
+        ../shared/programs/zellij
       ];
 
       home.stateVersion = "25.11";
