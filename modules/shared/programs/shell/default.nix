@@ -16,6 +16,8 @@ in
     ./zoxide.nix
   ];
 
+  home.shell.enableZshIntegration = true;
+
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
