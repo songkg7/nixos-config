@@ -63,16 +63,18 @@ in
     # '';
 
     initContent = lib.mkOrder 0 ''
+      # Warp terminal integration
+      printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
+
+      figlet -f mike "Hello $(echo Haril)" | lolcat
+    '';
+
+    initExtra = lib.mkOrder 200 ''
       if [[ "$TERM_PROGRAM" != "WarpTerminal" && -z "$WARP_TERMINAL" ]]; then
         export ZELLIJ_AUTO_ATTACH="true"
         export ZELLIJ_AUTO_EXIT="true"
         eval "$(${lib.getExe pkgs.zellij} setup --generate-auto-start zsh)"
       fi
-
-      # Warp terminal integration
-      printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
-
-      figlet -f mike "Hello $(echo Haril)" | lolcat
     '';
 
     syntaxHighlighting = {
