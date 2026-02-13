@@ -40,6 +40,7 @@ in
 
           # Utility
           ripgrep
+          ast-grep
           fd
           fx
           jq
