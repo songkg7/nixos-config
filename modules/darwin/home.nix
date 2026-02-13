@@ -97,6 +97,7 @@ in
         ../darwin/programs/aerospace
         ../darwin/programs/ssh
         ../darwin/programs/homerow
+        ../darwin/programs/ghostty
       ];
 
       home.stateVersion = "25.11";
