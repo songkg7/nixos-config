@@ -52,6 +52,7 @@ in
     h = "atsearch";
     hh = "atuin search -i";
     rm = "trash";
+    pa = "pueue add --";
   };
 
   programs.zsh = {
