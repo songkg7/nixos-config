@@ -11,7 +11,10 @@ _: {
       keybinds = {
         unbind = "Ctrl b";
         shared_except = {
-          _args = [ "locked" "tmux" ];
+          _args = [
+            "locked"
+            "tmux"
+          ];
           bind = {
             _args = [ "Ctrl a" ];
             SwitchToMode = "Tmux";
