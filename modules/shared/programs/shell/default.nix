@@ -69,14 +69,6 @@ in
       figlet -f mike "Hello $(echo Haril)" | lolcat
     '';
 
-    initExtra = lib.mkOrder 200 ''
-      if [[ "$TERM_PROGRAM" != "WarpTerminal" && -z "$WARP_TERMINAL" ]]; then
-        export ZELLIJ_AUTO_ATTACH="true"
-        export ZELLIJ_AUTO_EXIT="true"
-        eval "$(${lib.getExe pkgs.zellij} setup --generate-auto-start zsh)"
-      fi
-    '';
-
     syntaxHighlighting = {
       enable = true;
     };
