@@ -2,8 +2,8 @@ _: {
   programs.zellij = {
     enable = true;
 
-    attachExistingSession = true;
-    exitShellOnExit = true;
+    attachExistingSession = false;
+    exitShellOnExit = false;
 
     enableZshIntegration = true;
 
