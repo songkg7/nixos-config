@@ -1,11 +1,9 @@
 _: {
   programs.zellij = {
     enable = true;
-
-    attachExistingSession = true;
-    exitShellOnExit = true;
-
-    enableZshIntegration = true;
+    enableZshIntegration = false;
+    attachExistingSession = false;
+    exitShellOnExit = false;
 
     settings = {
       keybinds = {
