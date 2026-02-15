@@ -64,6 +64,7 @@ in
           httpie
           lolcat
           m-cli
+          hyperfine
 
           # GUI Apps
           alt-tab-macos
