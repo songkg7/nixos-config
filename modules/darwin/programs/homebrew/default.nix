@@ -1,9 +1,8 @@
-{
-  config,
-  environment,
-  pkgs,
-  lib,
-  ...
+{ config
+, environment
+, pkgs
+, lib
+, ...
 }:
 let
   envConfig = (import ../../environments).${environment};
@@ -46,13 +45,14 @@ in
       "antigravity"
       "google-chrome"
       "comet"
+      "zen"
       "spotify"
       "tailscale-app"
       "conductor"
+      "codex"
 
       # NOTE: just testing
       "kiro-cli"
-      "codex"
     ]
     ++ lib.optionals pkgs.stdenv.isAarch64 [
       "opencode-desktop"
