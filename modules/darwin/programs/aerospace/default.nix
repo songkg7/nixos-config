@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  darwinUtils = import ../../../../libraries/darwin-utils.nix { inherit pkgs; };
+  darwinUtils = import ../../utils.nix { inherit pkgs; };
   inherit (darwinUtils) brewPrefix;
 
   keybindings = import ./keybindings.nix;

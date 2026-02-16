@@ -5,7 +5,7 @@
   ...
 }:
 let
-  darwinUtils = import ../../../../libraries/darwin-utils.nix { inherit pkgs; };
+  darwinUtils = import ../../../../modules/darwin/utils.nix { inherit pkgs; };
   inherit (darwinUtils) brewPrefix;
 in
 {
