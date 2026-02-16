@@ -11,22 +11,15 @@ Linux (WSL) system configuration and Home Manager entry modules.
 ```
 ./
 ├── configuration.nix     # system-level NixOS/WSL settings
-├── home.nix              # Home Manager packages + imports
-└── programs/             # Linux-only program modules
-    ├── wayland/
-    ├── input-method/
-    ├── theme/
-    └── zpl-open/
+└── home.nix              # Home Manager packages + imports
 ```
 
 ## WHERE TO LOOK
 
-| Task                  | Location                     | Notes                          |
-| --------------------- | ---------------------------- | ------------------------------ |
-| WSL/system settings   | configuration.nix            | wsl.enable, docker, tailscale  |
-| Home Manager packages | home.nix                     | imports shared program modules |
-| Wayland setup         | programs/wayland/default.nix | imports sway/rofi submodules   |
-| Linux-only features   | programs/<name>/default.nix  | per-feature modules            |
+| Task                  | Location          | Notes                          |
+| --------------------- | ----------------- | ------------------------------ |
+| WSL/system settings   | configuration.nix | wsl.enable, docker, tailscale  |
+| Home Manager packages | home.nix          | imports shared program modules |
 
 ## CONVENTIONS
 
