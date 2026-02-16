@@ -1,8 +1,9 @@
-{ config
-, environment
-, pkgs
-, lib
-, ...
+{
+  config,
+  environment,
+  pkgs,
+  lib,
+  ...
 }:
 let
   envConfig = (import ../../environments).${environment};
