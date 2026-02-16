@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [ gh ];
-
+_: {
   programs.gh = {
     enable = true;
     settings = {
