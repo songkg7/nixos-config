@@ -18,11 +18,27 @@ _: {
             SwitchToMode = "Tmux";
           };
         };
-        tmux = {
+        locked = {
           bind = {
             _args = [ "Ctrl a" ];
-            SwitchToMode = "Normal";
+            SwitchToMode = "Tmux";
           };
+        };
+        tmux = {
+          _children = [
+            {
+              bind = {
+                _args = [ "Ctrl a" ];
+                SwitchToMode = "Normal";
+              };
+            }
+            {
+              bind = {
+                _args = [ "g" ];
+                SwitchToMode = "Locked";
+              };
+            }
+          ];
         };
       };
     };
