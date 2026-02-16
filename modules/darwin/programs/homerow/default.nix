@@ -209,6 +209,7 @@ in
   services.homerow = {
     enable = true;
     config = {
+      launch-at-login = true;
       check-for-updates-automatically = false;
       dash-speed-multiplier = 2;
       label-font-size = 10;
