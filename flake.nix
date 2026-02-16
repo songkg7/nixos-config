@@ -71,7 +71,6 @@
       ...
     }@inputs:
     let
-      home-manager-shared = ./libraries/home-manager;
       nixpkgs-shared = ./libraries/nixpkgs;
       user-profile = {
         username = "haril";
@@ -90,7 +89,6 @@
           modules = [
             inputs.agenix.darwinModules.default
             inputs.nix-homebrew.darwinModules.nix-homebrew
-            home-manager-shared
             nixpkgs-shared
             home-manager.darwinModules.home-manager
             { home-manager.extraSpecialArgs = { inherit environment user-profile; }; }
@@ -125,7 +123,6 @@
         modules = [
           inputs.agenix.nixosModules.default
           nixos-wsl.nixosModules.default
-          home-manager-shared
           nixpkgs-shared
           home-manager.nixosModules.home-manager
           {

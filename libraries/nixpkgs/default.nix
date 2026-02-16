@@ -2,7 +2,7 @@
 {
   nixpkgs.overlays = [
     (
-      final: prev:
+      _final: prev:
       let
         catalystOverrides =
           if prev ? llvmPackages_20 then
@@ -21,15 +21,7 @@
           else
             { };
       in
-      {
-        # cleanshot = final.callPackage ./programs/cleanshot {};
-        # clop = final.callPackage ./programs/clop {};
-        # gemini-mcp-tool = final.callPackage ./programs/gemini-mcp-tool {};
-        # git-spr = final.callPackage ./programs/git-spr {};
-        # hammerspoon = final.callPackage ./programs/hammerspoon {};
-        homerow = final.callPackage ./programs/homerow { };
-        # nix-activate = final.callPackage ./programs/nix-activate {};
-      }
+      { }
       // catalystOverrides
     )
   ];
