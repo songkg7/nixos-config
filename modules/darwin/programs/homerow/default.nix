@@ -6,7 +6,7 @@
 }:
 let
   homerowPackage = pkgs.callPackage ./package.nix { };
-  cfg = config.services.homerow;
+  cfg = config.programs.homerow;
 
   boolValue = x: if x then "YES" else "NO";
 
@@ -36,7 +36,7 @@ let
     lib.mapAttrsToList writeDefault filteredConfig;
 in
 {
-  options.services.homerow = {
+  options.programs.homerow = {
     enable = lib.mkEnableOption "homerow";
 
     package = lib.mkOption {
@@ -206,7 +206,7 @@ in
   };
 
   # Enable with custom settings
-  services.homerow = {
+  programs.homerow = {
     enable = true;
     config = {
       launch-at-login = true;
