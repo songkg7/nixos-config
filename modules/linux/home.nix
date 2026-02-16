@@ -24,6 +24,11 @@ in
         unzip
       ];
 
+      programs.ssh = {
+        enable = true;
+        enableDefaultConfig = false;
+      };
+
       imports = [
         inputs.nixvim.homeModules.nixvim
         inputs.agenix.homeManagerModules.default
