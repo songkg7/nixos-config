@@ -37,7 +37,7 @@ in
   programs.git = {
     enable = true;
     signing = {
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHfugxfdZ+OHTxqc3RQB+4Y0J18Vea3UNt/9nH6fXL8";
+      key = user-profile.personal.sshSigningKey;
       signByDefault = true;
     };
     ignores = [

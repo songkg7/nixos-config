@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  user-profile,
   ...
 }:
 let
@@ -21,7 +22,7 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-    AUTHOR = "haril";
+    AUTHOR = user-profile.username;
     USE_GKE_GCLOUD_AUTH_PLUGIN = "True";
     _ZO_FZF_OPTS = "--height 40% --border";
     LANG = "en_US.UTF-8";
@@ -66,7 +67,7 @@ in
       # Warp terminal integration
       printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
 
-      figlet -f mike "Hello $(echo Haril)" | lolcat
+      figlet -f mike "Hello $(echo ${user-profile.personal.name})" | lolcat
     '';
 
     syntaxHighlighting = {

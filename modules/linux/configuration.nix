@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  user-profile,
   ...
 }:
 {
@@ -9,7 +10,7 @@
   ];
   wsl.enable = true;
 
-  wsl.defaultUser = "haril";
+  wsl.defaultUser = user-profile.username;
 
   boot.kernel.sysctl = {
     "fs.inotify.max_user_watches" = 524288;
@@ -31,7 +32,7 @@
   security.sudo.enable = true;
   programs.dconf.enable = true;
 
-  users.users.haril = {
+  users.users.${user-profile.username} = {
     shell = pkgs.bashInteractive;
     isNormalUser = true;
     extraGroups = [

@@ -78,6 +78,7 @@
         personal = {
           name = "haril song";
           email = "songkg7@gmail.com";
+          sshSigningKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHfugxfdZ+OHTxqc3RQB+4Y0J18Vea3UNt/9nH6fXL8";
         };
       };
 
