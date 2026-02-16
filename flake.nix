@@ -51,18 +51,10 @@
       flake = false;
     };
 
-    nixos-hardware.url = "github:nixos/nixos-hardware";
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nuschtos-search = {
-      url = "github:NuschtOS/search";
-      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
