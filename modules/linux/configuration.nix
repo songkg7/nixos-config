@@ -48,5 +48,9 @@
   programs.ssh.startAgent = true;
   programs.nix-ld.enable = true;
 
+  environment.systemPackages = [
+    pkgs.ghostty.terminfo
+  ];
+
   system.stateVersion = "25.11";
 }

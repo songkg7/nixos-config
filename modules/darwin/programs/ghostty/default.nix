@@ -10,6 +10,7 @@ _: {
         "D2CodingLigature Nerd Font Propo"
       ];
       macos-option-as-alt = "left";
+      shell-integration-features = "cursor,sudo,title,ssh-terminfo";
     };
   };
 }
