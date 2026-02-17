@@ -10,7 +10,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   src = fetchurl {
     url = "https://builds.homerow.app/v${finalAttrs.version}/Homerow.zip";
-    sha256 = "0xz5gw628r4nwp0fyf93pdq7jiplha8lw5fzn3z7i3mg8gcpm6px";
+    sha256 = "sha256-VGsCe/jX6tJFVMKri/c/ZZrQw1dxKzkFHfHw9hiNoAY=";
   };
 
   nativeBuildInputs = [ unzip ];

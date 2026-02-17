@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 let
   homerowPackage = pkgs.callPackage ./package.nix { };
@@ -184,39 +183,43 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    home.packages = [ cfg.package ];
-
-    home.activation.homerowDefaults = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      ${lib.concatStringsSep "\n" homerowDefaults}
-    '';
-
-    launchd.agents.homerow = {
-      enable = true;
-      config = {
-        ProgramArguments = [
-          "${config.home.homeDirectory}/Applications/${cfg.package.sourceRoot}/Contents/MacOS/Homerow"
-        ];
-        KeepAlive = true;
-        ProcessType = "Interactive";
-        StandardOutPath = "${config.xdg.cacheHome}/homerow.log";
-        StandardErrorPath = "${config.xdg.cacheHome}/homerow.log";
+  config = lib.mkMerge [
+    {
+      programs.homerow = {
+        enable = lib.mkDefault true;
+        config = {
+          launch-at-login = lib.mkDefault true;
+          check-for-updates-automatically = lib.mkDefault false;
+          dash-speed-multiplier = lib.mkDefault 2;
+          label-font-size = lib.mkDefault 10;
+          non-search-shortcut = lib.mkDefault "⌥F";
+          scroll-px-per-ms = lib.mkDefault 1.5;
+          search-shortcut = lib.mkDefault "⌥⌘↩";
+          scroll-shortcut = lib.mkDefault "⌃J";
+        };
       };
-    };
-  };
+    }
 
-  # Enable with custom settings
-  programs.homerow = {
-    enable = true;
-    config = {
-      launch-at-login = true;
-      check-for-updates-automatically = false;
-      dash-speed-multiplier = 2;
-      label-font-size = 10;
-      non-search-shortcut = "⌥F";
-      scroll-px-per-ms = 1.5;
-      search-shortcut = "⌥⌘↩";
-      scroll-shortcut = "⌃J";
-    };
-  };
+    (lib.mkIf cfg.enable {
+      home.packages = [ cfg.package ];
+
+      home.activation.homerowDefaults = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        ${lib.concatStringsSep "\n" homerowDefaults}
+      '';
+
+      launchd.agents.homerow = {
+        enable = true;
+        config = {
+          ProgramArguments = [
+            "${config.home.homeDirectory}/Applications/${cfg.package.sourceRoot}/Contents/MacOS/Homerow"
+          ];
+          KeepAlive = true;
+          ProcessType = "Interactive";
+          StandardOutPath = "${config.xdg.cacheHome}/homerow.log";
+          StandardErrorPath = "${config.xdg.cacheHome}/homerow.log";
+        };
+      };
+    })
+  ];
+
 }
