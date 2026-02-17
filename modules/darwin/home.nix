@@ -1,9 +1,8 @@
-{
-  pkgs,
-  inputs,
-  environment,
-  user-profile,
-  ...
+{ pkgs
+, inputs
+, environment
+, user-profile
+, ...
 }:
 let
   username = user-profile.username;
@@ -56,6 +55,7 @@ in
           qsv
           trash-cli
           pueue
+          nmap
 
           age
           chezmoi
