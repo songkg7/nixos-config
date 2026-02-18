@@ -7,31 +7,6 @@
 }:
 let
   isDarwin = pkgs.stdenv.isDarwin;
-  headlessSigningKey = "${config.home.homeDirectory}/.ssh/git-signing-headless";
-
-  git-ssh-sign-wrapper = pkgs.writeShellScriptBin "git-ssh-sign-wrapper" ''
-    set -euo pipefail
-
-    if [ -n "''${SSH_CONNECTION:-}" ]; then
-      args=()
-      while [ $# -gt 0 ]; do
-        case "$1" in
-          -f)
-            shift
-            args+=("-f" "${headlessSigningKey}")
-            shift
-            ;;
-          *)
-            args+=("$1")
-            shift
-            ;;
-        esac
-      done
-      exec ${pkgs.openssh}/bin/ssh-keygen "''${args[@]}"
-    else
-      exec /Applications/1Password.app/Contents/MacOS/op-ssh-sign "$@"
-    fi
-  '';
 in
 {
   programs.git = {
@@ -129,7 +104,7 @@ in
       };
     }
     // lib.optionalAttrs isDarwin {
-      "gpg \"ssh\"".program = "${git-ssh-sign-wrapper}/bin/git-ssh-sign-wrapper";
+      "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       "gpg \"ssh\"".allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
     };
 
