@@ -1,8 +1,9 @@
-{ pkgs
-, inputs
-, environment
-, user-profile
-, ...
+{
+  pkgs,
+  inputs,
+  environment,
+  user-profile,
+  ...
 }:
 let
   username = user-profile.username;

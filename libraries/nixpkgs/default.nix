@@ -21,8 +21,7 @@
           else
             { };
       in
-      { }
-      // catalystOverrides
+      { } // catalystOverrides
     )
   ];
 

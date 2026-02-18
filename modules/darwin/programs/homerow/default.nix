@@ -1,7 +1,8 @@
-{ config
-, pkgs
-, lib
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  ...
 }:
 let
   homerowPackage = pkgs.callPackage ./package.nix { };
