@@ -67,7 +67,7 @@ in
       # Warp terminal integration
       printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
 
-      figlet -f mike "Hello $(echo ${user-profile.personal.name})" | lolcat
+      figlet -f mike "Hello $(echo ${user-profile.username})" | lolcat
     '';
 
     syntaxHighlighting = {
