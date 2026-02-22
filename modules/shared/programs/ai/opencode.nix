@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.opencode = {
-    enable = !(pkgs.stdenv.isDarwin && pkgs.stdenv.isx86_64);
+    enable = true;
     enableMcpIntegration = true;
     settings = {
       theme = "lucent-orng";
