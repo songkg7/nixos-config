@@ -18,17 +18,9 @@ in
   age = {
     identityPaths = [ "${config.home.homeDirectory}/.ssh/agenix" ];
     secrets = {
-      gitconfig-work = {
-        file = secretsPath + /gitconfig-work.age;
-        path = "${homeConfig}/git/gitconfig-work";
-      };
       allowed-signers = {
         file = secretsPath + /allowed-signers.age;
         path = "${homeConfig}/git/allowed_signers";
-      };
-      "mise.work.toml" = {
-        file = secretsPath + /mise-work-env.age;
-        path = "${homeConfig}/mise/conf.d/mise.work.toml";
       };
       "mise.personal.toml" = {
         file = secretsPath + /mise-personal-env.age;
@@ -39,6 +31,14 @@ in
       "awsconfig-work" = {
         file = secretsPath + /awsconfig-work.age;
         path = "${config.home.homeDirectory}/.aws/config";
+      };
+      "mise.work.toml" = {
+        file = secretsPath + /mise-work-env.age;
+        path = "${homeConfig}/mise/conf.d/mise.work.toml";
+      };
+      gitconfig-work = {
+        file = secretsPath + /gitconfig-work.age;
+        path = "${homeConfig}/git/gitconfig-work";
       };
     };
   };
