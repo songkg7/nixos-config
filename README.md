@@ -21,10 +21,10 @@ Personal Nix configuration supporting macOS (Darwin) and Linux systems with comp
 
 ## 📋 Prerequisites
 
-Install Nix with flakes support:
+Install Nix using the Determinate installer (includes flakes support):
 
 ```sh
-sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
 **macOS Notes:** `nix-homebrew` manages Homebrew (no manual install required). `masApps` requires being signed into the App Store.
@@ -47,15 +47,15 @@ nixos-rebuild switch --flake '.#linux' --sudo
 
 ```sh
 # For Apple Silicon Macs (Work)
-nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.work.system'
+nix build '.#darwinConfigurations.work.system'
 sudo ./result/sw/bin/darwin-rebuild switch --flake '.#work'
 
 # For Apple Silicon Macs (Personal)
-nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.personal.system'
+nix build '.#darwinConfigurations.personal.system'
 sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal'
 
 # For Intel Macs (Personal)
-nix --experimental-features 'nix-command flakes' build '.#darwinConfigurations.personal-intel.system'
+nix build '.#darwinConfigurations.personal-intel.system'
 sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal-intel'
 ```
 
