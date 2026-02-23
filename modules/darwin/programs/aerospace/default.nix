@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ ... }:
 let
-  darwinUtils = import ../../utils.nix { inherit pkgs; };
+  darwinUtils = import ../../utils.nix { };
   inherit (darwinUtils) brewPrefix;
 
   keybindings = import ./keybindings.nix;
