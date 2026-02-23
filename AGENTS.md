@@ -16,9 +16,6 @@ sudo ./result/sw/bin/darwin-rebuild switch --flake '.#work'
 nix build '.#darwinConfigurations.personal.system'
 sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal'
 
-# macOS - Personal (Intel)
-nix build '.#darwinConfigurations.personal-intel.system'
-sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal-intel'
 ```
 
 ## Validation & Development
@@ -42,7 +39,6 @@ Multi-platform Nix flake supporting macOS (Darwin) and Linux with Home Manager i
 |------|----------|----------|
 | `work` | aarch64-darwin | Apple Silicon work environment |
 | `personal` | aarch64-darwin | Apple Silicon personal |
-| `personal-intel` | x86_64-darwin | Intel Mac personal |
 | `linux` | x86_64-linux | NixOS/WSL personal |
 
 ### Module Organization

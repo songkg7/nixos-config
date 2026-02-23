@@ -54,9 +54,6 @@ sudo ./result/sw/bin/darwin-rebuild switch --flake '.#work'
 nix build '.#darwinConfigurations.personal.system'
 sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal'
 
-# For Intel Macs (Personal)
-nix build '.#darwinConfigurations.personal-intel.system'
-sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal-intel'
 ```
 
 After switching, initialize dotfiles with Chezmoi:
