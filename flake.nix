@@ -59,6 +59,8 @@
     };
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
+    determinate.url = "github:DeterminateSystems/determinate";
   };
 
   outputs =
@@ -87,6 +89,7 @@
         nix-darwin.lib.darwinSystem {
           inherit system;
           modules = [
+            inputs.determinate.darwinModules.default
             inputs.agenix.darwinModules.default
             inputs.nix-homebrew.darwinModules.nix-homebrew
             nixpkgs-shared

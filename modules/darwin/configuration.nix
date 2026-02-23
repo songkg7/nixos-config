@@ -39,6 +39,12 @@ in
 
   homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
 
+  determinateNix.customSettings = {
+    keep-outputs = true;
+    keep-derivations = true;
+    download-buffer-size = "524288000";
+  };
+
   imports = [
     ./programs/homebrew
     ./programs/macos-defaults

@@ -33,10 +33,6 @@ pkgs.mkShell {
     fastfetch
   ];
 
-  env = {
-    NIX_CONFIG = "experimental-features = nix-command flakes";
-  };
-
   # 셸 진입 시 실행할 스크립트
   shellHook = ''
      # Install lefthook pre-commit hooks if not already installed
