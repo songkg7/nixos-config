@@ -1,7 +1,6 @@
 {
   config,
   environment,
-  pkgs,
   lib,
   ...
 }:
@@ -51,12 +50,8 @@ in
       "tailscale-app"
       "conductor"
       "codex"
-
-      # NOTE: just testing
-      "kiro-cli"
-    ]
-    ++ lib.optionals pkgs.stdenv.isAarch64 [
       "opencode-desktop"
+      "shottr"
     ]
     ++ envConfig.casks;
 
