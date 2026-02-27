@@ -10,6 +10,11 @@
 
   home.packages = with pkgs; [
     neovim
+    wget
+    imagemagick
+    ghostscript
+    tectonic
+    mermaid-cli
     gdu
     tree-sitter
     bottom
