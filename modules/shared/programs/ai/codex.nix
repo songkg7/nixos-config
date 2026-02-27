@@ -1,6 +1,6 @@
 _: {
   programs.codex = {
-    enable = true;
+    enable = false;
     settings = {
       tui = {
         alternate_screen = "never";
