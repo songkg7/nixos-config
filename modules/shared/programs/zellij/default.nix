@@ -18,12 +18,6 @@ _: {
             SwitchToMode = "Tmux";
           };
         };
-        locked = {
-          bind = {
-            _args = [ "Ctrl a" ];
-            SwitchToMode = "Tmux";
-          };
-        };
         tmux = {
           _children = [
             {
