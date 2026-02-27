@@ -6,37 +6,8 @@ _: {
     exitShellOnExit = false;
 
     settings = {
-      keybinds = {
-        unbind = [
-          "Ctrl b"
-        ];
-        shared_except = {
-          _args = [
-            "locked"
-            "tmux"
-          ];
-          bind = {
-            _args = [ "Ctrl a" ];
-            SwitchToMode = "Tmux";
-          };
-        };
-        tmux = {
-          _children = [
-            {
-              bind = {
-                _args = [ "Ctrl a" ];
-                SwitchToMode = "Normal";
-              };
-            }
-            {
-              bind = {
-                _args = [ "g" ];
-                SwitchToMode = "Locked";
-              };
-            }
-          ];
-        };
-      };
+      # Unlock-first workflow: start locked, then use Ctrl-g to unlock and issue Zellij commands.
+      default_mode = "locked";
     };
   };
 }
