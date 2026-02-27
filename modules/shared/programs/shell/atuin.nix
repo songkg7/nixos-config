@@ -7,7 +7,7 @@ _: {
       # update_check = false;
       sync_frequency = "1m";
       # style = "compact";
-      invert = true;
+      # invert = true;
       # inline_height = 9;
       # show_help = false;
     };
