@@ -93,6 +93,7 @@ return {
   -- Python: keep adapter options, adapter registration is managed by astrocommunity.pack.python
   {
     "nvim-neotest/neotest-python",
+    dependencies = { "nvim-neotest/neotest" },
     opts = {
       runner = "pytest",
       dap = { justMyCode = false },
