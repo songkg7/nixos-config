@@ -41,6 +41,8 @@ _: {
       # keybind
       keybind = [
         "global:cmd+grave_accent=toggle_quick_terminal"
+        "alt+left=unbind"
+        "alt+right=unbind"
       ];
     };
   };

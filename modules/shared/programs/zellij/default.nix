@@ -7,7 +7,9 @@ _: {
 
     settings = {
       keybinds = {
-        unbind = "Ctrl b";
+        unbind = [
+          "Ctrl b"
+        ];
         shared_except = {
           _args = [
             "locked"
