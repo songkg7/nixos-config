@@ -90,22 +90,12 @@ return {
     config = function() require("nvim-surround").setup {} end,
   },
 
-  -- Python: test runner
+  -- Python: keep adapter options, adapter registration is managed by astrocommunity.pack.python
   {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-neotest/nvim-nio",
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-neotest/neotest-python",
-    },
+    "nvim-neotest/neotest-python",
     opts = {
-      adapters = {
-        ["neotest-python"] = {
-          runner = "pytest",
-          dap = { justMyCode = false },
-        },
-      },
+      runner = "pytest",
+      dap = { justMyCode = false },
     },
   },
 
@@ -115,32 +105,14 @@ return {
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
-      "mfussenegger/nvim-dap-python",
     },
     config = function()
       local dap = require "dap"
       local dapui = require "dapui"
-      local debugpy_path = vim.fn.stdpath "data" .. "/mason/packages/debugpy/venv/bin/python"
-      require("dap-python").setup(debugpy_path)
       dapui.setup()
       dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
       dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
       dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
     end,
-  },
-
-  -- Python: virtual environment selector (uv-friendly)
-  {
-    "linux-cultist/venv-selector.nvim",
-    branch = "regexp",
-    dependencies = { "neovim/nvim-lspconfig" },
-    cmd = "VenvSelect",
-    opts = {
-      settings = {
-        options = {
-          notify_user_on_venv_activation = true,
-        },
-      },
-    },
   },
 }

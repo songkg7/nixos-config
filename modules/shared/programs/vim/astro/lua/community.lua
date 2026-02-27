@@ -8,6 +8,7 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.jj" },
   { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.python.ruff" },
   -- import/override with your plugins folder
   { import = "astrocommunity.completion.copilot-lua-cmp" },
 
