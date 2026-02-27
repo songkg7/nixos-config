@@ -12,7 +12,7 @@ in
     enable = true;
     user = config.system.primaryUser;
     onActivation.autoUpdate = true;
-    onActivation.cleanup = "none";
+    onActivation.cleanup = "uninstall";
 
     taps = lib.mkDefault [ ];
 
