@@ -11,8 +11,7 @@ return {
       ensure_installed = {
         -- install language servers
         "lua-language-server",
-        "ty",
-        "ruff",
+        -- pyright and ruff are managed by astrocommunity.pack.python
 
         -- install formatters
         "stylua",

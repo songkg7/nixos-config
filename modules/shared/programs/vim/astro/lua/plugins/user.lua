@@ -90,16 +90,6 @@ return {
     config = function() require("nvim-surround").setup {} end,
   },
 
-  -- Python: formatter (ruff)
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        python = { "ruff_organize_imports", "ruff_format" },
-      },
-    },
-  },
-
   -- Python: test runner
   {
     "nvim-neotest/neotest",

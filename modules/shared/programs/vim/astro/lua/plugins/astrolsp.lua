@@ -37,25 +37,12 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
-      "ty",
-      "ruff",
+      -- "pyright"
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      ty = {
-        settings = {
-          ty = {
-            diagnosticMode = "openFilesOnly",
-            showSyntaxErrors = true,
-          },
-        },
-      },
-      ruff = {
-        capabilities = {
-          hoverProvider = false, -- delegate hover to ty
-        },
-      },
+      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
     },
     -- customize how language servers are attached
     handlers = {
