@@ -53,17 +53,10 @@
     pkgs.ghostty.terminfo
   ];
 
-  nix = {
-    optimise.automatic = true;
-    settings = {
-      substituters = [ "https://cache.nixos.org" ];
-      download-buffer-size = 524288000;
-    };
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = true
-      experimental-features = nix-command flakes
-    '';
+  nix.settings = {
+    keep-outputs = true;
+    keep-derivations = true;
+    download-buffer-size = 524288000;
   };
 
   system.stateVersion = "25.11";

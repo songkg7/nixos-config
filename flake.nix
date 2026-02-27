@@ -123,6 +123,7 @@
       nixosConfigurations.linux = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          inputs.determinate.nixosModules.default
           inputs.agenix.nixosModules.default
           nixos-wsl.nixosModules.default
           nixpkgs-shared
