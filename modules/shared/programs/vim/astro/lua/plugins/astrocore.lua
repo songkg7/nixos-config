@@ -79,7 +79,6 @@ return {
         -- ["<C-S>"] = false,
       },
       t = {
-        ["<Esc>"] = { "<C-\\><C-n>", desc = "Exit terminal mode" },
         ["<C-h>"] = { "<C-\\><C-n><C-w>h", desc = "Window left" },
         ["<C-j>"] = { "<C-\\><C-n><C-w>j", desc = "Window down" },
         ["<C-k>"] = { "<C-\\><C-n><C-w>k", desc = "Window up" },
