@@ -28,6 +28,7 @@ in
         [
           # Databases / Analytics
           duckdb
+          rainfrog
 
           # Development
           jetbrains-toolbox
