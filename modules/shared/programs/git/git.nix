@@ -26,6 +26,7 @@ in
       ".osgrep"
       ".sisyphus"
       ".worktrees"
+      ".omc"
     ];
 
     settings = {
