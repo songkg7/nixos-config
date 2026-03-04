@@ -36,7 +36,17 @@
           set -g @continuum-save-interval '15'
         '';
       }
-      tmuxPlugins."prefix-highlight"
+      {
+        plugin = tmuxPlugins."prefix-highlight";
+        extraConfig = ''
+          # prefix/copy-mode indicator in status line
+          set -g @prefix_highlight_fg 'black'
+          set -g @prefix_highlight_bg 'yellow'
+          set -g @prefix_highlight_copy_mode_attr 'fg=black,bg=green'
+          set -g @prefix_highlight_show_copy_mode 'on'
+          set -g status-right '#{prefix_highlight}#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,}"#{=21:pane_title}" %H:%M %d-%b-%y'
+        '';
+      }
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.extrakto
     ];
@@ -55,12 +65,6 @@
       # new/attach session
       bind-key C command-prompt -p "New Session:" "new-session -A -s '%%'"
 
-      # prefix/copy-mode indicator in status line
-      set -g @prefix_highlight_fg 'black'
-      set -g @prefix_highlight_bg 'yellow'
-      set -g @prefix_highlight_copy_mode_attr 'fg=black,bg=green'
-      set -g @prefix_highlight_show_copy_mode 'on'
-      set -g status-right '#{prefix_highlight} | %H:%M %d-%b-%y'
     '';
   };
 }
