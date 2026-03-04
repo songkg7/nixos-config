@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    tmuxinator
+  ];
+
   programs.tmux = {
     enable = true;
     prefix = "C-a";
@@ -16,6 +20,8 @@
         extraConfig = ''
           set -g @sessionx-bind 'o'
           set -g @sessionx-zoxide-mode 'on'
+          set -g @sessionx-tmuxinator-mode 'on'
+          set -g @sessionx-fzf-marks-mode 'on'
           set -g @sessionx-filter-current 'false'
           set -g @sessionx-preview-location 'right'
           set -g @sessionx-preview-ratio '55%'
