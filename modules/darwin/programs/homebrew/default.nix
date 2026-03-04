@@ -34,7 +34,6 @@ in
       "input-source-pro"
       "ghostty"
       "karabiner-elements"
-      "setapp"
       "warp"
       "thaw"
       "loop"
