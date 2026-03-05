@@ -34,6 +34,9 @@ return {
   -- Motion
   { import = "astrocommunity.motion.leap-nvim" },
   { import = "astrocommunity.motion.flash-nvim" },
+  { import = "astrocommunity.motion.nvim-surround" },
+  { import = "astrocommunity.lsp.lsp-signature-nvim" },
+  { import = "astrocommunity.media.presence-nvim" },
 
   -- Git
   { import = "astrocommunity.git.git-blame-nvim" },

@@ -4,16 +4,6 @@
 
 ---@type LazySpec
 return {
-
-  -- == Examples of Adding Plugins ==
-
-  "andweeb/presence.nvim",
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
-  },
-
   -- == Examples of Overriding Plugins ==
 
   -- customize dashboard options
@@ -83,13 +73,6 @@ return {
       )
     end,
   },
-  {
-    "kylechui/nvim-surround",
-    version = "*",
-    event = "VeryLazy",
-    config = function() require("nvim-surround").setup {} end,
-  },
-
   -- Python: keep adapter options, adapter registration is managed by astrocommunity.pack.python
   {
     "nvim-neotest/neotest-python",
