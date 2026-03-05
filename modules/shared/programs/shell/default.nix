@@ -91,6 +91,9 @@ in
       if [[ -d "$toolboxDir" ]]; then
         path+=("$toolboxDir")
       fi
+
+      # Add Obsidian to PATH for CLI access
+      export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
     '';
     siteFunctions = {
       mkcd = ''
