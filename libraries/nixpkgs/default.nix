@@ -48,6 +48,7 @@
       "databricks-cli"
       "zsh-abbr"
       "kiro-cli"
+      "acli"
     ];
 
   nixpkgs.config.permittedInsecurePackages = [
