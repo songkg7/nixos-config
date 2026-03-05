@@ -12,6 +12,13 @@ return {
   { import = "astrocommunity.pack.python.ruff" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.golangci-lint" },
+  { import = "astrocommunity.pack.bash" },
+  { import = "astrocommunity.pack.docker" },
+  { import = "astrocommunity.pack.kotlin" },
+  { import = "astrocommunity.pack.mdx" },
+  { import = "astrocommunity.pack.nix" },
+  { import = "astrocommunity.pack.spring-boot" },
+  { import = "astrocommunity.pack.toml" },
   -- import/override with your plugins folder
   { import = "astrocommunity.completion.copilot-lua-cmp" },
 
