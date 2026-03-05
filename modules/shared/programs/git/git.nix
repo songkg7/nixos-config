@@ -27,6 +27,7 @@ in
       ".sisyphus"
       ".worktrees"
       ".omc"
+      ".omx"
     ];
 
     settings = {
