@@ -27,6 +27,7 @@ in
     _ZO_FZF_OPTS = "--height 40% --border";
     LANG = "en_US.UTF-8";
     GUM_FILTER_REVERSE = "true";
+    OMC_SHELL_READY_TIMEOUT_MS=30000;
   };
 
   home.sessionPath = [
