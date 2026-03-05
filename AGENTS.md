@@ -56,6 +56,7 @@ Multi-platform Nix flake supporting macOS (Darwin) and Linux with Home Manager i
 |------|----------|
 | Add shared program | `modules/shared/programs/<name>/default.nix` |
 | Darwin system settings | `modules/darwin/configuration.nix` |
+| Darwin environment-specific packages/brews/casks | `modules/darwin/environments/default.nix` |
 | Linux system settings | `modules/linux/configuration.nix` |
 | macOS packages & imports | `modules/darwin/home.nix` |
 | Linux packages & imports | `modules/linux/home.nix` |
@@ -68,7 +69,8 @@ Multi-platform Nix flake supporting macOS (Darwin) and Linux with Home Manager i
 - **Module pattern**: Each program gets `programs/<name>/default.nix` which aggregates feature modules
 - **Unused args**: Use `_:` for unused function arguments
 - **Module flow**: shared → darwin/linux → program-specific
-- **Environment split**: Use `lib.optionals (environment == "work")` pattern in home.nix for work/personal differences
+- **Darwin environment split**: manage work/personal differences in `modules/darwin/environments/default.nix` (`packages`, `brews`, `casks`, `masApps`, `dockApps`, `sshIncludes`, `ageSecrets`)
+- **Darwin package source of truth**: put work-only tools (e.g. `acli`) in `environments/default.nix` and keep `modules/darwin/home.nix` as the shared base + `envConfig` merge layer
 
 ## Git Hooks (lefthook)
 

@@ -6,6 +6,7 @@
       "podman"
       "podman-compose"
       "glab"
+      "acli"
     ];
 
     brews = [ ];
