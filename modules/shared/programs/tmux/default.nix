@@ -71,6 +71,11 @@
       # new/attach session
       bind-key C command-prompt -p "New Session:" "new-session -A -s '%%'"
 
+      # layout shortcuts (avoid Alt key conflicts with Aerospace)
+      bind-key H select-layout even-horizontal
+      bind-key J select-layout even-vertical
+      bind-key K select-layout tiled
+
     '';
   };
 }
