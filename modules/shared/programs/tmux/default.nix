@@ -81,6 +81,11 @@
       bind-key -n C-j if-shell "ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+/)?g?\\.?(view|l?n?vim?x?|fzf)(diff)?(-wrapped)?$'" { send-keys C-j } { if-shell -F '#{pane_at_bottom}' {} { select-pane -D } }
       bind-key -n C-k if-shell "ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+/)?g?\\.?(view|l?n?vim?x?|fzf)(diff)?(-wrapped)?$'" { send-keys C-k } { if-shell -F '#{pane_at_top}' {} { select-pane -U } }
       bind-key -n C-l if-shell "ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+/)?g?\\.?(view|l?n?vim?x?|fzf)(diff)?(-wrapped)?$'" { send-keys C-l } { if-shell -F '#{pane_at_right}' {} { select-pane -R } }
+      bind-key -T copy-mode-vi v send-keys -X begin-selection
+      bind-key -T copy-mode-vi V send-keys -X select-line
+      bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+      bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+      bind-key -T copy-mode-vi Escape send-keys -X clear-selection
       bind-key -T copy-mode-vi C-h if-shell -F '#{pane_at_left}' {} { select-pane -L }
       bind-key -T copy-mode-vi C-j if-shell -F '#{pane_at_bottom}' {} { select-pane -D }
       bind-key -T copy-mode-vi C-k if-shell -F '#{pane_at_top}' {} { select-pane -U }
