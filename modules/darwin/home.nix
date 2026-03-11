@@ -41,7 +41,7 @@ in
 
           # Utility
           ripgrep
-          ast-grep
+          # ast-grep
           fd
           fx
           jq
