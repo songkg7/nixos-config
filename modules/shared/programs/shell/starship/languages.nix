@@ -25,7 +25,7 @@
   python = {
     format = " [py](italic) [$symbol$version]($style)";
     symbol = "[⌉](bold bright-blue)⌊ ";
-    version_format = "\${raw}";
+    version_format = "\${raw} ";
     style = "bold bright-yellow";
   };
 
