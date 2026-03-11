@@ -21,6 +21,7 @@ return {
   { import = "astrocommunity.pack.toml" },
   -- import/override with your plugins folder
   { import = "astrocommunity.completion.copilot-lua-cmp" },
+  { import = "astrocommunity.code-runner.vim-slime" },
 
   -- Colorscheme
   { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },

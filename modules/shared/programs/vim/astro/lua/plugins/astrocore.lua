@@ -48,6 +48,25 @@ return {
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
+        slime_target = (function()
+          local term = vim.trim((vim.env.TERM_PROGRAM or ""):lower())
+          if vim.env.TMUX ~= nil then
+            return "tmux"
+          elseif vim.env.STY ~= nil then
+            return "screen"
+          elseif term == "wezterm" then
+            return "wezterm"
+          elseif vim.env.KITTY_LISTEN_ON ~= nil then
+            return "kitty"
+          else
+            return "neovim"
+          end
+        end)(),
+        slime_default_config = vim.env.TMUX and {
+          socket_name = vim.split(vim.env.TMUX, ",")[1],
+          target_pane = "{last}",
+        } or {},
+        slime_dont_ask_default = vim.env.TMUX and 1 or 0,
       },
     },
     -- Mappings can be configured through AstroCore as well.
