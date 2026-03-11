@@ -18,6 +18,7 @@ Personal Nix configuration supporting macOS (Darwin) and Linux systems with comp
 - **Utilities**: Bat, Ranger, JQ, Fonts configuration
 - **macOS specific**: AeroSpace, Homebrew, Homerow
 - **Security**: 1Password, GPG configuration
+- **Optional Vault CLI**: Bitwarden CLI module ready to enable when needed
 
 ## 📋 Prerequisites
 
@@ -119,6 +120,11 @@ nix develop
 ### GPG Setup
 
 - Import GPG keys and enable iCloud sync for secure key management
+
+### Optional Bitwarden CLI
+
+- The shared `programs.bitwarden-cli` module is wired in for Darwin and Linux, but defaults to `enable = false`.
+- Enable it in the relevant `modules/darwin/home.nix` or `modules/linux/home.nix`, rebuild, then use `bwlogin`, `bwunlock`, `bwsync`, `bwlock`, and `bwlogout`.
 
 ## 📝 License
 

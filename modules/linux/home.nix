@@ -43,10 +43,13 @@ in
         ../shared/programs/kubernetes
         ../shared/programs/aws
         ../shared/programs/age
+        ../shared/programs/bitwarden
         ../shared/programs/gpg
         ../shared/programs/tmux
         ../shared/programs/zellij
       ];
+
+      programs.bitwarden-cli.enable = false;
 
       home.stateVersion = "25.11";
     };
