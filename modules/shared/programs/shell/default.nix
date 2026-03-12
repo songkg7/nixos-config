@@ -14,6 +14,7 @@ in
     ./fzf.nix
     ./starship
     ./mise.nix
+    ./vpn.nix
     ./zoxide.nix
   ];
 
@@ -49,8 +50,8 @@ in
     cat = "bat --paging=never";
     ch = "chezmoi";
     py = "python";
-    vc = "warp-cli connect";
-    vd = "warp-cli disconnect";
+    vc = "vpn warp";
+    vd = "vpn off warp";
     h = "atsearch";
     hh = "atuin search -i";
     rm = "trash";
