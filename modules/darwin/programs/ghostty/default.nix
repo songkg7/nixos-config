@@ -43,6 +43,12 @@ _: {
         "global:cmd+grave_accent=toggle_quick_terminal"
         "alt+left=unbind"
         "alt+right=unbind"
+        # tmux window switching: Cmd+N → prefix(Ctrl+A) + N
+        "cmd+one=text:\\x01\\x31"
+        "cmd+two=text:\\x01\\x32"
+        "cmd+three=text:\\x01\\x33"
+        "cmd+four=text:\\x01\\x34"
+        "cmd+five=text:\\x01\\x35"
       ];
     };
   };

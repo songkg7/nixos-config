@@ -11,6 +11,7 @@ in
 {
   imports = [
     ./atuin.nix
+    ./dev.nix
     ./fzf.nix
     ./starship
     ./mise.nix
