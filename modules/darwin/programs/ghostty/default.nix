@@ -44,11 +44,11 @@ _: {
         "alt+left=unbind"
         "alt+right=unbind"
         # tmux window switching: Cmd+N → prefix(Ctrl+A) + N
-        "cmd+one=text:\\x01\\x31"
-        "cmd+two=text:\\x01\\x32"
-        "cmd+three=text:\\x01\\x33"
-        "cmd+four=text:\\x01\\x34"
-        "cmd+five=text:\\x01\\x35"
+        "super+digit_1=text:\\x01\\x31"
+        "super+digit_2=text:\\x01\\x32"
+        "super+digit_3=text:\\x01\\x33"
+        "super+digit_4=text:\\x01\\x34"
+        "super+digit_5=text:\\x01\\x35"
       ];
     };
   };
