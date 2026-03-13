@@ -66,12 +66,19 @@ in
     #   figlet -f mike "Hello $(echo Haril)" | lolcat
     # '';
 
-    initContent = lib.mkOrder 0 ''
-      # Warp terminal integration
-      printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
+    initContent = lib.mkMerge [
+      (lib.mkOrder 0 ''
+        # Warp terminal integration
+        printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
 
-      figlet -f mike "Hello $(echo ${user-profile.username})" | lolcat
-    '';
+        figlet -f mike "Hello $(echo ${user-profile.username})" | lolcat
+      '')
+
+      (lib.mkOrder 690 ''
+        # Load fzf-tab after compinit, but before plugins that wrap ZLE widgets.
+        source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+      '')
+    ];
 
     syntaxHighlighting = {
       enable = true;
