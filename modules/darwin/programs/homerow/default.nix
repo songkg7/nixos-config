@@ -196,7 +196,7 @@ in
           non-search-shortcut = lib.mkDefault "⌥F";
           scroll-px-per-ms = lib.mkDefault 1.5;
           search-shortcut = lib.mkDefault "⌥⌘↩";
-          scroll-shortcut = lib.mkDefault "⌃J";
+          scroll-shortcut = lib.mkDefault "⌃⌘J";
         };
       };
     }
