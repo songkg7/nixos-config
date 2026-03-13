@@ -1,5 +1,6 @@
 { pkgs, ... }:
 let
+  tmuxStatusLeftLength = 30;
   tmuxStatusRightLength = 120;
 
   tmuxJetpackRightConfig = pkgs.writeText "tmux-jetpack-right.toml" ''
@@ -255,6 +256,7 @@ in
           set -g @prefix_highlight_copy_mode_attr 'fg=black,bg=green'
           set -g @prefix_highlight_show_copy_mode 'on'
           set -g status-interval 5
+          set -g status-left-length ${toString tmuxStatusLeftLength}
           set -g status-right-length ${toString tmuxStatusRightLength}
           set -g status-right '#{prefix_highlight}#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,}"#{=21:pane_title}" #(${tmuxJetpackRight}/bin/tmux-jetpack-right "#{pane_current_path}" "#{client_width}")'
         '';
