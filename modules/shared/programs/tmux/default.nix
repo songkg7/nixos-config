@@ -22,7 +22,7 @@
           set -g @sessionx-zoxide-mode 'on'
           set -g @sessionx-tmuxinator-mode 'on'
           set -g @sessionx-fzf-marks-mode 'on'
-          set -g @sessionx-filter-current 'false'
+          set -g @sessionx-filter-current 'true'
           set -g @sessionx-preview-location 'right'
           set -g @sessionx-preview-ratio '55%'
           set -g @sessionx-bind-select-up 'ctrl-p'
