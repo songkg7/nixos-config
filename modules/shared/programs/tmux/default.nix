@@ -1,4 +1,208 @@
 { pkgs, ... }:
+let
+  tmuxStatusRightLength = 120;
+
+  tmuxJetpackRightConfig = pkgs.writeText "tmux-jetpack-right.toml" ''
+    "$schema" = 'https://starship.rs/config-schema.json'
+
+    right_format = """
+    $singularity\
+    $kubernetes\
+    $directory\
+    $vcsh\
+    $fossil_branch\
+    $git_branch\
+    $git_commit\
+    $git_state\
+    $git_status\
+    $hg_branch\
+    $pijul_channel\
+    $docker_context\
+    $package\
+    $c\
+    $cpp\
+    $cmake\
+    $cobol\
+    $daml\
+    $dart\
+    $deno\
+    $dotnet\
+    $elixir\
+    $elm\
+    $erlang\
+    $fennel\
+    $fortran\
+    $golang\
+    $guix_shell\
+    $haskell\
+    $haxe\
+    $helm\
+    $java\
+    $julia\
+    $kotlin\
+    $gradle\
+    $lua\
+    $nim\
+    $nodejs\
+    $ocaml\
+    $opa\
+    $perl\
+    $php\
+    $pulumi\
+    $purescript\
+    $python\
+    $raku\
+    $rlang\
+    $red\
+    $ruby\
+    $rust\
+    $scala\
+    $solidity\
+    $swift\
+    $terraform\
+    $vlang\
+    $vagrant\
+    $xmake\
+    $zig\
+    $buf\
+    $conda\
+    $pixi\
+    $meson\
+    $spack\
+    $memory_usage\
+    $aws\
+    $gcloud\
+    $openstack\
+    $azure\
+    $crystal\
+    $custom\
+    $status\
+    $os\
+    $battery\
+    $time"""
+
+    [directory]
+    home_symbol = "⌂"
+    truncation_length = 2
+    truncation_symbol = "□ "
+    read_only = " ◈"
+    use_os_path_sep = true
+    style = "italic blue"
+    format = '[$path]($style)[$read_only]($read_only_style)'
+    repo_root_style = "bold blue"
+    repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [△](bold bright-blue)'
+
+    [time]
+    disabled = false
+    format = "[ $time]($style)"
+    time_format = "%R"
+    utc_time_offset = "local"
+    style = "italic dimmed white"
+
+    [battery]
+    format = "[ $percentage $symbol]($style)"
+    full_symbol = "█"
+    charging_symbol = "[↑](italic bold green)"
+    discharging_symbol = "↓"
+    unknown_symbol = "░"
+    empty_symbol = "▃"
+
+    [[battery.display]]
+    threshold = 20
+    style = "italic bold red"
+
+    [[battery.display]]
+    threshold = 60
+    style = "italic dimmed bright-purple"
+
+    [[battery.display]]
+    threshold = 70
+    style = "italic dimmed yellow"
+
+    [git_branch]
+    format = " [$branch(:$remote_branch)]($style)"
+    symbol = "[△](bold italic bright-blue)"
+    style = "italic bright-blue"
+    truncation_symbol = "⋯"
+    truncation_length = 11
+    ignore_branches = ["main", "master"]
+    only_attached = true
+
+    [git_status]
+    style = "bold italic bright-blue"
+    format = "([⎪$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed⎥]($style))"
+    conflicted = "[◪◦](italic bright-magenta)"
+    ahead = "[▴│[''${count}](bold white)│](italic green)"
+    behind = "[▿│[''${count}](bold white)│](italic red)"
+    diverged = "[◇ ▴┤[''${ahead_count}](regular white)│▿┤[''${behind_count}](regular white)│](italic bright-magenta)"
+    untracked = "[◌◦](italic bright-yellow)"
+    stashed = "[◃◈](italic white)"
+    modified = "[●◦](italic yellow)"
+    staged = "[▪┤[$count](bold white)│](italic bright-cyan)"
+    renamed = "[◎◦](italic bright-blue)"
+    deleted = "[✕](italic red)"
+
+    [nodejs]
+    format = " [node](italic) [◫ ($version)](bold bright-green)"
+    version_format = "''${raw}"
+    detect_files = ["package-lock.json", "yarn.lock"]
+    detect_folders = ["node_modules"]
+    detect_extensions = []
+
+    [python]
+    format = " [py](italic) [''${symbol}''${version}]($style)"
+    symbol = "[⌉](bold bright-blue)⌊ "
+    version_format = "''${raw}"
+    style = "bold bright-yellow"
+
+    [ruby]
+    format = " [rb](italic) [''${symbol}''${version}]($style)"
+    symbol = "◆ "
+    version_format = "''${raw}"
+    style = "bold red"
+
+    [rust]
+    format = " [rs](italic) [$symbol$version]($style)"
+    symbol = "⊃ "
+    version_format = "''${raw}"
+    style = "bold red"
+
+    [package]
+    format = " [pkg](italic dimmed) [$symbol$version]($style)"
+    version_format = "''${raw}"
+    symbol = "◨ "
+    style = "dimmed yellow italic bold"
+
+    [aws]
+    disabled = true
+    format = " [aws](italic) [$symbol $profile $region]($style)"
+    style = "bold blue"
+    symbol = "▲ "
+  '';
+
+  tmuxJetpackRight = pkgs.writeShellApplication {
+    name = "tmux-jetpack-right";
+    runtimeInputs = [ pkgs.starship ];
+    text = ''
+      set -euo pipefail
+
+      path="''${1:-$PWD}"
+      width="''${2:-${toString tmuxStatusRightLength}}"
+
+      if [ "$width" -gt ${toString tmuxStatusRightLength} ] 2>/dev/null; then
+        width=${toString tmuxStatusRightLength}
+      fi
+
+      prompt="$(
+        STARSHIP_CONFIG=${tmuxJetpackRightConfig} \
+        STARSHIP_SHELL=nu \
+        starship prompt --right --path "$path" --terminal-width "$width" 2>/dev/null || true
+      )"
+
+      printf '%s' "$prompt" | ${pkgs.perl}/bin/perl -pe 's/\e\[[0-9;]*[[:alpha:]]//g; s/\r?\n//g'
+    '';
+  };
+in
 {
   home.packages = with pkgs; [
     tmuxinator
@@ -50,7 +254,9 @@
           set -g @prefix_highlight_bg 'yellow'
           set -g @prefix_highlight_copy_mode_attr 'fg=black,bg=green'
           set -g @prefix_highlight_show_copy_mode 'on'
-          set -g status-right '#{prefix_highlight}#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,}"#{=21:pane_title}" %H:%M %d-%b-%y'
+          set -g status-interval 5
+          set -g status-right-length ${toString tmuxStatusRightLength}
+          set -g status-right '#{prefix_highlight}#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,}"#{=21:pane_title}" #(${tmuxJetpackRight}/bin/tmux-jetpack-right "#{pane_current_path}" "#{client_width}")'
         '';
       }
       tmuxPlugins.vim-tmux-navigator
