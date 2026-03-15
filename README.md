@@ -128,8 +128,7 @@ nix develop
 - `personal` keeps Bitwarden as the password manager, but runtime SSH auth and Git SSH signing go through `gpg-agent` only.
 - `personal` shells rebind `GPG_TTY` and `SSH_AUTH_SOCK` to the local `gpg-agent` socket on every interactive zsh session. GUI login is not required for SSH/Git signing.
 - `personal` uses `pinentry-curses` with an 8 hour SSH cache TTL. The first SSH/Git signing operation after a cold cache prompts on the current TTY, then stays quiet until the cache expires or `gpgconf --kill gpg-agent` is run.
-- `gpg-personal-refresh`, `gpg-personal-status`, `gpg-personal-reset`, and `gpg-personal-bootstrap` are available in `personal` interactive shells.
-- `gpg-personal-bootstrap` generates a temporary `~/.ssh/personal_github_ed25519` key, imports it into `gpg-agent`, and prints the public key. Keep recovery material in Bitwarden before deleting the temporary private key after verification.
+- `gpg-personal-refresh` is available in `personal` interactive shells as a manual recovery step when a long-lived shell or multiplexer session needs its TTY and `SSH_AUTH_SOCK` rebound.
 - If you rotate to a new signing/authentication key, update `flake.nix` and `secrets/allowed-signers.age` together after GitHub authentication/signing keys have been updated.
 - `bwlogin`, `bwunlock`, `bwsync`, `bwlock`, and `bwlogout` are available whenever `programs.bitwarden-cli` is enabled.
 

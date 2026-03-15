@@ -40,7 +40,6 @@
       cacheTtlSshSeconds = null;
       identityAgent = null;
       identityFile = null;
-      bootstrapKeyFile = null;
       pinentry = null;
     };
 
@@ -92,7 +91,6 @@
       cacheTtlSshSeconds = 28800;
       identityAgent = "SSH_AUTH_SOCK";
       identityFile = "~/.ssh/personal_github_ed25519.pub";
-      bootstrapKeyFile = "~/.ssh/personal_github_ed25519";
       pinentry = "curses";
     };
 
