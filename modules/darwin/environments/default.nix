@@ -35,6 +35,15 @@
       gitSshProgram = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
     };
 
+    sshRuntime = {
+      backend = "password-manager";
+      cacheTtlSshSeconds = null;
+      identityAgent = null;
+      identityFile = null;
+      bootstrapKeyFile = null;
+      pinentry = null;
+    };
+
     # Additional agenix secrets for work environment
     ageSecrets = {
       hasAwsConfig = true;
@@ -73,9 +82,18 @@
     passwordManager = {
       desktopCasks = [ "bitwarden" ];
       enableBitwardenCli = true;
-      sshIdentityAgent = "~/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
-      sshAuthSock = "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
+      sshIdentityAgent = null;
+      sshAuthSock = null;
       gitSshProgram = null;
+    };
+
+    sshRuntime = {
+      backend = "gpg-agent";
+      cacheTtlSshSeconds = 28800;
+      identityAgent = "SSH_AUTH_SOCK";
+      identityFile = "~/.ssh/personal_github_ed25519.pub";
+      bootstrapKeyFile = "~/.ssh/personal_github_ed25519";
+      pinentry = "curses";
     };
 
     ageSecrets = {

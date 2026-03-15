@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   inputs,
   environment,
@@ -19,9 +18,6 @@ in
     {
       home.username = username;
       home.homeDirectory = "/Users/${username}";
-      home.sessionVariables = lib.optionalAttrs (envConfig.passwordManager.sshAuthSock != null) {
-        SSH_AUTH_SOCK = envConfig.passwordManager.sshAuthSock;
-      };
 
       home.file."haril-vault" = {
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/haril-vault";

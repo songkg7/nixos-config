@@ -17,7 +17,7 @@ Personal Nix configuration supporting macOS (Darwin) and Linux systems with comp
 - **Editors**: Neovim with AstroNvim configuration
 - **Utilities**: Bat, Ranger, JQ, Fonts configuration
 - **macOS specific**: AeroSpace, Homebrew, Homerow
-- **Security**: environment-aware 1Password/Bitwarden SSH and Git configuration
+- **Security**: environment-aware 1Password and `gpg-agent` SSH/Git signing configuration
 - **Vault CLI**: Bitwarden CLI enabled for `personal` and available for other profiles
 
 ## 📋 Prerequisites
@@ -125,8 +125,12 @@ nix develop
 
 - `work` keeps `1password` and `1password-cli` for SSH agent and Git SSH signing.
 - `personal` installs Bitwarden Desktop via Homebrew and enables the shared `programs.bitwarden-cli` module.
-- `personal` exports `SSH_AUTH_SOCK` to Bitwarden's macOS SSH agent socket and relies on the default `ssh-keygen` flow for Git SSH signing.
-- Before switching `personal`, make sure the signing/authentication key already exists in Bitwarden. If you rotate to a new key, update `flake.nix` and `secrets/allowed-signers.age` together.
+- `personal` keeps Bitwarden as the password manager, but runtime SSH auth and Git SSH signing go through `gpg-agent` only.
+- `personal` shells rebind `GPG_TTY` and `SSH_AUTH_SOCK` to the local `gpg-agent` socket on every interactive zsh session. GUI login is not required for SSH/Git signing.
+- `personal` uses `pinentry-curses` with an 8 hour SSH cache TTL. The first SSH/Git signing operation after a cold cache prompts on the current TTY, then stays quiet until the cache expires or `gpgconf --kill gpg-agent` is run.
+- `gpg-personal-refresh`, `gpg-personal-status`, `gpg-personal-reset`, and `gpg-personal-bootstrap` are available in `personal` interactive shells.
+- `gpg-personal-bootstrap` generates a temporary `~/.ssh/personal_github_ed25519` key, imports it into `gpg-agent`, and prints the public key. Keep recovery material in Bitwarden before deleting the temporary private key after verification.
+- If you rotate to a new signing/authentication key, update `flake.nix` and `secrets/allowed-signers.age` together after GitHub authentication/signing keys have been updated.
 - `bwlogin`, `bwunlock`, `bwsync`, `bwlock`, and `bwlogout` are available whenever `programs.bitwarden-cli` is enabled.
 
 ## 📝 License
