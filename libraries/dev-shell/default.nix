@@ -4,7 +4,11 @@
   ...
 }:
 let
-  pkgs = import inputs.nixpkgs { inherit system; };
+  policy = import ../nixpkgs/policy.nix { lib = inputs.nixpkgs.lib; };
+  pkgs = import inputs.nixpkgs {
+    inherit system;
+    inherit (policy) overlays config;
+  };
 in
 pkgs.mkShell {
   packages = with pkgs; [

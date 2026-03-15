@@ -1,15 +1,13 @@
 {
   config,
-  environment,
   lib,
   pkgs,
+  profileConfig,
   ...
 }:
 let
-  isDarwin = pkgs.stdenv.isDarwin;
-  darwinEnvConfig = if isDarwin then (import ../../../darwin/environments).${environment} else null;
-  sshRuntime = if isDarwin then darwinEnvConfig.sshRuntime else null;
-  isPersonalDarwinGpgAgent = isDarwin && sshRuntime.backend == "gpg-agent";
+  sshRuntime = profileConfig.ssh.runtime;
+  isPersonalDarwinGpgAgent = profileConfig.platform.isDarwin && sshRuntime.backend == "gpg-agent";
   gpgPkg = config.programs.gpg.package;
   gpgConf = lib.getExe' gpgPkg "gpgconf";
   gpgConnectAgent = lib.getExe' gpgPkg "gpg-connect-agent";

@@ -74,7 +74,14 @@
     }@inputs:
     let
       nixpkgs-shared = ./libraries/nixpkgs;
-      user-profile = {
+      nixpkgsPolicy = import ./libraries/nixpkgs/policy.nix { lib = nixpkgs.lib; };
+      mkPkgs =
+        system:
+        import nixpkgs {
+          inherit system;
+          inherit (nixpkgsPolicy) overlays config;
+        };
+      userProfile = {
         username = "haril";
         personal = {
           name = "haril song";
@@ -82,10 +89,97 @@
           sshSigningKey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFmb4oZ2xckQFPlFFl90Hy9sblwNAwC20JPuMj236hVB songkg7@gmail.com";
         };
       };
+      darwinEnvironments = import ./modules/darwin/environments;
+      defaultDarwinProfile = {
+        packages = [ ];
+        brews = [ ];
+        casks = [ ];
+        masApps = { };
+        dockApps = [ ];
+        sshIncludes = [ ];
+        passwordManager = {
+          desktopCasks = [ ];
+          enableBitwardenCli = false;
+          sshIdentityAgent = null;
+          sshAuthSock = null;
+          gitSshProgram = null;
+        };
+        sshRuntime = {
+          backend = null;
+          cacheTtlSshSeconds = null;
+          identityAgent = null;
+          identityFile = null;
+          pinentry = null;
+        };
+        ageSecrets = {
+          hasAwsConfig = false;
+        };
+      };
+      resolveProfilePackages =
+        pkgs: profileName: packageNames:
+        map (
+          name:
+          if builtins.hasAttr name pkgs then
+            pkgs.${name}
+          else
+            throw "Unknown package `${name}` in Darwin profile `${profileName}`"
+        ) packageNames;
+      mkProfileConfig =
+        { system, profileName }:
+        let
+          isDarwin = nixpkgs.lib.hasSuffix "darwin" system;
+          pkgsForSystem = mkPkgs system;
+          username = userProfile.username;
+          rawDarwinProfile =
+            if isDarwin then
+              nixpkgs.lib.recursiveUpdate defaultDarwinProfile darwinEnvironments.${profileName}
+            else
+              defaultDarwinProfile;
+        in
+        {
+          name = profileName;
+          platform = {
+            inherit system isDarwin;
+          };
+          user = {
+            inherit username;
+            homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
+            fullName = userProfile.personal.name;
+            email = userProfile.personal.email;
+            sshSigningKey = userProfile.personal.sshSigningKey;
+          };
+          home = {
+            stateVersion = "25.11";
+            extraPackages =
+              if isDarwin then
+                resolveProfilePackages pkgsForSystem profileName rawDarwinProfile.packages
+              else
+                [ ];
+          };
+          passwordManager = rawDarwinProfile.passwordManager;
+          ssh = {
+            includes = rawDarwinProfile.sshIncludes;
+            runtime = rawDarwinProfile.sshRuntime;
+          };
+          secrets = rawDarwinProfile.ageSecrets;
+          darwin = {
+            brewPrefix = "/opt/homebrew";
+            homebrew = {
+              brews = rawDarwinProfile.brews;
+              casks = rawDarwinProfile.casks;
+              desktopCasks = rawDarwinProfile.passwordManager.desktopCasks;
+              masApps = rawDarwinProfile.masApps;
+            };
+            dockApps = rawDarwinProfile.dockApps;
+          };
+        };
 
       # Darwin 시스템 생성 함수
       mkDarwinSystem =
-        system: environment:
+        system: profileName:
+        let
+          profileConfig = mkProfileConfig { inherit system profileName; };
+        in
         nix-darwin.lib.darwinSystem {
           inherit system;
           modules = [
@@ -94,18 +188,18 @@
             inputs.nix-homebrew.darwinModules.nix-homebrew
             nixpkgs-shared
             home-manager.darwinModules.home-manager
-            { home-manager.extraSpecialArgs = { inherit environment user-profile; }; }
+            { home-manager.extraSpecialArgs = { inherit inputs profileConfig; }; }
             ./modules/shared/configuration.nix
             ./modules/darwin/configuration.nix
             ./modules/darwin/home.nix
           ];
-          specialArgs = { inherit inputs environment user-profile; };
+          specialArgs = { inherit inputs profileConfig; };
         };
     in
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = mkPkgs system;
       in
       {
         devShells.default = import ./libraries/dev-shell { inherit inputs system; };
@@ -120,28 +214,30 @@
       };
 
       # Linux configuration
-      nixosConfigurations.linux = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          inputs.determinate.nixosModules.default
-          inputs.agenix.nixosModules.default
-          nixos-wsl.nixosModules.default
-          nixpkgs-shared
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.extraSpecialArgs = {
-              inherit user-profile;
-              environment = "personal";
-            };
-          }
-          ./modules/shared/configuration.nix
-          ./modules/linux/configuration.nix
-          ./modules/linux/home.nix
-        ];
-        specialArgs = {
-          inherit inputs user-profile;
-          environment = "personal";
+      nixosConfigurations.linux =
+        let
+          system = "x86_64-linux";
+          profileConfig = mkProfileConfig {
+            inherit system;
+            profileName = "personal";
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            inputs.determinate.nixosModules.default
+            inputs.agenix.nixosModules.default
+            nixos-wsl.nixosModules.default
+            nixpkgs-shared
+            home-manager.nixosModules.home-manager
+            { home-manager.extraSpecialArgs = { inherit inputs profileConfig; }; }
+            ./modules/shared/configuration.nix
+            ./modules/linux/configuration.nix
+            ./modules/linux/home.nix
+          ];
+          specialArgs = {
+            inherit inputs profileConfig;
+          };
         };
-      };
     };
 }

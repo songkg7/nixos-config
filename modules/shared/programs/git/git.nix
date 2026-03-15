@@ -1,17 +1,13 @@
 {
   config,
-  environment,
   lib,
-  pkgs,
-  user-profile,
+  profileConfig,
   ...
 }:
 let
-  isDarwin = pkgs.stdenv.isDarwin;
-  darwinEnvConfig = if isDarwin then (import ../../../darwin/environments).${environment} else null;
-  passwordManager = if isDarwin then darwinEnvConfig.passwordManager else null;
+  passwordManager = profileConfig.passwordManager;
   gpgSshSettings =
-    if isDarwin then
+    if profileConfig.platform.isDarwin then
       {
         allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
       }
@@ -25,7 +21,7 @@ in
   programs.git = {
     enable = true;
     signing = {
-      key = user-profile.personal.sshSigningKey;
+      key = profileConfig.user.sshSigningKey;
       signByDefault = true;
     };
     ignores = [
@@ -44,8 +40,8 @@ in
 
     settings = {
       user = {
-        name = user-profile.personal.name;
-        email = user-profile.personal.email;
+        name = profileConfig.user.fullName;
+        email = profileConfig.user.email;
       };
       alias = {
         st = "status";
@@ -117,13 +113,13 @@ in
         skippedCherryPicks = false;
       };
     }
-    // lib.optionalAttrs isDarwin {
+    // lib.optionalAttrs profileConfig.platform.isDarwin {
       "gpg \"ssh\"" = gpgSshSettings;
     };
 
     lfs.enable = true;
 
-    includes = lib.optionals isDarwin [
+    includes = lib.optionals profileConfig.platform.isDarwin [
       {
         condition = "gitdir:~/projects/42dot/";
         path = "~/.config/git/gitconfig-work";

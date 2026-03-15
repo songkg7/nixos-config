@@ -1,24 +1,15 @@
 {
   pkgs,
-  inputs,
-  environment,
-  user-profile,
+  profileConfig,
   ...
 }:
 let
-  username = user-profile.username;
-  envConfig = (import ./environments).${environment};
+  username = profileConfig.user.username;
 in
 {
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.backupFileExtension = "backup";
   home-manager.users.${username} =
     { config, ... }:
     {
-      home.username = username;
-      home.homeDirectory = "/Users/${username}";
-
       home.file."haril-vault" = {
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/haril-vault";
       };
@@ -27,7 +18,6 @@ in
         with pkgs;
         [
           # Databases / Analytics
-          duckdb
           rainfrog
 
           # Development
@@ -37,12 +27,8 @@ in
 
           # Cloud and DevOps
           gh
-          ngrok
 
           # Utility
-          ripgrep
-          # ast-grep
-          fd
           fx
           jq
           htop
@@ -77,35 +63,13 @@ in
           nerd-fonts.hack
           rubik
         ]
-        ++ (map (name: pkgs.${name}) envConfig.packages);
+        ++ profileConfig.home.extraPackages;
 
       imports = [
-        inputs.nixvim.homeModules.nixvim
-        inputs.agenix.homeManagerModules.default
-        ../shared/programs/vim
-        ../shared/programs/ai
-        ../shared/programs/git
-        ../shared/programs/bat
-        ../shared/programs/yazi
-        ../shared/programs/shell
-        ../shared/programs/nix
-        ../shared/programs/direnv
-        ../shared/programs/kubernetes
-        ../shared/programs/aws
-        ../shared/programs/age
-        ../shared/programs/bitwarden
-        ../shared/programs/gpg
-        ../shared/programs/tmux
-        ../shared/programs/zellij
-
         ../darwin/programs/aerospace
         ../darwin/programs/ssh
         ../darwin/programs/homerow
         ../darwin/programs/ghostty
       ];
-
-      programs.bitwarden-cli.enable = envConfig.passwordManager.enableBitwardenCli;
-
-      home.stateVersion = "25.11";
     };
 }

@@ -1,13 +1,9 @@
 {
   lib,
   pkgs,
-  user-profile,
+  profileConfig,
   ...
 }:
-let
-  darwinUtils = import ../../../../modules/darwin/utils.nix { inherit pkgs; };
-  inherit (darwinUtils) brewPrefix;
-in
 {
   imports = [
     ./atuin.nix
@@ -24,7 +20,7 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-    AUTHOR = user-profile.username;
+    AUTHOR = profileConfig.user.username;
     USE_GKE_GCLOUD_AUTH_PLUGIN = "True";
     _ZO_FZF_OPTS = "--height 40% --border";
     LANG = "en_US.UTF-8";
@@ -35,10 +31,10 @@ in
   home.sessionPath = [
     "$HOME/.local/bin"
   ]
-  ++ lib.optionals pkgs.stdenv.isDarwin [
+  ++ lib.optionals profileConfig.platform.isDarwin [
     "/Applications/Ghostty.app/Contents/MacOS"
-    "${brewPrefix}/bin"
-    "${brewPrefix}/sbin"
+    "${profileConfig.darwin.brewPrefix}/bin"
+    "${profileConfig.darwin.brewPrefix}/sbin"
   ];
 
   home.shellAliases = {
@@ -71,7 +67,7 @@ in
         # Warp terminal integration
         printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
 
-        figlet -f mike "Hello $(echo ${user-profile.username})" | lolcat
+        figlet -f mike "Hello $(echo ${profileConfig.user.username})" | lolcat
       '')
 
       (lib.mkOrder 690 ''

@@ -1,17 +1,16 @@
 {
-  environment,
   lib,
+  profileConfig,
   ...
 }:
 let
-  envConfig = (import ../../environments).${environment};
-  sshRuntime = envConfig.sshRuntime;
+  sshRuntime = profileConfig.ssh.runtime;
 in
 {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    includes = envConfig.sshIncludes;
+    includes = profileConfig.ssh.includes;
     matchBlocks = lib.mkMerge [
       {
         "tailscale" = {
@@ -20,10 +19,10 @@ in
         };
       }
 
-      (lib.optionalAttrs (envConfig.passwordManager.sshIdentityAgent != null) {
+      (lib.optionalAttrs (profileConfig.passwordManager.sshIdentityAgent != null) {
         "password-manager-agent" = lib.hm.dag.entryAfter [ "tailscale" ] {
           match = ''exec "test -z \"$SSH_CONNECTION\""'';
-          identityAgent = envConfig.passwordManager.sshIdentityAgent;
+          identityAgent = profileConfig.passwordManager.sshIdentityAgent;
         };
       })
 

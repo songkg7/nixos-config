@@ -6,7 +6,7 @@ Personal Nix configuration supporting macOS (Darwin) and Linux systems with comp
 
 ### Core Functionality
 
-- **Multi-platform support**: macOS (Intel/Apple Silicon) and Linux
+- **Multi-platform support**: macOS (Apple Silicon) and Linux
 - **Home Manager integration**: Unified user environment configuration
 - **Development shell**: Pre-configured environment with formatters and linters
 
@@ -15,7 +15,7 @@ Personal Nix configuration supporting macOS (Darwin) and Linux systems with comp
 - **Shell & Terminal**: Starship, Atuin, Zoxide, FZF
 - **Development**: Git with Delta, GitHub CLI, Direnv, Mise
 - **Editors**: Neovim with AstroNvim configuration
-- **Utilities**: Bat, Ranger, JQ, Fonts configuration
+- **Utilities**: Bat, Yazi, JQ, Fonts configuration
 - **macOS specific**: AeroSpace, Homebrew, Homerow
 - **Security**: environment-aware 1Password and `gpg-agent` SSH/Git signing configuration
 - **Vault CLI**: Bitwarden CLI enabled for `personal` and available for other profiles
@@ -81,6 +81,9 @@ nix fmt .
 
 ```sh
 nix flake check
+nix build '.#darwinConfigurations.work.system'
+nix build '.#darwinConfigurations.personal.system'
+nix eval '.#nixosConfigurations.linux.config.system.stateVersion' # Local fallback when not building Linux on a macOS host
 ```
 
 ### Development Environment
@@ -93,16 +96,17 @@ nix develop
 ## 📁 Project Structure
 
 ```
+├── flake.nix            # Main entry point + profileConfig normalization
 ├── modules/
-│   ├── shared/           # Cross-platform configurations
-│   │   └── programs/     # Application configurations
+│   ├── shared/
+│   │   ├── configuration.nix # Shared system-level imports
+│   │   └── programs/         # Cross-platform Home Manager modules
 │   ├── darwin/           # macOS-specific settings
 │   └── linux/            # Linux-specific settings
 ├── libraries/
-│   ├── home-manager/     # Home Manager modules
-│   ├── nixpkgs/          # Custom packages
+│   ├── home-manager/     # Shared Home Manager wiring via sharedModules
+│   ├── nixpkgs/          # Overlays + package policy
 │   └── dev-shell/        # Development environment
-└── flake.nix            # Main configuration entry point
 ```
 
 ## 🎯 Key Commands

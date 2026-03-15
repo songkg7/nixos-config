@@ -1,12 +1,7 @@
 {
-  environment,
-  user-profile,
+  profileConfig,
   ...
 }:
-let
-  username = user-profile.username;
-  envConfig = (import ../../environments).${environment};
-in
 {
   system.defaults = {
     dock = {
@@ -18,9 +13,9 @@ in
         { app = "/Applications/Spotify.app"; }
         { app = "/Applications/Warp.app"; }
       ]
-      ++ envConfig.dockApps;
+      ++ profileConfig.darwin.dockApps;
       persistent-others = [
-        { folder = "/Users/${username}/Downloads"; }
+        { folder = "${profileConfig.user.homeDirectory}/Downloads"; }
       ];
     };
     spaces = {

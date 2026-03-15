@@ -21,12 +21,15 @@ sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal'
 ## Validation & Development
 
 ```bash
-nix flake check              # Validate configuration
+nix flake check               # Validate configuration
 nix flake check --all-systems # Check all platforms
-nix fmt .                     # Format with nixfmt-tree
-deadnix --edit .              # Remove unused code
-nix develop                   # Enter dev shell with formatters/linters
-nix flake update              # Update dependencies
+nix build '.#darwinConfigurations.work.system'
+nix build '.#darwinConfigurations.personal.system'
+nix eval '.#nixosConfigurations.linux.config.system.stateVersion' # Local fallback on non-Linux hosts
+nix fmt .                    # Format with nixfmt-tree
+deadnix --edit .             # Remove unused code
+nix develop                  # Enter dev shell with formatters/linters
+nix flake update             # Update dependencies
 ```
 
 ## Architecture
@@ -44,9 +47,10 @@ Multi-platform Nix flake supporting macOS (Darwin) and Linux with Home Manager i
 ### Module Organization
 
 - **`modules/shared/programs/`** - Cross-platform program configs (imported by both Darwin and Linux)
+- **`modules/shared/configuration.nix`** - Shared system-level entry that imports common libraries
 - **`modules/darwin/`** - macOS system settings, homebrew, home.nix
 - **`modules/linux/`** - Linux/WSL system settings, home.nix
-- **`libraries/home-manager/`** - Reusable Home Manager modules (sharedModules)
+- **`libraries/home-manager/`** - Shared Home Manager wiring via `home-manager.sharedModules`
 - **`libraries/nixpkgs/`** - Overlays and allowUnfree policy
 - **`libraries/dev-shell/`** - Development shell definition
 
@@ -60,6 +64,7 @@ Multi-platform Nix flake supporting macOS (Darwin) and Linux with Home Manager i
 | Linux system settings | `modules/linux/configuration.nix` |
 | macOS packages & imports | `modules/darwin/home.nix` |
 | Linux packages & imports | `modules/linux/home.nix` |
+| Profile normalization | `flake.nix` |
 | Custom packages/overlays | `libraries/nixpkgs/default.nix` |
 | HM shared modules | `libraries/home-manager/default.nix` |
 
@@ -70,9 +75,9 @@ Multi-platform Nix flake supporting macOS (Darwin) and Linux with Home Manager i
 - **Unused args**: Use `_:` for unused function arguments
 - **Module flow**: shared → darwin/linux → program-specific
 - **Darwin environment split**: manage work/personal differences in `modules/darwin/environments/default.nix` (`packages`, `brews`, `casks`, `masApps`, `dockApps`, `sshIncludes`, `ageSecrets`)
-- **Darwin package source of truth**: put work-only tools (e.g. `acli`) in `environments/default.nix` and keep `modules/darwin/home.nix` as the shared base + `envConfig` merge layer
+- **Profile source of truth**: resolve environment-specific Darwin data once in `flake.nix` and pass it as `profileConfig`
+- **Darwin package source of truth**: put work-only tools (e.g. `acli`) in `environments/default.nix` and keep `modules/darwin/home.nix` as a thin platform wrapper over the shared HM layer
 
 ## Git Hooks (lefthook)
 
 - **pre-commit**: Runs `deadnix --edit .` with auto-staging
--

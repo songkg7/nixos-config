@@ -6,4 +6,3 @@
     enableZshIntegration = true;
   };
 }
-

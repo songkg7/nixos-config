@@ -2,11 +2,11 @@
   config,
   inputs,
   pkgs,
-  user-profile,
+  profileConfig,
   ...
 }:
 let
-  username = user-profile.username;
+  username = profileConfig.user.username;
 in
 {
   security.pam = {
@@ -14,7 +14,7 @@ in
   };
 
   users.users.${username} = {
-    home = "/Users/${username}";
+    home = profileConfig.user.homeDirectory;
   };
 
   system.primaryUser = username;

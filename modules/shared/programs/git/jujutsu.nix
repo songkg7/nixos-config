@@ -1,12 +1,12 @@
-{ user-profile, ... }:
+{ profileConfig, ... }:
 {
   programs.jujutsu = {
     enable = true;
 
     settings = {
       user = {
-        name = user-profile.personal.name;
-        email = user-profile.personal.email;
+        name = profileConfig.user.fullName;
+        email = profileConfig.user.email;
       };
     };
   };

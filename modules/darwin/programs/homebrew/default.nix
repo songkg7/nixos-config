@@ -1,12 +1,9 @@
 {
   config,
-  environment,
   lib,
+  profileConfig,
   ...
 }:
-let
-  envConfig = (import ../../environments).${environment};
-in
 {
   homebrew = {
     enable = true;
@@ -19,7 +16,7 @@ in
     brews = [
       "mole"
     ]
-    ++ envConfig.brews;
+    ++ profileConfig.darwin.homebrew.brews;
 
     casks = [
       "slack"
@@ -50,8 +47,8 @@ in
       "opencode-desktop"
       "shottr"
     ]
-    ++ envConfig.passwordManager.desktopCasks
-    ++ envConfig.casks;
+    ++ profileConfig.darwin.homebrew.desktopCasks
+    ++ profileConfig.darwin.homebrew.casks;
 
     masApps = {
       "Amphetamine" = 937984704;
@@ -60,6 +57,6 @@ in
       "RunCat" = 1429033973;
       "ScreenBrush" = 1233965871;
     }
-    // envConfig.masApps;
+    // profileConfig.darwin.homebrew.masApps;
   };
 }
