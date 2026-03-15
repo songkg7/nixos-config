@@ -23,8 +23,6 @@ in
 
     casks = [
       "slack"
-      "1password"
-      "1password-cli"
       "clop"
       "cursor"
       "font-d2coding-nerd-font"
@@ -52,6 +50,7 @@ in
       "opencode-desktop"
       "shottr"
     ]
+    ++ envConfig.passwordManager.desktopCasks
     ++ envConfig.casks;
 
     masApps = {

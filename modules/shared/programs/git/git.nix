@@ -1,5 +1,6 @@
 {
   config,
+  environment,
   lib,
   pkgs,
   user-profile,
@@ -7,6 +8,18 @@
 }:
 let
   isDarwin = pkgs.stdenv.isDarwin;
+  darwinEnvConfig = if isDarwin then (import ../../../darwin/environments).${environment} else null;
+  passwordManager = if isDarwin then darwinEnvConfig.passwordManager else null;
+  gpgSshSettings =
+    if isDarwin then
+      {
+        allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
+      }
+      // lib.optionalAttrs (passwordManager.gitSshProgram != null) {
+        program = passwordManager.gitSshProgram;
+      }
+    else
+      null;
 in
 {
   programs.git = {
@@ -105,8 +118,7 @@ in
       };
     }
     // lib.optionalAttrs isDarwin {
-      "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-      "gpg \"ssh\"".allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
+      "gpg \"ssh\"" = gpgSshSettings;
     };
 
     lfs.enable = true;

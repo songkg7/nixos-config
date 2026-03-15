@@ -21,6 +21,11 @@
       run = "layout floating";
     }
     {
+      "if".app-id = "com.bitwarden.desktop";
+      check-further-callbacks = true;
+      run = "layout floating";
+    }
+    {
       "if".app-id = "com.heynote.app";
       check-further-callbacks = true;
       run = "layout floating";

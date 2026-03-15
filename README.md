@@ -17,8 +17,8 @@ Personal Nix configuration supporting macOS (Darwin) and Linux systems with comp
 - **Editors**: Neovim with AstroNvim configuration
 - **Utilities**: Bat, Ranger, JQ, Fonts configuration
 - **macOS specific**: AeroSpace, Homebrew, Homerow
-- **Security**: 1Password, GPG configuration
-- **Optional Vault CLI**: Bitwarden CLI module ready to enable when needed
+- **Security**: environment-aware 1Password/Bitwarden SSH and Git configuration
+- **Vault CLI**: Bitwarden CLI enabled for `personal` and available for other profiles
 
 ## 📋 Prerequisites
 
@@ -121,10 +121,13 @@ nix develop
 
 - Import GPG keys and enable iCloud sync for secure key management
 
-### Optional Bitwarden CLI
+### Password Manager Profiles
 
-- The shared `programs.bitwarden-cli` module is wired in for Darwin and Linux, but defaults to `enable = false`.
-- Enable it in the relevant `modules/darwin/home.nix` or `modules/linux/home.nix`, rebuild, then use `bwlogin`, `bwunlock`, `bwsync`, `bwlock`, and `bwlogout`.
+- `work` keeps `1password` and `1password-cli` for SSH agent and Git SSH signing.
+- `personal` installs Bitwarden Desktop via Homebrew and enables the shared `programs.bitwarden-cli` module.
+- `personal` exports `SSH_AUTH_SOCK` to Bitwarden's macOS SSH agent socket and relies on the default `ssh-keygen` flow for Git SSH signing.
+- Before switching `personal`, make sure the signing/authentication key already exists in Bitwarden. If you rotate to a new key, update `flake.nix` and `secrets/allowed-signers.age` together.
+- `bwlogin`, `bwunlock`, `bwsync`, `bwlock`, and `bwlogout` are available whenever `programs.bitwarden-cli` is enabled.
 
 ## 📝 License
 
