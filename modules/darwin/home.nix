@@ -23,7 +23,7 @@ in
           # Development
           jetbrains-toolbox
           uv
-          databricks-cli
+          k6
 
           # Cloud and DevOps
           gh

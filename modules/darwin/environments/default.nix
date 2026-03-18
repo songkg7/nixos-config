@@ -6,7 +6,7 @@
       "podman"
       "podman-compose"
       "glab"
-      "k6"
+      "databricks-cli"
       "acli"
     ];
 
@@ -53,7 +53,6 @@
   personal = {
     packages = [
       "helix"
-      "k6"
     ];
 
     brews = [ ];
