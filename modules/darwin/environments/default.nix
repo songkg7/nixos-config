@@ -6,6 +6,7 @@
       "podman"
       "podman-compose"
       "glab"
+      "k6"
       "acli"
     ];
 
@@ -52,6 +53,7 @@
   personal = {
     packages = [
       "helix"
+      "k6"
     ];
 
     brews = [ ];
