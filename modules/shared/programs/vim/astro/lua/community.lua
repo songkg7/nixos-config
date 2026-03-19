@@ -19,6 +19,7 @@ return {
   { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.pack.spring-boot" },
   { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.typescript" },
   -- import/override with your plugins folder
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   { import = "astrocommunity.code-runner.vim-slime" },
