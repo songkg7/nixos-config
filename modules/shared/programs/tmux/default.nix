@@ -1,7 +1,64 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  profileConfig,
+  ...
+}:
 let
   tmuxStatusLeftLength = 30;
   tmuxStatusRightLength = 120;
+  sshRuntime = profileConfig.ssh.runtime;
+  isPersonalDarwinGpgAgent = profileConfig.platform.isDarwin && sshRuntime.backend == "gpg-agent";
+  gpgPkg = config.programs.gpg.package;
+  gpgConnectAgent = lib.getExe' gpgPkg "gpg-connect-agent";
+  gpgPersonalRebindTty =
+    if isPersonalDarwinGpgAgent then
+      import ../gpg/rebind-tty-package.nix {
+        inherit pkgs gpgConnectAgent;
+      }
+    else
+      null;
+  gpgAgentSshSocket = "${profileConfig.user.homeDirectory}/.gnupg/S.gpg-agent.ssh";
+
+  tmuxGpgRefreshTarget =
+    if isPersonalDarwinGpgAgent then
+      pkgs.writeShellApplication {
+        name = "tmux-gpg-refresh-target";
+        runtimeInputs = [ pkgs.tmux ];
+        text = ''
+          set -euo pipefail
+
+          target="''${1:-}"
+          if [ -z "$target" ]; then
+            exit 0
+          fi
+
+          tty_value="$(tmux display-message -p -t "$target" '#{pane_tty}' 2>/dev/null || true)"
+          if [ -z "$tty_value" ]; then
+            exit 0
+          fi
+
+          ${lib.getExe gpgPersonalRebindTty} "$tty_value"
+        '';
+      }
+    else
+      null;
+  tmuxGpgRefreshTargetExe =
+    if isPersonalDarwinGpgAgent then lib.getExe tmuxGpgRefreshTarget else "";
+  tmuxGpgHookCommand =
+    target: "run-shell '${tmuxGpgRefreshTargetExe} ${target} >/dev/null 2>&1 || true'";
+  tmuxGpgExtraConfig = lib.optionalString isPersonalDarwinGpgAgent ''
+    set-environment -g SSH_AUTH_SOCK '${gpgAgentSshSocket}'
+    set-hook -g after-new-session "${tmuxGpgHookCommand "#{hook_session}"}"
+    set-hook -g client-attached "${tmuxGpgHookCommand "#{hook_session}"}"
+    set-hook -g client-session-changed "${tmuxGpgHookCommand "#{hook_session}"}"
+    set-hook -g session-window-changed "${tmuxGpgHookCommand "#{hook_session}"}"
+    set-hook -g after-new-window "${tmuxGpgHookCommand "#{hook_window}"}"
+    set-hook -g after-select-window "${tmuxGpgHookCommand "#{hook_window}"}"
+    set-hook -g after-split-window "${tmuxGpgHookCommand "#{hook_pane}"}"
+    set-hook -g after-select-pane "${tmuxGpgHookCommand "#{hook_pane}"}"
+  '';
 
   tmuxJetpackRightConfig = pkgs.writeText "tmux-jetpack-right.toml" ''
     "$schema" = 'https://starship.rs/config-schema.json'
@@ -266,6 +323,8 @@ in
     ];
 
     extraConfig = ''
+      ${tmuxGpgExtraConfig}
+
       # pane split
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"

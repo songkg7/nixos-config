@@ -12,6 +12,9 @@ let
   gpgConf = lib.getExe' gpgPkg "gpgconf";
   gpgConnectAgent = lib.getExe' gpgPkg "gpg-connect-agent";
   pinentryCurses = pkgs.pinentry-curses;
+  gpgPersonalRebindTty = import ./rebind-tty-package.nix {
+    inherit pkgs gpgConnectAgent;
+  };
 in
 {
   config = lib.mkMerge [
@@ -37,11 +40,19 @@ in
         gpg-personal-refresh() {
           local tty_value
 
-          tty_value="''${TTY:-$(tty)}" || return $?
+          tty_value="''${1:-''${TTY:-}}"
+          if [[ -z "$tty_value" ]]; then
+            tty_value="$(tty)" || return $?
+          fi
+
+          case "$tty_value" in
+            /dev/*) ;;
+            *) return 0 ;;
+          esac
+
           export GPG_TTY="$tty_value"
-          ${gpgConnectAgent} --quiet /bye >/dev/null
-          ${gpgConnectAgent} --quiet updatestartuptty /bye >/dev/null
           export SSH_AUTH_SOCK="$(${gpgConf} --list-dirs agent-ssh-socket)"
+          ${lib.getExe gpgPersonalRebindTty} "$tty_value"
         }
 
         gpg-personal-refresh >/dev/null 2>&1 || true
