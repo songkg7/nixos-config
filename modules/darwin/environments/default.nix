@@ -17,6 +17,7 @@
       "sdm"
       "mongodb-compass"
       "redis-insight"
+      "microsoft-teams"
     ];
 
     masApps = { };
