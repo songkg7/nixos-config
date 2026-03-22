@@ -29,6 +29,7 @@ in
       (lib.optionalAttrs (sshRuntime.identityAgent != null) {
         "github" = lib.hm.dag.entryAfter [ "tailscale" ] {
           host = "github.com";
+          addKeysToAgent = "yes";
           identityAgent = sshRuntime.identityAgent;
           identityFile = sshRuntime.identityFile;
           identitiesOnly = true;

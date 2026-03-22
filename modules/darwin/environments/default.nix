@@ -89,11 +89,11 @@
     };
 
     sshRuntime = {
-      backend = "gpg-agent";
-      cacheTtlSshSeconds = 28800;
-      identityAgent = "SSH_AUTH_SOCK";
-      identityFile = "~/.ssh/personal_github_ed25519.pub";
-      pinentry = "curses";
+      backend = "ssh-agent";
+      cacheTtlSshSeconds = null;
+      identityAgent = "$SSH_AUTH_SOCK";
+      identityFile = "~/.ssh/personal_github_ed25519";
+      pinentry = null;
     };
 
     ageSecrets = {
