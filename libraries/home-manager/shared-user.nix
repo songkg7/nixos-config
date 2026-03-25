@@ -34,7 +34,7 @@
     ngrok
     ripgrep
     fd
-    cloc
+    tokei
   ];
 
   programs.bitwarden-cli.enable = profileConfig.passwordManager.enableBitwardenCli;
