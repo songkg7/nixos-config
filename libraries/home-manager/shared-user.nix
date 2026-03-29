@@ -35,6 +35,7 @@
     ripgrep
     fd
     tokei
+    semgrep
   ];
 
   programs.bitwarden-cli.enable = profileConfig.passwordManager.enableBitwardenCli;
