@@ -12,6 +12,7 @@
     ./starship
     ./mise.nix
     ./vpn.nix
+    ./work-start.nix
     ./zoxide.nix
   ];
 
@@ -49,6 +50,7 @@
     py = "python";
     vc = "vpn warp";
     vd = "vpn off warp";
+    vw = "work-start";
     h = "atsearch";
     hh = "atuin search -i";
     rm = "trash";
