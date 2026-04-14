@@ -3,8 +3,10 @@
   programs.opencode = {
     enable = true;
     enableMcpIntegration = true;
-    settings = {
+    tui = {
       theme = "lucent-orng";
+    };
+    settings = {
       autoupdate = true;
       plugin = [
         "oh-my-opencode"
