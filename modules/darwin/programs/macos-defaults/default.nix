@@ -11,7 +11,7 @@
       show-recents = false;
       persistent-apps = [
         { app = "/Applications/Spotify.app"; }
-        { app = "/Applications/Warp.app"; }
+        # { app = "/Applications/Warp.app"; }
       ]
       ++ profileConfig.darwin.dockApps;
       persistent-others = [
