@@ -40,16 +40,18 @@
       "tailscale-app"
       "codex"
       "shottr"
+      "cmux"
     ]
     ++ profileConfig.darwin.homebrew.desktopCasks
     ++ profileConfig.darwin.homebrew.casks;
 
     masApps = {
-      "Amphetamine" = 937984704;
-      "Bandizip" = 1265704574;
-      "Encrypto" = 935235287;
-      "RunCat" = 1429033973;
-      "ScreenBrush" = 1233965871;
+      # brew bundle + mas 6.x 호환성 문제로 전체 비활성화
+      # "Amphetamine" = 937984704;
+      # "Bandizip" = 1265704574;
+      # "Encrypto" = 935235287;
+      # "RunCat" = 1429033973;
+      # "ScreenBrush" = 1233965871;
     }
     // profileConfig.darwin.homebrew.masApps;
   };

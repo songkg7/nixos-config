@@ -68,7 +68,8 @@
     ];
 
     masApps = {
-      "KakaoTalk" = 869223134;
+      # brew bundle + mas 6.x 호환성 문제로 비활성화
+      # "KakaoTalk" = 869223134;
     };
 
     dockApps = [
