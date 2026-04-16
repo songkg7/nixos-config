@@ -49,6 +49,8 @@
         "global:cmd+grave_accent=toggle_quick_terminal"
         "alt+left=unbind"
         "alt+right=unbind"
+        "cmd+shift+left_bracket=unbind"
+        "cmd+shift+right_bracket=unbind"
         # tmux window switching: Cmd+N → prefix(Ctrl+A) + N
         "super+digit_1=text:\\x01\\x31"
         "super+digit_2=text:\\x01\\x32"
