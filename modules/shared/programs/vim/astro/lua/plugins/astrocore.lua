@@ -22,6 +22,18 @@ return {
       virtual_text = true,
       underline = true,
     },
+    -- Treesitter configuration (v6+: replaces nvim-treesitter plugin spec)
+    treesitter = {
+      enabled = function(_, bufnr) return not require("astrocore.buffer").is_large(bufnr) end,
+      highlight = true,
+      indent = true,
+      auto_install = true,
+      ensure_installed = {
+        "vim",
+        "jsonc",
+        "regex",
+      },
+    },
     -- passed to `vim.filetype.add`
     filetypes = {
       -- see `:h vim.filetype.add` for usage
@@ -43,6 +55,7 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
+        winborder = "rounded", -- unified floating window border (Neovim 0.11+)
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
