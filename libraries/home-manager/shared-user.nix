@@ -31,6 +31,7 @@
 
   home.packages = with pkgs; [
     duckdb
+    mongosh
     ngrok
     ripgrep
     fd
