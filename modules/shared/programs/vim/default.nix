@@ -19,6 +19,8 @@
     tree-sitter
     bottom
     gettext
+    statix
+    deadnix
   ];
 
   home.file.".config/nvim" = {
