@@ -38,7 +38,6 @@
     tokei
     semgrep
     rtk
-    helm
   ];
 
   programs.bitwarden-cli.enable = profileConfig.passwordManager.enableBitwardenCli;
