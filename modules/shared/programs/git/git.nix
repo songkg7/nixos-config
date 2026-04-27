@@ -96,12 +96,7 @@ in
         process = "git-lfs filter-process";
         required = true;
       };
-      pager = {
-        diff = "delta";
-        log = "delta";
-        reflog = "delta";
-        show = "delta";
-      };
+      # pager.{diff,log,reflog,show} 는 programs.delta.enableGitIntegration 이 자동 설정.
       delta = {
         "plus-style" = "syntax #012800";
         "minus-style" = "syntax #340001";
