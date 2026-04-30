@@ -36,7 +36,6 @@ in
       ".sisyphus"
       ".worktrees"
       ".omc"
-      ".claude"
     ];
 
     settings = {
