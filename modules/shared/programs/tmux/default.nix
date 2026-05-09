@@ -288,7 +288,10 @@ in
       bind-key K select-layout tiled
 
       # toggle synchronize-panes (broadcast input to all panes in window)
-      bind-key S setw synchronize-panes \; display "sync #{?pane_synchronized,on,off}"
+      # status bar turns red while sync is on; unset on toggle-off restores default style
+      bind-key S if -F '#{pane_synchronized}' \
+        'setw synchronize-panes off ; set -gu status-style ; display "sync off"' \
+        'setw synchronize-panes on  ; set -g status-style "bg=red fg=white bold" ; display "sync on"'
 
       # Prevent vim-tmux-navigator from wrapping at pane edges.
       bind-key -n C-h if-shell "ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+/)?g?\\.?(view|l?n?vim?x?|fzf)(diff)?(-wrapped)?$'" { send-keys C-h } { if-shell -F '#{pane_at_left}' {} { select-pane -L } }
