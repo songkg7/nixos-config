@@ -287,6 +287,9 @@ in
       bind-key J select-layout even-vertical
       bind-key K select-layout tiled
 
+      # toggle synchronize-panes (broadcast input to all panes in window)
+      bind-key S setw synchronize-panes \; display "sync #{?pane_synchronized,on,off}"
+
       # Prevent vim-tmux-navigator from wrapping at pane edges.
       bind-key -n C-h if-shell "ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+/)?g?\\.?(view|l?n?vim?x?|fzf)(diff)?(-wrapped)?$'" { send-keys C-h } { if-shell -F '#{pane_at_left}' {} { select-pane -L } }
       bind-key -n C-j if-shell "ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+/)?g?\\.?(view|l?n?vim?x?|fzf)(diff)?(-wrapped)?$'" { send-keys C-j } { if-shell -F '#{pane_at_bottom}' {} { select-pane -D } }
