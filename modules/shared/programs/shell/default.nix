@@ -7,6 +7,7 @@
 {
   imports = [
     ./atuin.nix
+    ./carapace.nix
     ./dev.nix
     ./fzf.nix
     ./starship
@@ -84,6 +85,10 @@
 
     autosuggestion = {
       enable = true;
+      strategy = [
+        "completion"
+        "history"
+      ];
     };
 
     zsh-abbr = {
