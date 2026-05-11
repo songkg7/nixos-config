@@ -51,6 +51,11 @@
       flake = false;
     };
 
+    homebrew-codeburn = {
+      url = "github:getagentseal/homebrew-codeburn";
+      flake = false;
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixvim = {

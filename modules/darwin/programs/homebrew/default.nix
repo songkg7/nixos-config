@@ -15,6 +15,7 @@
 
     brews = [
       "mole"
+      "codeburn"
     ]
     ++ profileConfig.darwin.homebrew.brews;
 

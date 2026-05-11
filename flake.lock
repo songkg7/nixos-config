@@ -311,6 +311,22 @@
         "type": "github"
       }
     },
+    "homebrew-codeburn": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778135316,
+        "narHash": "sha256-eLS9MBmQ0hSg/VSQHgd4rzmuUTek7OwGsqg6oOeJo0w=",
+        "owner": "getagentseal",
+        "repo": "homebrew-codeburn",
+        "rev": "8a62a88c0dd636a2d66f61537e8ccccace540d67",
+        "type": "github"
+      },
+      "original": {
+        "owner": "getagentseal",
+        "repo": "homebrew-codeburn",
+        "type": "github"
+      }
+    },
     "homebrew-core": {
       "flake": false,
       "locked": {
@@ -576,6 +592,7 @@
         "home-manager": "home-manager_2",
         "homebrew-antoniorodr": "homebrew-antoniorodr",
         "homebrew-cask": "homebrew-cask",
+        "homebrew-codeburn": "homebrew-codeburn",
         "homebrew-core": "homebrew-core",
         "homebrew-openhue": "homebrew-openhue",
         "homebrew-steipete": "homebrew-steipete",
