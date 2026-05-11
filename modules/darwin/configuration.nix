@@ -33,7 +33,7 @@ in
       "antoniorodr/memo" = inputs.homebrew-antoniorodr;
       "yakitrak/yakitrak" = inputs.homebrew-yakitrak;
       "openhue/cli" = inputs.homebrew-openhue;
-      "getagentseal/codeburn" = inputs.homebrew-codeburn;
+      "getagentseal/homebrew-codeburn" = inputs.homebrew-codeburn;
     };
     mutableTaps = true;
   };

@@ -15,7 +15,7 @@
 
     brews = [
       "mole"
-      "codeburn"
+      "getagentseal/codeburn/codeburn"
     ]
     ++ profileConfig.darwin.homebrew.brews;
 
