@@ -38,6 +38,10 @@ return {
     opts = function(_, opts)
       opts.handlers = opts.handlers or {}
       opts.handlers.kotlin_language_server = function() end
+
+      opts.config = opts.config or {}
+      opts.config.kotlin_lsp = opts.config.kotlin_lsp or {}
+      opts.config.kotlin_lsp.cmd = { vim.fn.stdpath "data" .. "/mason/bin/intellij-server", "--stdio" }
     end,
   },
   {
