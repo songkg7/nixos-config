@@ -241,13 +241,6 @@ in
         '';
       }
       {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '15'
-        '';
-      }
-      {
         plugin = tmuxPlugins."prefix-highlight";
         extraConfig = ''
           # prefix/copy-mode indicator in status line
@@ -259,6 +252,15 @@ in
           set -g status-left-length ${toString tmuxStatusLeftLength}
           set -g status-right-length ${toString tmuxStatusRightLength}
           set -g status-right '#{prefix_highlight}#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,}"#{=21:pane_title}" #(${tmuxJetpackRight}/bin/tmux-jetpack-right "#{pane_current_path}" "#{client_width}")'
+        '';
+      }
+      # Continuum injects its auto-save hook into status-right at load time.
+      # Keep it after plugins that own status-right.
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '15'
         '';
       }
       tmuxPlugins.vim-tmux-navigator
