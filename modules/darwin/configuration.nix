@@ -13,6 +13,10 @@ in
     services.sudo_local.touchIdAuth = true;
   };
 
+  security.sudo.extraConfig = ''
+    Defaults timestamp_timeout=60
+  '';
+
   users.users.${username} = {
     home = profileConfig.user.homeDirectory;
   };

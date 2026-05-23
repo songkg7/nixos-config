@@ -11,7 +11,7 @@ in
     enable = true;
     enableDefaultConfig = false;
     includes = profileConfig.ssh.includes;
-    matchBlocks = lib.mkMerge [
+    settings = lib.mkMerge [
       {
         "tailscale" = {
           host = "macbook-pro14-private imac 42dot";

@@ -89,12 +89,6 @@ in
       };
       help.autocorrect = "prompt";
       gpg.format = "ssh";
-      filter.lfs = {
-        clean = "git-lfs clean -- %f";
-        smudge = "git-lfs smudge -- %f";
-        process = "git-lfs filter-process";
-        required = true;
-      };
       delta = {
         "plus-style" = "syntax #012800";
         "minus-style" = "syntax #340001";
