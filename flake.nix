@@ -105,6 +105,7 @@
         passwordManager = {
           desktopCasks = [ ];
           enableBitwardenCli = false;
+          sshHosts = [ ];
           sshIdentityAgent = null;
           sshAuthSock = null;
           gitSshProgram = null;

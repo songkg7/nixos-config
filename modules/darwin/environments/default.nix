@@ -31,6 +31,10 @@
         "1password-cli"
       ];
       enableBitwardenCli = false;
+      sshHosts = [
+        "github.com"
+        "ssh.gitlab.42dot.ai"
+      ];
       sshIdentityAgent = "~/Library/Group\\ Containers/2BUA8C4S2C.com.1password/t/agent.sock";
       sshAuthSock = null;
       gitSshProgram = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";

@@ -4,7 +4,18 @@
   ...
 }:
 let
+  passwordManager = profileConfig.passwordManager;
   sshRuntime = profileConfig.ssh.runtime;
+  passwordManagerSshHostSettings = builtins.listToAttrs (
+    map (host: {
+      name = host;
+      value = lib.hm.dag.entryAfter [ "password-manager-agent" ] {
+        user = "git";
+        identityAgent = passwordManager.sshIdentityAgent;
+        forwardAgent = false;
+      };
+    }) passwordManager.sshHosts
+  );
 in
 {
   programs.ssh = {
@@ -19,18 +30,15 @@ in
         };
       }
 
-      (lib.optionalAttrs (profileConfig.passwordManager.sshIdentityAgent != null) {
-        "password-manager-agent" = lib.hm.dag.entryAfter [ "tailscale" ] {
-          match = ''exec "test -z \"$SSH_CONNECTION\""'';
-          identityAgent = profileConfig.passwordManager.sshIdentityAgent;
-        };
-
-        "github.com" = lib.hm.dag.entryAfter [ "password-manager-agent" ] {
-          user = "git";
-          identityAgent = profileConfig.passwordManager.sshIdentityAgent;
-          forwardAgent = false;
-        };
-      })
+      (lib.optionalAttrs (passwordManager.sshIdentityAgent != null) (
+        {
+          "password-manager-agent" = lib.hm.dag.entryAfter [ "tailscale" ] {
+            match = ''exec "test -z \"$SSH_CONNECTION\""'';
+            identityAgent = passwordManager.sshIdentityAgent;
+          };
+        }
+        // passwordManagerSshHostSettings
+      ))
 
       (lib.optionalAttrs (sshRuntime.identityAgent != null) {
         "github.com" = lib.hm.dag.entryAfter [ "tailscale" ] {
