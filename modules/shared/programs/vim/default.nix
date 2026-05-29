@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   ...
@@ -32,5 +33,6 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    nixpkgs.source = inputs.nixpkgs;
   };
 }
