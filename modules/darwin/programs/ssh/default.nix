@@ -24,11 +24,17 @@ in
           match = ''exec "test -z \"$SSH_CONNECTION\""'';
           identityAgent = profileConfig.passwordManager.sshIdentityAgent;
         };
+
+        "github.com" = lib.hm.dag.entryAfter [ "password-manager-agent" ] {
+          user = "git";
+          identityAgent = profileConfig.passwordManager.sshIdentityAgent;
+          forwardAgent = false;
+        };
       })
 
       (lib.optionalAttrs (sshRuntime.identityAgent != null) {
-        "github" = lib.hm.dag.entryAfter [ "tailscale" ] {
-          host = "github.com";
+        "github.com" = lib.hm.dag.entryAfter [ "tailscale" ] {
+          user = "git";
           addKeysToAgent = "yes";
           identityAgent = sshRuntime.identityAgent;
           identityFile = sshRuntime.identityFile;
