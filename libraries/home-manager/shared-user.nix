@@ -35,6 +35,7 @@
     ngrok
     ripgrep
     fd
+    glow
     tokei
     semgrep
     rtk
