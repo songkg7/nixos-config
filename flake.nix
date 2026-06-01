@@ -10,12 +10,12 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -56,7 +56,7 @@
       flake = false;
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -155,7 +155,7 @@
             sshSigningKey = userProfile.personal.sshSigningKey;
           };
           home = {
-            stateVersion = "25.11";
+            stateVersion = "26.05";
             extraPackages =
               if isDarwin then
                 resolveProfilePackages pkgsForSystem profileName rawDarwinProfile.packages
