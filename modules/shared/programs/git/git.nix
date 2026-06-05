@@ -55,7 +55,7 @@ in
       core = {
         autocrlf = "input";
         editor = "nvim";
-        fsmonitor = true;
+        fsmonitor = false;
         untrackedCache = true;
       };
       init.defaultBranch = "main";
