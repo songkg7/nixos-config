@@ -38,6 +38,7 @@
     glow
     tokei
     semgrep
+    marp-cli
     rtk
   ];
 
