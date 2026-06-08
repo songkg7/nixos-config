@@ -33,7 +33,7 @@
       "loop"
       "raycast"
       "obsidian"
-      "iina"
+      # "iina"
       "antigravity"
       "google-chrome"
       "zen"
