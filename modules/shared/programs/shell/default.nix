@@ -32,6 +32,7 @@
 
   home.sessionPath = [
     "$HOME/.local/bin"
+    "$HOME/.bun/bin"
   ]
   ++ lib.optionals profileConfig.platform.isDarwin [
     "/Applications/Ghostty.app/Contents/MacOS"
