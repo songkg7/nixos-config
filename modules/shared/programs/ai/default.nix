@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./mcp.nix
-    ./gemini.nix
+    ./antigravity.nix
     ./opencode.nix
     ./codex.nix
   ];
