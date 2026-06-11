@@ -1,6 +1,8 @@
-_: {
-  programs.gemini-cli = {
+{ pkgs, ... }:
+{
+  programs.antigravity-cli = {
     enable = true;
+    package = pkgs.gemini-cli;
 
     # https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/configuration.md
     settings = {
