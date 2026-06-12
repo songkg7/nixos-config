@@ -3,6 +3,111 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
+local safe_lsp_location = {}
+
+local function jar_uri_to_zipfile_name(name)
+  if type(name) ~= "string" or not vim.startswith(name, "jar:") then return name end
+
+  local archive, entry = name:match "^jar:(.-)!/(.+)$"
+  if not archive or not entry then return name end
+
+  local archive_path
+  if vim.startswith(archive, "file:") then
+    archive_path = vim.uri_to_fname(archive)
+  elseif vim.startswith(archive, "/") then
+    archive_path = vim.uri_to_fname("file:" .. archive)
+  else
+    archive_path = vim.uri_decode(archive)
+  end
+
+  return ("zipfile://%s::%s"):format(archive_path, vim.uri_decode(entry))
+end
+
+local function normalize_item(item)
+  local normalized = vim.deepcopy(item)
+  normalized.filename = jar_uri_to_zipfile_name(normalized.filename)
+  return normalized
+end
+
+local function open_location_list(opts)
+  vim.fn.setloclist(0, {}, " ", {
+    title = opts.title or "LSP locations",
+    items = opts.items or {},
+    context = opts.context,
+  })
+  vim.cmd.lopen()
+end
+
+local function notify_invalid_location(item, line_count)
+  local target = item.filename or ("buffer " .. tostring(item.bufnr))
+  vim.notify(
+    ("LSP returned an invalid location: %s:%s, but the opened buffer has %s lines"):format(
+      target,
+      tostring(item.lnum),
+      tostring(line_count)
+    ),
+    vim.log.levels.WARN
+  )
+end
+
+local function jump_to_item(item)
+  local bufnr = item.bufnr
+  if (not bufnr or bufnr == 0) and item.filename and item.filename ~= "" then
+    bufnr = vim.fn.bufadd(item.filename)
+  end
+  if not bufnr or bufnr == 0 then return false end
+
+  vim.bo[bufnr].buflisted = true
+  local loaded = pcall(vim.fn.bufload, bufnr)
+  if not loaded then return false end
+
+  local line_count = vim.api.nvim_buf_line_count(bufnr)
+  local lnum = tonumber(item.lnum) or 1
+  local col = math.max((tonumber(item.col) or 1) - 1, 0)
+  if lnum < 1 or lnum > line_count then
+    notify_invalid_location(item, line_count)
+    return false
+  end
+
+  local win = vim.api.nvim_get_current_win()
+  local from = { vim.fn.bufnr "%", vim.fn.line ".", vim.fn.col ".", 0 }
+  local tagstack = { { tagname = vim.fn.expand "<cword>", from = from } }
+
+  vim.cmd "normal! m'"
+  vim.fn.settagstack(vim.fn.win_getid(win), { items = tagstack }, "t")
+  vim.api.nvim_win_set_buf(win, bufnr)
+  vim.api.nvim_win_set_cursor(win, { lnum, col })
+  vim._with({ win = win }, function() vim.cmd "normal! zv" end)
+  return true
+end
+
+function safe_lsp_location.on_list(opts)
+  local items = vim.tbl_map(normalize_item, opts.items or {})
+  if vim.tbl_isempty(items) then
+    vim.notify("No locations found", vim.log.levels.INFO)
+    return
+  end
+
+  if #items == 1 and jump_to_item(items[1]) then return end
+  open_location_list(vim.tbl_extend("force", opts, { items = items }))
+end
+
+function safe_lsp_location.definition()
+  vim.lsp.buf.definition { on_list = safe_lsp_location.on_list }
+end
+
+function safe_lsp_location.declaration()
+  vim.lsp.buf.declaration { on_list = safe_lsp_location.on_list }
+end
+
+function safe_lsp_location.type_definition()
+  vim.lsp.buf.type_definition { on_list = safe_lsp_location.on_list }
+end
+
+function safe_lsp_location.implementation()
+  vim.lsp.buf.implementation { on_list = safe_lsp_location.on_list }
+end
+
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
@@ -76,10 +181,25 @@ return {
     mappings = {
       n = {
         -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
+        gd = {
+          function() safe_lsp_location.definition() end,
+          desc = "Definition of current symbol",
+          cond = "textDocument/definition",
+        },
         gD = {
-          function() vim.lsp.buf.declaration() end,
+          function() safe_lsp_location.declaration() end,
           desc = "Declaration of current symbol",
           cond = "textDocument/declaration",
+        },
+        gri = {
+          function() safe_lsp_location.implementation() end,
+          desc = "Implementation of current symbol",
+          cond = "textDocument/implementation",
+        },
+        grt = {
+          function() safe_lsp_location.type_definition() end,
+          desc = "Type definition of current symbol",
+          cond = "textDocument/typeDefinition",
         },
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
