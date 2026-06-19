@@ -17,7 +17,7 @@ Personal Nix configuration supporting macOS (Darwin) and Linux systems with comp
 - **Editors**: Neovim with AstroNvim configuration
 - **Utilities**: Bat, Yazi, JQ, Fonts configuration
 - **macOS specific**: AeroSpace, Homebrew, Homerow
-- **Security**: environment-aware 1Password and headless `ssh-agent` SSH/Git signing configuration
+- **Security**: environment-aware 1Password, Bitwarden SSH agent, and SSH/Git signing configuration
 - **Vault CLI**: Bitwarden CLI enabled for `personal` and available for other profiles
 
 ## 📋 Prerequisites
@@ -129,9 +129,8 @@ nix develop
 
 - `work` keeps `1password` and `1password-cli` for SSH agent and Git SSH signing.
 - `personal` installs Bitwarden Desktop via Homebrew and enables the shared `programs.bitwarden-cli` module.
-- `personal` keeps Bitwarden as the password manager, but runtime SSH auth and Git SSH signing go through a local fixed-socket `ssh-agent`.
-- `personal` interactive local zsh shells ensure `SSH_AUTH_SOCK` points at `~/.ssh/agent.sock` and lazily start the agent if the socket is stale or missing. SSH sessions keep any forwarded agent instead of overriding it.
-- `personal` enables `AddKeysToAgent yes` for `github.com`, so the first successful SSH auth can populate the fixed-socket agent automatically. `ssh-personal-load` remains available as the explicit `ssh-add ~/.ssh/personal_github_ed25519` helper after a fresh login or agent restart. `tmux` sessions do not need TTY refresh hooks.
+- `personal` uses Bitwarden Desktop's SSH agent at `~/.bitwarden-ssh-agent.sock` for local SSH auth and Git SSH signing. Interactive local zsh shells export `SSH_AUTH_SOCK` to that socket; SSH sessions keep any forwarded agent instead of overriding it.
+- `bw-ssh-agent-use` points the current shell at Bitwarden's SSH agent socket, and `bw-ssh-agent-test` runs `ssh-add -l` against it.
 - If you rotate to a new signing/authentication key, update `flake.nix` and `secrets/allowed-signers.age` together after GitHub authentication/signing keys have been updated.
 - `bwlogin`, `bwunlock`, `bwsync`, `bwlock`, and `bwlogout` are available whenever `programs.bitwarden-cli` is enabled.
 
