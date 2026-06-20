@@ -87,17 +87,17 @@
     passwordManager = {
       desktopCasks = [ "bitwarden" ];
       enableBitwardenCli = true;
-      sshHosts = [ "github.com" ];
-      sshIdentityAgent = "~/.bitwarden-ssh-agent.sock";
-      sshAuthSock = "~/.bitwarden-ssh-agent.sock";
+      sshHosts = [ ];
+      sshIdentityAgent = null;
+      sshAuthSock = null;
       gitSshProgram = null;
     };
 
     sshRuntime = {
-      backend = "password-manager";
+      backend = "ssh-agent";
       cacheTtlSshSeconds = null;
-      identityAgent = null;
-      identityFile = null;
+      identityAgent = "~/.ssh/agent.sock";
+      identityFile = "~/.ssh/personal_github_ed25519";
       pinentry = null;
     };
 

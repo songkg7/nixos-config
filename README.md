@@ -129,8 +129,8 @@ nix develop
 
 - `work` keeps `1password` and `1password-cli` for SSH agent and Git SSH signing.
 - `personal` installs Bitwarden Desktop via Homebrew and enables the shared `programs.bitwarden-cli` module.
-- `personal` uses Bitwarden Desktop's SSH agent at `~/.bitwarden-ssh-agent.sock` for local SSH auth and Git SSH signing. Interactive local zsh shells export `SSH_AUTH_SOCK` to that socket; SSH sessions keep any forwarded agent instead of overriding it.
-- `bw-ssh-agent-use` points the current shell at Bitwarden's SSH agent socket, and `bw-ssh-agent-test` runs `ssh-add -l` against it.
+- `personal` does not use Bitwarden Desktop's SSH agent. It uses a local OpenSSH agent at `~/.ssh/agent.sock` with `~/.ssh/personal_github_ed25519` for GitHub SSH auth and Git SSH signing.
+- `ssh-personal-load` starts/uses the local agent and loads the personal GitHub key when needed.
 - If you rotate to a new signing/authentication key, update `flake.nix` and `secrets/allowed-signers.age` together after GitHub authentication/signing keys have been updated.
 - `bwlogin`, `bwunlock`, `bwsync`, `bwlock`, and `bwlogout` are available whenever `programs.bitwarden-cli` is enabled.
 
