@@ -47,6 +47,8 @@ in
           identityAgent = sshRuntime.identityAgent;
           identityFile = sshRuntime.identityFile;
           identitiesOnly = true;
+          IgnoreUnknown = "UseKeychain";
+          UseKeychain = "yes";
           forwardAgent = false;
         };
       })

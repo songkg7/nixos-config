@@ -15,6 +15,7 @@ let
       lib.replaceStrings [ "~/" ] [ "${profileConfig.user.homeDirectory}/" ] sshRuntime.identityFile;
   sshAgentExe = lib.getExe' pkgs.openssh "ssh-agent";
   sshAddExe = lib.getExe' pkgs.openssh "ssh-add";
+  appleSshAddExe = "/usr/bin/ssh-add";
 in
 {
   config = lib.mkMerge [
@@ -63,7 +64,7 @@ in
           fi
 
           _personal_ssh_agent_ensure || return $?
-          ${sshAddExe} "$_personal_ssh_signing_key"
+          ${appleSshAddExe} --apple-use-keychain "$_personal_ssh_signing_key"
         }
 
         _personal_ssh_agent_ensure >/dev/null 2>&1 || true
