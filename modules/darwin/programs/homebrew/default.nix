@@ -14,6 +14,7 @@
     taps = lib.mkDefault [ ];
 
     brews = [
+      "agent-browser"
       "mole"
       "getagentseal/codeburn/codeburn"
     ]
