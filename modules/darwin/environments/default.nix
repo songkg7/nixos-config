@@ -17,6 +17,11 @@
       "sdm"
       "mongodb-compass"
       "redis-insight"
+      "microsoft-word"
+      "microsoft-excel"
+      "microsoft-powerpoint"
+      "microsoft-outlook"
+      "microsoft-teams"
     ];
 
     masApps = { };
