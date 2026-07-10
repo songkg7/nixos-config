@@ -28,16 +28,21 @@ in
   nix-homebrew = {
     enable = true;
     user = config.system.primaryUser;
+    package = inputs.brew-src // {
+      name = "brew-6.0.9";
+      version = "6.0.9";
+    };
     autoMigrate = true;
     enableRosetta = pkgs.stdenv.isAarch64;
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "steipete/tap" = inputs.homebrew-steipete;
-      "antoniorodr/memo" = inputs.homebrew-antoniorodr;
-      "yakitrak/yakitrak" = inputs.homebrew-yakitrak;
-      "openhue/cli" = inputs.homebrew-openhue;
+      "steipete/homebrew-tap" = inputs.homebrew-steipete;
+      "antoniorodr/homebrew-memo" = inputs.homebrew-antoniorodr;
+      "yakitrak/homebrew-yakitrak" = inputs.homebrew-yakitrak;
+      "openhue/homebrew-cli" = inputs.homebrew-openhue;
       "getagentseal/homebrew-codeburn" = inputs.homebrew-codeburn;
+      "stablyai/homebrew-orca" = inputs.homebrew-orca;
     };
     mutableTaps = true;
   };

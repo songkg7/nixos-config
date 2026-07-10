@@ -41,6 +41,7 @@
       "spotify"
       "tailscale-app"
       "codex"
+      "stablyai/orca/orca"
       "shottr"
       "cmux"
     ]

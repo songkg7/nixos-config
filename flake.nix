@@ -19,7 +19,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    brew-src = {
+      url = "github:Homebrew/brew/6.0.9";
+      flake = false;
+    };
+
+    nix-homebrew = {
+      url = "github:zhaofengli/nix-homebrew";
+      inputs.brew-src.follows = "brew-src";
+    };
 
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -53,6 +61,11 @@
 
     homebrew-codeburn = {
       url = "github:getagentseal/homebrew-codeburn";
+      flake = false;
+    };
+
+    homebrew-orca = {
+      url = "github:stablyai/homebrew-orca";
       flake = false;
     };
 
