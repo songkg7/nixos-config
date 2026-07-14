@@ -39,7 +39,6 @@
       "google-chrome"
       "zen"
       "spotify"
-      "tailscale-app"
       "codex"
       "stablyai/orca/orca"
       "shottr"

@@ -73,6 +73,7 @@
       "notion"
       "notion-calendar"
       "orbstack"
+      "tailscale-app"
       "telegram"
     ];
 
