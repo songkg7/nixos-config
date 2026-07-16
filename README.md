@@ -48,12 +48,12 @@ nixos-rebuild switch --flake '.#linux' --sudo
 
 ```sh
 # For Apple Silicon Macs (Work)
-nix build '.#darwinConfigurations.work.system'
-sudo ./result/sw/bin/darwin-rebuild switch --flake '.#work'
+nix build --impure '.#darwinConfigurations.work.system'
+sudo ./result/sw/bin/darwin-rebuild switch --impure --flake '.#work'
 
 # For Apple Silicon Macs (Personal)
-nix build '.#darwinConfigurations.personal.system'
-sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal'
+nix build --impure '.#darwinConfigurations.personal.system'
+sudo ./result/sw/bin/darwin-rebuild switch --impure --flake '.#personal'
 
 ```
 
@@ -80,9 +80,9 @@ nix fmt .
 ### Validate Configuration
 
 ```sh
-nix flake check
-nix build '.#darwinConfigurations.work.system'
-nix build '.#darwinConfigurations.personal.system'
+nix flake check --impure
+nix build --impure '.#darwinConfigurations.work.system'
+nix build --impure '.#darwinConfigurations.personal.system'
 nix eval '.#nixosConfigurations.linux.config.system.stateVersion' # Local fallback when not building Linux on a macOS host
 ```
 

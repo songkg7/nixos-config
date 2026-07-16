@@ -99,6 +99,18 @@
           inherit system;
           inherit (nixpkgsPolicy) overlays config;
         };
+      darwinUsername =
+        let
+          sudoUsername = builtins.getEnv "SUDO_USER";
+          username = builtins.getEnv "USER";
+          invokingUsername = if sudoUsername != "" then sudoUsername else username;
+        in
+        if invokingUsername == "" then
+          throw "Darwin username detection failed. Re-run with `--impure` so $USER is available."
+        else if invokingUsername == "root" then
+          throw "Darwin username detection resolved to root. Run as a regular user or ensure $SUDO_USER is available."
+        else
+          invokingUsername;
       userProfile = {
         username = "haril";
         personal = {
@@ -148,7 +160,7 @@
         let
           isDarwin = nixpkgs.lib.hasSuffix "darwin" system;
           pkgsForSystem = mkPkgs system;
-          username = userProfile.username;
+          username = if isDarwin then darwinUsername else userProfile.username;
           rawDarwinProfile =
             if isDarwin then
               nixpkgs.lib.recursiveUpdate defaultDarwinProfile darwinEnvironments.${profileName}

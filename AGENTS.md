@@ -9,22 +9,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 nixos-rebuild switch --flake '.#linux' --sudo
 
 # macOS - Work (Apple Silicon)
-nix build '.#darwinConfigurations.work.system'
-sudo ./result/sw/bin/darwin-rebuild switch --flake '.#work'
+nix build --impure '.#darwinConfigurations.work.system'
+sudo ./result/sw/bin/darwin-rebuild switch --impure --flake '.#work'
 
 # macOS - Personal (Apple Silicon)
-nix build '.#darwinConfigurations.personal.system'
-sudo ./result/sw/bin/darwin-rebuild switch --flake '.#personal'
+nix build --impure '.#darwinConfigurations.personal.system'
+sudo ./result/sw/bin/darwin-rebuild switch --impure --flake '.#personal'
 
 ```
 
 ## Validation & Development
 
 ```bash
-nix flake check               # Validate configuration
-nix flake check --all-systems # Check all platforms
-nix build '.#darwinConfigurations.work.system'
-nix build '.#darwinConfigurations.personal.system'
+nix flake check --impure               # Validate configuration
+nix flake check --all-systems --impure # Check all platforms
+nix build --impure '.#darwinConfigurations.work.system'
+nix build --impure '.#darwinConfigurations.personal.system'
 nix eval '.#nixosConfigurations.linux.config.system.stateVersion' # Local fallback on non-Linux hosts
 nix fmt .                    # Format with nixfmt-tree
 deadnix --edit .             # Remove unused code
@@ -76,6 +76,7 @@ Multi-platform Nix flake supporting macOS (Darwin) and Linux with Home Manager i
 - **Module flow**: shared → darwin/linux → program-specific
 - **Darwin environment split**: manage work/personal differences in `modules/darwin/environments/default.nix` (`packages`, `brews`, `casks`, `masApps`, `dockApps`, `sshIncludes`, `ageSecrets`)
 - **Profile source of truth**: resolve environment-specific Darwin data once in `flake.nix` and pass it as `profileConfig`
+- **Darwin user detection**: resolve the invoking account from `SUDO_USER`/`USER`; evaluate Darwin outputs with `--impure`
 - **Darwin package source of truth**: put work-only tools (e.g. `acli`) in `environments/default.nix` and keep `modules/darwin/home.nix` as a thin platform wrapper over the shared HM layer
 
 ## Git Hooks (lefthook)
