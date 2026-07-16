@@ -73,6 +73,7 @@
       "notion"
       "notion-calendar"
       "orbstack"
+      "raycast"
       "tailscale-app"
       "telegram"
     ];

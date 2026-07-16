@@ -32,7 +32,6 @@
       "karabiner-elements"
       "thaw"
       "loop"
-      "raycast"
       "obsidian"
       # "iina"
       "antigravity"
@@ -42,17 +41,17 @@
       "codex"
       "stablyai/orca/orca"
       "shottr"
-      "cmux"
     ]
     ++ profileConfig.darwin.homebrew.desktopCasks
     ++ profileConfig.darwin.homebrew.casks;
 
     masApps = {
-      "Amphetamine" = 937984704;
-      "Bandizip" = 1265704574;
-      "Encrypto" = 935235287;
-      "RunCat Neo" = 6757801838;
-      "ScreenBrush" = 1233965871;
+      # Homebrew Bundle 6.0.9에서 mas 7.0.0으로 설치된 앱을 인식하지 못해 비활성화
+      # "Amphetamine" = 937984704;
+      # "Bandizip" = 1265704574;
+      # "Encrypto" = 935235287;
+      # "RunCat Neo" = 6757801838;
+      # "ScreenBrush" = 1233965871;
     }
     // profileConfig.darwin.homebrew.masApps;
   };

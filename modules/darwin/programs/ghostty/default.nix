@@ -1,14 +1,8 @@
-{ lib, ... }:
-{
+_: {
   programs.ghostty = {
     enable = true;
     package = null;
-    # Disabled: home-manager's snippet unconditionally sources
-    # "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration",
-    # which ENOENTs inside cmux.app (cmux sets GHOSTTY_RESOURCES_DIR but
-    # ships its own integration via ZDOTDIR instead, see cmux PR #1316).
-    # Replaced by the guarded source block in programs.zsh.initContent below.
-    enableZshIntegration = false;
+    enableZshIntegration = true;
     settings = {
       theme = "Dark Pastel";
 
@@ -60,11 +54,4 @@
       ];
     };
   };
-
-  programs.zsh.initContent = lib.mkAfter ''
-    if [[ -z $CMUX_SHELL_INTEGRATION_DIR && -n $GHOSTTY_RESOURCES_DIR \
-          && -r "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration" ]]; then
-      source "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration"
-    fi
-  '';
 }
