@@ -76,6 +76,7 @@
       "raycast"
       "tailscale-app"
       "telegram"
+      "zen"
     ];
 
     masApps = {

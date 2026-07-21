@@ -36,7 +36,6 @@
       # "iina"
       "antigravity"
       "google-chrome"
-      "zen"
       "spotify"
       "codex"
       "stablyai/orca/orca"
