@@ -7,6 +7,6 @@ pre-commit:
 pre-push:
   commands:
     validate:
-      run: nix flake check --all-systems
+      run: nix flake check --all-systems --impure
     deadnix:
       run: deadnix .
