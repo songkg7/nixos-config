@@ -64,10 +64,10 @@ in
           fi
 
           _personal_ssh_agent_ensure || return $?
-          ${appleSshAddExe} --apple-use-keychain "$_personal_ssh_signing_key"
+          ${appleSshAddExe} -q --apple-use-keychain "$_personal_ssh_signing_key"
         }
 
-        _personal_ssh_agent_ensure >/dev/null 2>&1 || true
+        [[ -n "$SSH_CONNECTION" ]] || ssh-personal-load || true
       '';
     })
   ];
