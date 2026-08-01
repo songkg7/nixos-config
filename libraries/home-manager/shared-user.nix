@@ -38,6 +38,7 @@
     glow
     tokei
     semgrep
+    gitleaks
     marp-cli
     rtk
   ];
