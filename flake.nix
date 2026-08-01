@@ -19,15 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    brew-src = {
-      url = "github:Homebrew/brew/6.0.9";
-      flake = false;
-    };
-
-    nix-homebrew = {
-      url = "github:zhaofengli/nix-homebrew";
-      inputs.brew-src.follows = "brew-src";
-    };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     homebrew-core = {
       url = "github:homebrew/homebrew-core";

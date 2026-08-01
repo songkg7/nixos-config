@@ -28,10 +28,6 @@ in
   nix-homebrew = {
     enable = true;
     user = config.system.primaryUser;
-    package = inputs.brew-src // {
-      name = "brew-6.0.9";
-      version = "6.0.9";
-    };
     autoMigrate = true;
     enableRosetta = pkgs.stdenv.isAarch64;
     taps = {

@@ -8,7 +8,7 @@
   homebrew = {
     enable = true;
     user = config.system.primaryUser;
-    onActivation.autoUpdate = true;
+    onActivation.autoUpdate = false;
     onActivation.cleanup = "uninstall";
 
     taps = lib.mkDefault [ ];
