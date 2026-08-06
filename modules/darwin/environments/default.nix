@@ -22,6 +22,7 @@
       "microsoft-powerpoint"
       "microsoft-outlook"
       "microsoft-teams"
+      "zoom"
     ];
 
     masApps = { };
