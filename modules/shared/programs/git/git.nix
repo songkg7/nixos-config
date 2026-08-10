@@ -32,11 +32,8 @@ in
       ".direnv"
       "mise.local.toml"
       "mise.*.local.toml"
-      ".osgrep"
-      ".sisyphus"
       ".worktrees"
-      ".omc"
-      ".codegraph/"
+      ".codegraph"
     ];
 
     settings = {
