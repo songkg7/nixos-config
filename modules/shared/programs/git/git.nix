@@ -34,6 +34,7 @@ in
       "mise.*.local.toml"
       ".worktrees"
       ".codegraph"
+      ".hermes"
     ];
 
     settings = {
