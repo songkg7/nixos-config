@@ -40,6 +40,7 @@
       "codex"
       "stablyai/orca/orca"
       "shottr"
+      "vorssaint"
     ]
     ++ profileConfig.darwin.homebrew.desktopCasks
     ++ profileConfig.darwin.homebrew.casks;
