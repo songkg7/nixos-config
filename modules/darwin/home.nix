@@ -54,9 +54,6 @@ in
           m-cli
           hyperfine
 
-          # GUI Apps
-          alt-tab-macos
-
           # Fonts
           nerd-fonts.jetbrains-mono
           nerd-fonts.monaspace
