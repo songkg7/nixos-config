@@ -68,7 +68,6 @@
     brews = [ ];
 
     casks = [
-      "adguard"
       "discord"
       "elgato-stream-deck"
       "notion"
