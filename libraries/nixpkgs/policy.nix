@@ -22,9 +22,12 @@ let
             { };
       in
       {
-        # ponytail: skip one stale upstream snapshot; remove when nixpkgs updates statix.
+        # ponytail: skip stale upstream snapshots; remove when nixpkgs updates statix.
         statix = prev.statix.overrideAttrs (_: {
-          checkFlags = [ "--skip=empty_list_concat_676800f4240e26802590a123362636e6_fix" ];
+          checkFlags = [
+            "--skip=empty_list_concat_676800f4240e26802590a123362636e6_fix"
+            "--skip=manual_inherit_2a92c1cb560d2d727373fb3ad10da2b1_fix"
+          ];
         });
       }
       // catalystOverrides
