@@ -22,13 +22,29 @@ let
             { };
       in
       {
-        # ponytail: skip stale upstream snapshots; remove when nixpkgs updates statix.
+        # statix tests invoke cargo recursively; run them serially to avoid
+        # flaky snapshots caused by concurrent cargo invocations.
         statix = prev.statix.overrideAttrs (_: {
           checkFlags = [
             "--skip=empty_list_concat_676800f4240e26802590a123362636e6_fix"
             "--skip=manual_inherit_2a92c1cb560d2d727373fb3ad10da2b1_fix"
           ];
+          dontUseCargoParallelTests = true;
         });
+
+        # aiohttp's websocket shutdown test is timing-sensitive when its
+        # upstream pytest-xdist suite runs in parallel on Darwin.
+        python313Packages =
+          if prev.stdenv.isDarwin then
+            prev.python313Packages.overrideScope (
+              _self: pythonPrev: {
+                aiohttp = pythonPrev.aiohttp.overrideAttrs (old: {
+                  pytestFlags = (old.pytestFlags or [ ]) ++ [ "-n" "0" ];
+                });
+              }
+            )
+          else
+            prev.python313Packages;
       }
       // catalystOverrides
     )
