@@ -3,8 +3,4 @@ _: {
     ./antigravity.nix
     ./codex.nix
   ];
-
-  programs.opencode = {
-    enable = true;
-  };
 }

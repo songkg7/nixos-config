@@ -74,8 +74,8 @@ in
       # 현재 사용자 세션의 기본 SSH_AUTH_SOCK을 설정합니다. 로그인 후에는
       # darwin-rebuild가 다시 적용합니다
 
-      home.activation.sshAgentSocket = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        if [[ -z "''${DRY_RUN:-}"]] && [[ -S "$HOME/.ssh/agent.sock" ]]; then
+      home.activation.sshAgentSocket = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        if [[ -z "''${DRY_RUN:-}" ]] && [[ -S "$HOME/.ssh/agent.sock" ]]; then
           /bin/launchctl setenv SSH_AUTH_SOCK "$HOME/.ssh/agent.sock" || true
         fi
       '';
