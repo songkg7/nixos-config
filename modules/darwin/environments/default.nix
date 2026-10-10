@@ -63,6 +63,8 @@
   personal = {
     packages = [
       "helix"
+      "gws"
+      "google-cloud-sdk"
     ];
 
     brews = [ ];
