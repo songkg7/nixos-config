@@ -35,6 +35,7 @@ in
       ".worktrees"
       ".codegraph"
       ".hermes"
+      ".archify"
     ];
 
     settings = {
