@@ -8,6 +8,7 @@
       "glab"
       "databricks-cli"
       "acli"
+      "gcx"
     ];
 
     brews = [ ];
