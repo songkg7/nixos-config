@@ -29,6 +29,15 @@ in
     enable = true;
     user = config.system.primaryUser;
     autoMigrate = true;
+    # ponytail: remove this pin once nix-homebrew supports `zap :not_required`.
+    package = pkgs.fetchFromGitHub rec {
+      name = "brew-${version}";
+      version = "7.0.11";
+      owner = "Homebrew";
+      repo = "brew";
+      tag = version;
+      hash = "sha256-8mCor0DDjNhi+0e+FllfqiMABujBl+/RxYW+wgMpcto=";
+    };
     enableRosetta = pkgs.stdenv.isAarch64;
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
