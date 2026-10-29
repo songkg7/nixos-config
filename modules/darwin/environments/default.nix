@@ -18,6 +18,7 @@
       "sdm"
       "mongodb-compass"
       "redis-insight"
+      "microsoft-edge"
       "microsoft-word"
       "microsoft-excel"
       "microsoft-powerpoint"
