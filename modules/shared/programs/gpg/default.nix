@@ -16,6 +16,7 @@ let
   sshAgentExe = lib.getExe' pkgs.openssh "ssh-agent";
   sshAddExe = lib.getExe' pkgs.openssh "ssh-add";
   appleSshAddExe = "/usr/bin/ssh-add";
+  sshSigningPublicKey = lib.removePrefix "key::" profileConfig.user.sshSigningKey;
 in
 {
   config = lib.mkMerge [
@@ -64,10 +65,13 @@ in
           fi
 
           _personal_ssh_agent_ensure || return $?
+          ${sshAddExe} -T <(printf '%s\n' ${lib.escapeShellArg sshSigningPublicKey}) >/dev/null 2>&1 && return 0
           ${appleSshAddExe} -q --apple-use-keychain "$_personal_ssh_signing_key"
         }
 
-        [[ -n "$SSH_CONNECTION" ]] || ssh-personal-load || true
+        # Shell startup may use Keychain, but must never wait for a passphrase.
+        [[ -n "$SSH_CONNECTION" ]] ||
+          SSH_ASKPASS_REQUIRE=force SSH_ASKPASS=/usr/bin/false ssh-personal-load || true
       '';
 
       # launchd에서 뜬 프로세스(Hermes 등)도 개인 SSH agent를 쓰도록
